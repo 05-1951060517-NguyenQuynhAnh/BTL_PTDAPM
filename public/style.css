@@ -1,0 +1,12 @@
+body{
+    font-family: "Helvetica W01", "Microsoft YaHei", 微软雅黑, SimHei, 黑体, "PingFang SC", 萍方, "Noto Sans", sans-serif;
+    font-style: normal;
+    letter-spacing: normal;
+    background:#f6f1eb;
+  }
+.slogan{
+    font-family: "Orator W01", "Microsoft YaHei", serif;
+    text-align: center;
+    overflow-wrap: break-word;
+    font-size: 16px;
+}
