@@ -334,7 +334,7 @@
                                 <hr class="m-0 mt-1">
                                 <div class="">
                                     <label style="font-size:12px" for="email">E-mail*</label>
-                                    <input type="text" class="col-md-12 ps-3 border py-2 " name="mail" required>
+                                    <input type="text" class="col-md-12 ps-3 border py-2 " name="email" required>
                                 </div>
                                 <div class=" mt-3">
                                     <label style="font-size:12px" for="matkhau">Mật khẩu*</label>
@@ -367,11 +367,11 @@
                                 </font>
                                 <hr class="m-0 mt-1">
                                 <div class="">
-                                    <label style="font-size:12px" for="email">Họ tên*</label>
-                                    <input type="text" class="col-md-12 ps-3 border py-2 " name="mail" required>
+                                    <label style="font-size:12px" for="hoten">Họ tên*</label>
+                                    <input type="text" class="col-md-12 ps-3 border py-2 " name="hoten" required>
                                 </div>
                                 <div class=" mt-3">
-                                    <label style="font-size:12px" for="matkhau">Số điện thoại*</label>
+                                    <label style="font-size:12px" for="sdt">Số điện thoại*</label>
                                     <input type="text" class="col-md-12 ps-3 border py-2 " name="sdt" required>
                                 </div>
                                 <div class="mt-3">

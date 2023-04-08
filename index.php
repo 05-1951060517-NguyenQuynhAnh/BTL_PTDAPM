@@ -1,3 +1,10 @@
+<?php include('./config/connect_db.php'); 
+?>
+<?php
+if (session_id() == '') {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,7 +237,7 @@
 
                         <div class="mt-3">
                             <a class="pt-1 text-decoration-none text-black d-flex" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight" role="button"aria-controls="offcanvasRight">
+                                data-bs-target="#offcanvasRight" role="button" aria-controls="offcanvasRight">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                     class="me-2 bi bi-person" viewBox="0 0 16 16">
                                     <path
@@ -248,6 +255,40 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="px-5 offcanvas-body">
+                                    <?php
+                // Đã đăng nhập rồi -> điều hướng về trang chủ
+         
+                // Đã đăng nhập rồi -> hiển thị tên Người dùng và menu Đăng xuất
+                if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+                ?>
+                                    <a href="" class="text-decoration-none link-dark">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-gear me-1" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                            <path
+                                                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                        </svg>
+                                        <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                            Thông tin cá nhân</font>
+                                    </a>
+                                    <div>
+                                        <a href="./logout.php" class="text-decoration-none link-dark">
+    
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-gear me-1" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                                <path
+                                                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                            </svg>
+                                            <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                                Đăng xuất</font>
+                                        </a>
+                                    </div>
+                                    Chào <?= $_SESSION['isLoginOK']; ?>
+                                    <?php else : ?>
                                     <form class="form-login" action="process_login.php" method="post">
                                         <div class="">
                                             <div class="form-login">
@@ -291,21 +332,22 @@
                                         <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
                                             ❖ Cập nhật dữ liệU cá nhận của bạn</font>
                                     </div>
-                                    <div class="mt-5 pt-5">
-                                        <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="3">
-                                            DỊCH VỤ KHÁCH HÀNG</font><br>
-                                        <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
-                                            Gọi 0869 368 946 </font> <br>
-                                        <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
-                                            Thứ 2 - Thứ 6: 9 giờ sáng - 5 giờ chiều</font><br>
-                                        <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
-                                            Thứ 7: 10 giờ sáng - 5 giờ chiều</font><br>
-                                    </div>
-                                    <div class="mt-5 mb-4">
-                                        <div class="d-flex justify-content-center">
-                                            <div class=""> <img src="img/logo.png" style="width:100px;height:66px"
-                                                    alt="">
-                                            </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="mt-5 pt-5 ms-5">
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="3">
+                                        DỊCH VỤ KHÁCH HÀNG</font><br>
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        Gọi 0869 368 946 </font> <br>
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        Thứ 2 - Thứ 6: 9 giờ sáng - 5 giờ chiều</font><br>
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        Thứ 7: 10 giờ sáng - 5 giờ chiều</font><br>
+                                </div>
+                                <div class="mt-5 mb-4">
+                                    <div class="d-flex justify-content-center">
+                                        <div class=""> <img src="img/logo.png" style="width:100px;height:66px"
+                                                alt="">
                                         </div>
                                     </div>
                                 </div>
