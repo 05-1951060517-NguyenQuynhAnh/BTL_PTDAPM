@@ -12,11 +12,9 @@
         if(mysqli_num_rows($result) > 0){
             $_SESSION['isLoginOK'] = $email;
             header("location:index.php"); //Chuyển hướng về Trang quản trị
-            echo 'Đăng nhập thành công!';
         }else{
-            /*$error = "Bạn nhập thông tin Email hoặc mật khẩu chưa chính xác";
-            header("location:login.php?error=$error"); */
-            echo $sql;
+            $error = "Email hoặc mật khẩu không hợp lệ.";
+            header("location:index.php?error=$error");
         }
         mysqli_close($conn);
     }else{
