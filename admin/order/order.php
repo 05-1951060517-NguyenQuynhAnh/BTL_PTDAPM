@@ -87,7 +87,16 @@ endif;
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="" class="d-flex nav_link active">
+                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                            class="bi bi-box-seam" viewBox="0 0 16 16">
+                            <path
+                                d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                        </svg>
+                        <span class="nav_name">Loại hàng</span>
+                        <i class="nav_icon2 bi bi-chevron-right"></i>
+                    </a>
+                    <a href="" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
@@ -98,12 +107,13 @@ endif;
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                                class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
-                                <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
+                        <a href="order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                                class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
-                                    d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5Zm0 1H7.5v3h-6l2.25-3ZM8.5 4V1h3.75l2.25 3h-6ZM15 5v10H1V5h14Z" />
+                                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                <path
+                                    d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                             </svg>
                             <span class="nav_name">Đơn hàng</span>
                             <i class="nav_icon2 bi bi-chevron-right"></i>
@@ -144,9 +154,9 @@ endif;
                 <table class="mt-3 table table-striped">
                     <thead>
                         <tr style="color:#888;">
-                            <th scope="col"></th>
+                            <!-- <th scope="col"></th> -->
                             <th style="width:200px" class="col ps-3" scope="col">ID</th>
-                            <th style="width:80px" scope="col">Số lượng</th>
+                            <!-- <th style="width:80px" scope="col">Số lượng</th> -->
                             <th style="width:90px" scope="col">Thành tiền</th>
                             <th style="width:90px" scope="col">Thời gian tạo</th>
                             <th style="width:95px" scope="col">Địa chỉ</th>
@@ -157,7 +167,7 @@ endif;
                     <tbody>
                         <?php
 
-                        $sql = "SELECT * FROM order,detail_order ";
+                        $sql = "SELECT * FROM order";
                         $res = mysqli_query($conn, $sql);
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
@@ -171,34 +181,20 @@ endif;
                                     </td>
                                     <td class="">
                                         <p class="ms-2">
-                                            <?php echo $row['qty']; ?>
+                                            <?php echo $row['amount']; ?>
                                         </p>
                                     </td>
                                     <td class="">
                                         <p class="">
-                                            <?php echo number_format($row['price']); ?>
+                                            <?php echo ($row['created']); ?>
                                         </p>
                                     </td>
                                     <td class="">
                                         <p class="">
-                                            <?php echo number_format($row['import_price']); ?>
+                                            <?php echo ($row['address_order']); ?>
                                         </p>
                                     </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['quantity']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['content']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['created']; ?>
-                                        </p>
-                                    </td>
+                                   
                                     <td class="text-center">
 
                                         <a href="update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_product']; ?>"><i

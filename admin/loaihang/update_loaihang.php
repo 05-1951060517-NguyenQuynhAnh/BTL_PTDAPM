@@ -1,27 +1,14 @@
 <?php include('../template/header.php'); 
 ?>
 <?php
-if (session_id() == '') {
-    session_start();
-}
+$id = $_GET['id'];
+$id1 = $_GET['id1'];
+$sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';";
+    $result = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)>0){
+    $row = mysqli_fetch_assoc($result);
+    }
 ?>
-<?php
-      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-        $id =$_SESSION['isLoginOK'];
-        $sql = "SELECT * FROM admin where admin.username='$id' ";
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            }
-            else{
-                
-                $error = "Xin lỗi! Bạn chưa đăng nhập";
-                header("location:login.php?id=$id&error=$error");
-            
-            }
-     
-      endif;
-    ?>
 
 <body id="body-pd">
     <header class="header" id="header">
@@ -32,7 +19,7 @@ if (session_id() == '') {
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-warning">Xin chào Admin</h4>
+        <h4 class="mt-1 text-center text-warning">Xin chào, <?php echo $row['name'];?></h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -41,7 +28,7 @@ if (session_id() == '') {
             </svg>
 
             <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php echo $row['name'];?></p>
+                <?php echo $row['name']; ?></p>
 
             <ul class="dropdown-menu dropdown-menu-end">
                 <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
@@ -64,7 +51,7 @@ if (session_id() == '') {
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
                     </div>
-                    <a href="../index.php?id=<?php echo $id ?>" class="d-flex nav_link ">
+                    <a href="../check.php?id=<?php echo $id ?>" class="d-flex nav_link ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -75,7 +62,7 @@ if (session_id() == '') {
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="" class="d-flex nav_link  active">
+                    <a href="../check_acount.php?id=<?php echo $row['id_admin']; ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -89,7 +76,7 @@ if (session_id() == '') {
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                    <a href="loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box-seam" viewBox="0 0 16 16">
                             <path
@@ -98,7 +85,7 @@ if (session_id() == '') {
                         <span class="nav_name">Loại hàng</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../sanpham/sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                    <a href="sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
@@ -121,11 +108,10 @@ if (session_id() == '') {
                             <i class="nav_icon2 bi bi-chevron-right"></i>
                         </a>
                     </div>
-
                     <div class="nav_links">
                         <span class="nav_names">PAGES</span>
                     </div>
-                    <a href="#" class="d-flex nav_link">
+                    <a href="../../index.php" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                             class="bi bi-journal nav_icon" viewBox="0 0 16 16">
                             <path
@@ -144,58 +130,54 @@ if (session_id() == '') {
     <div class="height-100">
         <section class="p-5">
             <div class="px-5 py-4"
-                style="background: white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a; border-radius:10px ">
-                <div class="container px-md-2">
-                    <h4 class="text-center text-warning">DANH SÁCH TÀI KHOẢN ADMIN</h4>
-                    <div class="text-center text-warning">
-                        <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
-                    </div>
-                    <div>
-                        <a class="btn btn-warning" href="addaccount.php?id=<?php echo $row['id_admin'];?>"><i
-                                class="bi bi-plus-circle"></i> Thêm tài
-                            khoản</a>
-                    </div>
-                    <table class="table mt-3">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Họ và tên</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Sửa</th>
-                                <th scope="col">Xóa</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
+                style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
+                <p class="fs-4 fw-bold">Sửa thông tin loại hàng</p>
+                <form action="process_update_loaihang.php?id=<?php echo $id ?>&id1=<?php echo $row['id_catalog']; ?>"
+                    method="post">
+                    <label for="txtMaSP">Mã loại hàng</label>
+                    <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaLH"
+                        placeholder="Nhập mã loại hàng" value="<?php echo $row['id_catalog'];?>"readonly>
 
-                                $sql = "SELECT * FROM admin ";
-                                $res = mysqli_query($conn, $sql);
-                                $count = mysqli_num_rows($res);
-                                if($count>0)
-                                {
-                                while($row=mysqli_fetch_assoc($res))
-                                {
-                                ?>
-                            <tr>
-                                <th scope="row"><?php echo $row['id_admin']; ?></th>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['username']; ?></td>
-                                <td><?php echo $row['password']; ?></td>
-                                <td><a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="bi bi-pencil-square"></i></a></td>
-                                <td><a href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="bi bi-trash"></i></a></td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                    mysqli_close($conn);
-                ?>
-                        </tbody>
-                    </table>
-                </div>
+                    <div class="form-group mt-2">
+                        <label for="txtTenSP">Tên loại hàng</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenLH"
+                            placeholder="Nhập tên loại hàng" value="<?php echo $row['name'];?>" required>
+                    </div>
+                    <button type="button" style="background:#f6f1eb" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="btn  mt-4">Cập nhật</button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Sửa loại hàng</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có chắc chắn muốn thay đổi thông tin sản phẩm này?
+                                </div>
+                                <div class="modal-footer">
+                                   <button type="submit" class="btn btn-primary">Có</button></a>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Không</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </form>
+                <a class="text-decoration-none link-dark" style="font-size:13px"
+                    href="loaihang.php?id=<?php echo $row['username'];?>">
+                    <div class="mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                            class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg>
+                        <p class="ms-2 d-inline">Quay lại </p>
+                    </div>
+                </a>
             </div>
         </section>
     </div>
