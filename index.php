@@ -33,7 +33,7 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/stylea.css">
+    <link rel="stylesheet" href="public/style13.css">
     <title>GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
@@ -261,7 +261,7 @@ if (session_id() == '') {
                                     </svg>
                                     <p class="pt-1 mb-0" style="font-size:13px">Tài khoản</p>
                                 </a>
-                                <a class="pt-1 text-decoration-none text-black d-flex" href="cart.php">
+                                <a class="pt-1 text-decoration-none text-black d-flex" href="cart.php?id=<?php echo $row['id_user'];?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                         class="bi bi-cart2 me-2 ms-4" viewBox="0 0 16 16">
                                         <path
