@@ -1,4 +1,4 @@
-<?php include('../config/connect_db.php');
+<?php include('../../config/connect_db.php');
 ?>
 <?php
 if (session_id() == '') {
@@ -16,7 +16,6 @@ if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
 
 endif;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,113 +26,161 @@ endif;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/style13.css">
-    <title>CSE481 - Admin Đăng nhập</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style2.css">
+    <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
 
-<body style="font-family:'Arial'">
-    <!-- <div class="mx-auto text-center">
-        <p style="font-size:50px;color:#f7b400;font-family:'Arial'" class="mb-0 fw-bolder">Gucci</p>
-    </div> -->
+<body>
     <div class="header">
-        <div class="container-fluid px-5" style="background:#f6f1eb;">
-            <div class="px-5  py-2">
-                <div class="d-flex">
-                    <div style="width: 40%;" class="d-flex  py-3">
-                        <div class="ms-3 ">
-                            <form id="search-box">
-                                <button type="reset" class="search" id="search-btn"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="ms-2 bi bi-search" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                    </svg></button>
-                                <input type="text" name="input" class="input pt-2 pb-2 pe-2" id="search-text"
-                                    placeholder="Tìm kiếm..." required>
-
-                            </form>
+        <div class="container-fluid" style="background:#e68e12;">
+            <div class="container content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col py-3" style="font-size:13px;">
+                            CSE481@GMAIL.COM | Hotline: 0837 473 645
+                        </div>
+                        <div class="col text-nowrap my-auto" style="font-size:13px;">
+                            <p class="mb-0">
+                                Tặng nay voucher trị giá 150.000VNĐ khi mua sản phẩm từ 1.000.000 VNĐ
+                            </p>
+                            <div class="text-center mx-auto">
+                                Đơn hàng được FreeShip khi mua từ 500.000 VNĐ
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <div class="">
+                            <form action="search1.php?id=<?php echo $row['id_user'];?>" method="post">
+                                    <div class="pt-2 ms-5 d-flex">
+                                        <input class="py-2 rounded-start" type="text"
+                                            style="border:none;padding-left: 10px;font-size:12px;width:250px"
+                                            name="namesearch" placeholder="The clothes you need...">
+                                        <button type="submit" class="border-0 rounded-0 rounded-end bg-white"> <svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z" />
+                                                <path
+                                                    d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z" />
+                                            </svg></button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div style="width: 20%;" class="d-flex justify-content-center">
-                        <div class=""> <img id="logo" src="../img/logo.png" style="width:100px;height:66px" alt="">
-                        </div>
-
-                    </div>
-                    <div style="width: 40%;" class=" d-flex justify-content-end">
-
-                        <div class="mt-3">
-                            <?php
-                            // Đã đăng nhập rồi -> hiển thị tên Người dùng và menu Đăng xuất
-                            if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
-                                ?>
-                                <div class="d-flex">
-                                    <a class="pt-1 text-decoration-none text-black d-flex" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                            class="me-2 bi bi-person" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                                        </svg>
-                                        <p class="pt-1 mb-0" style="font-size:13px">Tài khoản</p>
-                                    </a>
-                                </div>
-                            <?php else: ?>
-                                <a class="pt-1 text-decoration-none text-black d-flex" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                        class="me-2 bi bi-person" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                                    </svg>
-                                    <p class="pt-1 mb-0" style="font-size:13px">Đăng nhập</p>
-                                </a>
-                            <?php endif; ?>
-                            
-                        </div>
-
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <section style="background:#fffeae; height:700px">
-        <div class="container p-5">
-            <div class="mt-5 pt-5 mx-3 row">
-                <div class="login col-md-12 d-flex justify-content-center">
-                    <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:600px;border-radius:8px"
-                        class="">
-                        <p class="text-center px-4 mt-5 mx-2 fs-2 mb-0 fw-bold ">Đăng nhập</p>
-                        <hr>
-                        <form class="form-login" action="process_login_admin.php" method="post">
-                            <div class="pt-1 pb-3 px-2 mx-3">
-                                <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtuser"
-                                    placeholder="Nhập email và username">
-                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="txtpass"
-                                    placeholder="Mật khẩu">
-                                <div class="mt-2 ms-2">
-                                    <?php
-                                    if (isset($_GET['error'])) {
-                                        echo "<p style ='color:red'>{$_GET['error']}</p>";
-                                    }
-                                    ?>
+    <section class="pb-2 border">
+        <div class="container">
+            <div class="row px-5">
+                <div class="col-md-3 ">
+                    <img src="img/logo-hcn.png" alt="" class="mt-2 ms-2 img-fluid">
+                </div>
+                <div class="col-md ps-0 mt-4">
+                    <div class="row">
+                        <div class="col-md-4 ps-5 mt-1 d-flex">
+                            <a href="logout.php" class="ms-5 text-decoration-none link-dark">
+                                <div class="ms-3">
+                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng xuất</p>
                                 </div>
-                                <div class="mb-5 mt-3 mx-auto p-1 text-center">
-                                    <button style="color:white;"
-                                        class="col-md-12 mt-3 mb-2 fw-bold btn btn-warning btn-lg btn-block"
-                                        type="submit" name="btnLogin">Đăng nhập</button>
-                                </div>
-                            </div>
-                        </form>
+                            </a>
+                            <a href="cart.php?id=<?php echo $id?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor" class="ms-3 link-dark bi bi-cart4" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                        </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
     </section>
+    <section class="pb-5" style="font-family:'Arial';background:#f6f1eb">
+        <div class="container">
+            <div class="px-5 pt-5">
+                <div class="row px-5">
+                    <div class="col-md-2">
+                        <a class="text-decoration-none"href="profile_user.php?id=<?php echo $row['id_user'];?>">
+                            <p class="mt-2 fw-bold link-dark"><?php echo $row['name_user'];?></p>
+                        </a>
+                        <a href="#" class="text-decoration-none link-dark">
+                            <div class="py-2 ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="d-inline bi bi-pen-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+                                </svg>
+                                <p class="d-inline pt-1" style="font-size:14px">Sửa hồ sơ</p>
+                            </div>
+                        </a>
+                        <a href="edit_pass.php?id=<?php echo $row['id_user'];?>" class="text-decoration-none link-dark">
+                            <div class="py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-incognito" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="m4.736 1.968-.892 3.269-.014.058C2.113 5.568 1 6.006 1 6.5 1 7.328 4.134 8 8 8s7-.672 7-1.5c0-.494-1.113-.932-2.83-1.205a1.032 1.032 0 0 0-.014-.058l-.892-3.27c-.146-.533-.698-.849-1.239-.734C9.411 1.363 8.62 1.5 8 1.5c-.62 0-1.411-.136-2.025-.267-.541-.115-1.093.2-1.239.735Zm.015 3.867a.25.25 0 0 1 .274-.224c.9.092 1.91.143 2.975.143a29.58 29.58 0 0 0 2.975-.143.25.25 0 0 1 .05.498c-.918.093-1.944.145-3.025.145s-2.107-.052-3.025-.145a.25.25 0 0 1-.224-.274ZM3.5 10h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5Zm-1.5.5c0-.175.03-.344.085-.5H2a.5.5 0 0 1 0-1h3.5a1.5 1.5 0 0 1 1.488 1.312 3.5 3.5 0 0 1 2.024 0A1.5 1.5 0 0 1 10.5 9H14a.5.5 0 0 1 0 1h-.085c.055.156.085.325.085.5v1a2.5 2.5 0 0 1-5 0v-.14l-.21-.07a2.5 2.5 0 0 0-1.58 0l-.21.07v.14a2.5 2.5 0 0 1-5 0v-1Zm8.5-.5h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5Z" />
+                                </svg>
+                                <p class="d-inline pt-1" style="font-size:14px">Đổi mật khẩu</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="background:white" class="border col-md px-5">
+
+                        <div class="mt-3">
+                            <p class="mb-0 fs-4">Sử hồ sơ của tôi</p>
+                            <p class="" style="font-size:14px">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                        </div>
+                        <hr>
+                        <form class="" action="process_edit_profile.php?id=<?php echo $row['id_user'];?>" method="post">
+                            <div class="col-md-8">
+                                <div class="pt-1 pb-3 mx-3">
+                                    <label style="font-size:13px" class="fw-bold" for="txtten">Họ và tên</label>
+                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtten"
+                                        placeholder="Nhập họ và tên"value="<?php echo $row['name_user'];?>">
+
+
+                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtngaysinh">Ngày sinh</label>
+                                    <input class="col-md-12 ps-3  border py-2 rounded-3" type="date" value="<?php echo $row['date_birth'];?>" name="txtngaysinh" >
+
+                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtdiachi">Địa chỉ</label>
+                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtdiachi"
+                                        placeholder="Nhập địa chị"value="<?php echo $row['address'];?>">
+                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtname">Email</label>
+                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtemail"
+                                        placeholder="Nhập email"value="<?php echo $row['email'];?>">
+                                        <label style="font-size:13px" class="mt-2 fw-bold" for="txtsdt">Số điện thoại</label>
+                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtsdt"
+                                        placeholder="Nhập số điện thoại"value="<?php echo $row['phone'];?>">
+                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtgender">Giới tính</label>
+                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="0" name="txtgender" <?php echo $row['gender_user'] == 'Nữ'?'checked':''?>>
+                                    <label for="radio1">Nữ</label>
+                                    <input class="ms-3 " id="radio2" type="radio" value="1" name="txtgender"<?php echo $row['gender_user'] == 'Nam'?'checked':''?>>
+                                    <label for="radio2">Nam</label>
+                                </div>
+                            </div>
+                            <button type="submit" name="" style="background: #e68e12;"
+                        class="link-light fw-bold btn mt-3 ms-5 mb-4 px-3">Save</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section style="background:#fff;">
-        <div class="container p-5">
+        <div class="container">
             <div style="font-size:15px" class="row p-5 pt-0">
                 <div class="col-md-4  me-5">
                     <font class="mt-5" STYLE="margin-start:20px;letter-spacing: 2.75px;word-spacing:2px" face="Candara"
@@ -228,6 +275,7 @@ endif;
                 </div>
             </div>
         </div>
+
     </section>
     <section>
         <div class="container">
@@ -239,9 +287,8 @@ endif;
                 <div class="col-md d-flex justify-content-end">
 
                     <div class="mt-1">
-                        <a href="https://www.facebook.com/thuyduowg" class="me-3 icon link-dark"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                class="bi bi-facebook" viewBox="0 0 16 16">
+                        <a href="#" class="me-3 icon link-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                                 <path
                                     d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                             </svg></a>
@@ -262,11 +309,11 @@ endif;
         </div>
     </section>
     <div class="d-flex justify-content-center p-5 m-5">
-        <div class=""> <img src="../img/logo.png" style="weight:100px;height:66px" alt=""></div>
+        <div class=""> <img src="img/logo.png" style="weight:100px;height:66px" alt=""></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

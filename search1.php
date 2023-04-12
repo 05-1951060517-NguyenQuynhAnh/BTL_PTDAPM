@@ -1,4 +1,4 @@
-<?php include('./config/connect_db.php'); 
+<?php include('./config/connect_db.php');
 ?>
 <?php
 if (session_id() == '') {
@@ -6,16 +6,16 @@ if (session_id() == '') {
 }
 ?>
 <?php
-      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-        $id =$_SESSION['isLoginOK'];
-        $sql = "SELECT * FROM user where user.email='$id' ";
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            }
-     
-      endif;
-    ?>
+if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
+    $id = $_SESSION['isLoginOK'];
+    $sql = "SELECT * FROM user, product where user.email='$id' ";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+    }
+
+endif;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,13 +33,14 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="public/style.css">
     <link rel="stylesheet" href="public/style13.css">
-    <title>GUCCI Official</title>
-    <link rel="shortcut icon" href="img/web.png">
+    <title>CSE481 - Tiệm thời trang</title>
+    <link rel="shortcut icon" href="img/1.png">
 </head>
 
 <body>
-    <div class="header">
+<div class="header">
         <div class="container-fluid px-5" style="background:#f6f1eb;">
             <div class="px-5  py-2">
                 <div class="d-flex">
@@ -290,16 +291,9 @@ if (session_id() == '') {
                                 }  
                              ?>" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="px-5 pt-5  pb-0 offcanvas-header">
-                                <?php               
-                                        if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-                                    ?>
-                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
-                                        STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">TÀI KHOẢN</font>
-                                    <?php else : ?>
                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
                                         STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">ĐĂNG
                                         NHẬP</font>
-                                        <?php endif; ?>
                                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                         aria-label="Close"></button>
                                 </div>
@@ -431,274 +425,90 @@ if (session_id() == '') {
         </div>
     </div>
     <section>
-        <div class="container-fluid">
+        
+        <div class="mt-2" style="background:#f1f1f1">
             <div class="container">
-                <div class="p-5">
-                    <div class="" style="padding-left:200px;padding-right:200px;">
-
-                        <div class="text-center mt-3">
-                            <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">VŨ TRỤ
-                                THỜI TRANG</font>
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Cách bạn ăn mặc thật sự phản ánh cảm nhận, lối sống, kiến
-                                thức và cả lựa chọn của bạn. Đó là điều tôi muốn đưa vào các thiết kế của Gucci.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <p class="px-5 ms-2 py-2 text-muted" style="font-size:13px">Trang chủ / Sản phẩm</p>
             </div>
         </div>
     </section>
     <section>
-        <div class="container">
-            <div class="px-5">
-                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="3000">
-                            <img src="img/panel.avif" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1>GUCCI VALIGERIA</h1>
+        <div class="container mb-5">
+            <div class="px-5 mt-5">
+                <h3 class="border-bottom fw-bold pt-5" style="color:#d61114;">
+                    Sản phẩm phù hợp</h3>
+                <?php
+                $search = $_POST['input'];
+                $sql = "SELECT COUNT(name_product) as search FROM product WHERE name_product like '%$search%'";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                }
+
+
+                ?>
+                <h6 class="pt-3 ms-3 mb-5" style="">
+                    <?php
+                    echo $row['search'];
+                    ?> sản phẩm phù hợp với từ khóa '
+                    <?php echo $search ?>'
+                </h6>
+                <div class="row d-flex  px-4 mt-5">
+                    <?php
+                    $sql1 = "SELECT *, product.price-(product.price*product.discount) as Giagiam FROM user,`product` WHERE name_product like '%$search%' and user.email='$id'";
+                    $res1 = mysqli_query($conn, $sql1);
+                    $count1 = mysqli_num_rows($res1);
+                    if ($count1 > 0) {
+                        while ($row = mysqli_fetch_assoc($res1)) {
+                            ?>
+
+                            <div class="card me-0 border-0" style="width: 18rem;">
+                                <img src="img/<?php echo $row['image_list']; ?>" class="img-fluid card-img-top" alt="...">
+                                <div class="overlay d-flex">
+                                    <a href="detail.php?id=<?php echo $row['id_product'] ?>&id1=<?php echo $row['id_user'] ?>">
+                                        <div class="detail rounded-circle">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                                style="margin:18.5px" class="bi bi-card-heading" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                                <path
+                                                    d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card-body px-0">
+                                    <p class="card-text">
+                                        <?php echo $row['name_product']; ?>
+                                    </p>
+                                    <p class="d-inline fw-bold">
+                                        <?php echo $row['Giagiam']; ?> VNĐ
+                                    </p>
+                                </div>
                             </div>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <div class="text-center">
+                            <img src="img/iconbuon.jpg" style="width:200px" alt="">
                         </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img src="img/panel1.avif" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>COLLECTION PRE-LAUNCH</h5>
-                                <h1>WOMEN'S FALL WINTER 2023 FASHION SHOW</h1>
-                            </div>
+
+                        <div class="mt-3 text-center">
+                            <?php
+                            echo "<h5>Có vẻ như sản phẩm '$search' hiện không có trong shop. Chúng tôi sẽ cố gắng cập nhật nhiều sản phẩm hơn.</h5>"; ?>
                         </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img src="img/panel2.avif" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1>GUCCI SPRING SUMMER 2023</h1>
-                            </div>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img src="img/panel3.avif" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1>GG SUPREME FLORA</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid">
-            <div class="container">
-                <div class="mt-5 pt-5">
-                    <div class="text-center mt-3">
-                        <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">SẢN PHẨM KÌ DIỆU
-                            CỦA CHÚNG TÔI</font>
-                    </div>
-                </div>
-                <div class="row mx-5 mt-4">
-                    <div class="col px-0 me-4">
-                        <a href="" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-2" src="img/loai.png" alt="">
-                            <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
-                                size="3">PHỤ KIỆN</font>
-                        </a>
-                    </div>
+                        <?php
+                    }
+                    ?>
 
-                    <div class="col px-0 me-4">
-                        <a href="product/bottom.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-2" src="img/loai1.png" alt="">
-                            <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
-                                size="3">GIÀY</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col  px-0 me-4">
-                        <a href="product/skirt.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-2" src="img/loai2.png" alt="">
-                            <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
-                                size="3">TÚI XÁCH</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col px-0">
-                        <a href="product/phukien.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-2" src="img/loai3.png" alt="">
-                            <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
-                                size="3">QUẦN ÁO</font>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid">
-            <div class="container">
-                <div class="p-5">
-                    <div class="" style="padding-left:200px;padding-right:200px;">
-                        <div class="text-center mt-5">
-                            <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">GUCCI SPRING
-                                SUMMER 2023</font>
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Các cặp song sinh giống hệt nhau trong chiến dịch này diễn giải khái niệm về tính hai
-                                mặt/tính cá nhân thông qua quần áo may sẵn, đồ da và phụ kiện.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="px-5">
-                    <img src="img/summer.avif" class=" img-fluid " alt="">
-                </div>
-                <div class="row mx-5 mt-5 pt-5">
-                    <div class="col px-0 me-4">
-                        <a href="" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/summer1.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">KHĂN LỤA IN HÌNH GC FLORA</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-                    </div>
-
-                    <div class="col px-0 me-4">
-                        <a href="product/bottom.php" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/summer2.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Nơ cổ GG Flora in lụa</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col  px-0 me-4">
-                        <a href="product/skirt.php" class="text-decoration-none">
-                            <img class="img-fluid mb-3" src="img/summer3.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Ví đựng thẻ Ophidia GG Flora</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col px-0">
-                        <a href="product/phukien.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-3" src="img/summer4.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Mũ bóng chày GG Supreme Flora</font><br>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid">
-            <div class="container">
-                <div class="p-5">
-                    <div class="" style="padding-left:200px;padding-right:200px;">
-
-                        <div class="text-center mt-5">
-                            <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">GG SUPREME
-                                FLORA</font>
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Một bộ sưu tập đặc biệt kết hợp hai trong số những thiết kế đặc biệt nhất của Ngôi nhà
-                                thành một loại vải bất ngờ và đương đại.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="px-5">
-                    <img src="img/panel3.avif" class=" img-fluid " alt="">
-                </div>
-                <div class="row mx-5 mt-5 pt-5">
-                    <div class="col px-0 me-4">
-                        <a href="" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/flora.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">KHĂN LỤA IN HÌNH GC FLORA</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-                    </div>
-
-                    <div class="col px-0 me-4">
-                        <a href="product/bottom.php" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/flora2.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Nơ cổ GG Flora in lụa</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col  px-0 me-4">
-                        <a href="product/skirt.php" class="text-decoration-none">
-                            <img class="img-fluid mb-3" src="img/flora1.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Ví đựng thẻ Ophidia GG Flora</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col px-0">
-                        <a href="product/phukien.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-3" src="img/flora3.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Mũ bóng chày GG Supreme Flora</font><br>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid ">
-            <div class="container ">
-                <div class="p-5 ">
-                    <div class="mt-5" style="padding-left:180px;padding-right:180px;">
-                        <div class="text-center mt-3">
-                            <font STYLE="margin-start:20px;letter-spacing: 2.75px;word-spacing:2px" face="Candara"
-                                size="6">HÃY LÀ MỘT PHẦN CỦA CUỘC PHIÊU LƯU TẬP THỂ</font>
-
-                        </div>
-                    </div>
-                    <div class="pb-5 border-bottom" style="padding-left:200px;padding-right:200px;">
-                        <div class="text-center mt-3">
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Nhân viên của Gucci trên toàn thế giới cam kết thể hiện các giá trị của ngôi nhà cho
-                                khách hàng của chúng tôi.
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     <section style="background:#fff;">
-        <div class="container">
+        <div class="container p-5">
             <div style="font-size:15px" class="row p-5 pt-0">
                 <div class="col-md-4  me-5">
                     <font class="mt-5" STYLE="margin-start:20px;letter-spacing: 2.75px;word-spacing:2px" face="Candara"
@@ -793,7 +603,6 @@ if (session_id() == '') {
                 </div>
             </div>
         </div>
-
     </section>
     <section>
         <div class="container">
@@ -805,8 +614,9 @@ if (session_id() == '') {
                 <div class="col-md d-flex justify-content-end">
 
                     <div class="mt-1">
-                        <a href="#" class="me-3 icon link-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <a href="https://www.facebook.com/thuyduowg" class="me-3 icon link-dark"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-facebook" viewBox="0 0 16 16">
                                 <path
                                     d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                             </svg></a>
@@ -827,11 +637,11 @@ if (session_id() == '') {
         </div>
     </section>
     <div class="d-flex justify-content-center p-5 m-5">
-        <div class=""> <img src="img/logo.png" style="weight:100px;height:66px" alt=""></div>
+        <div class=""> <img src="../img/logo.png" style="weight:100px;height:66px" alt=""></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>

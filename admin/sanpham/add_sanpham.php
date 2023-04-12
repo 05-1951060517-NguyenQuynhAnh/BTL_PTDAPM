@@ -142,9 +142,9 @@ endif;
                         placeholder="Nhập mã sản phẩm" autofocus required>
 
                     <div class="form-group mt-2" action="display_data.php" method="post">
-                        <label for="option">Mã loại sản phẩm</label>
+                        <label for="txtMaLSP">Mã loại sản phẩm</label>
                         <div>
-                        <select name="option" id="inputState" required="" class="col-md-12 ps-3 border py-2 rounded-3">
+                        <select name="txtMaLSP" id="inputState" required="" class="col-md-12 ps-3 border py-2 rounded-3">
                             <?php
                             // Truy vấn để lấy các giá trị từ cột tương ứng
                             $query = "SELECT DISTINCT name_dcatalog FROM detail_catalog";

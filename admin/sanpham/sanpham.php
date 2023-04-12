@@ -180,7 +180,6 @@ endif;
                             while ($row = mysqli_fetch_assoc($res)) {
                                 ?>
                                 <tr>
-
                                     <td class="">
                                         <!-- <img class="" width="100px" height="100px"
                                             src="../../img/<?php echo $row['image_list']; ?>" alt=""> -->
