@@ -1,3 +1,13 @@
+<?php
+      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+        $id6 =$_SESSION['isLoginOK'];
+        $sql6 = "SELECT * FROM user where user.email='$id6' ";
+        $result6 = mysqli_query($conn,$sql6);
+        if(mysqli_num_rows($result6)>0){
+            $row = mysqli_fetch_assoc($result6);
+            }
+      endif;
+    ?>
 <div class="header">
         <div class="container-fluid px-5" style="background:#f6f1eb;">
             <div class="px-5  py-2">

@@ -5,17 +5,7 @@ if (session_id() == '') {
     session_start();
 }
 ?>
-<?php
-      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-        $id =$_SESSION['isLoginOK'];
-        $sql = "SELECT * FROM user where user.email='$id' ";
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            }
-     
-      endif;
-    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +29,7 @@ if (session_id() == '') {
 </head>
 
 <body>
-<?php include('./template/header.php'); 
+    <?php include('./template/header.php'); 
 ?>
     <section>
         <div class="container-fluid">
@@ -172,48 +162,29 @@ if (session_id() == '') {
                 <div class="px-5">
                     <img src="img/summer.avif" class=" img-fluid " alt="">
                 </div>
-                <div class="row mx-5 mt-5 pt-5">
-                    <div class="col px-0 me-4">
-                        <a href="" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/summer1.avif" alt="">
+                <div class="row px-5 mt-5 pt-5">
+                    <?php 
+                                $sql = "SELECT * FROM product WHERE event='summer2023' ";
+                                $res = mysqli_query($conn, $sql);
+                                $count = mysqli_num_rows($res);
+                                if($count>0)
+                                {
+                                    while($row=mysqli_fetch_assoc($res))
+                                    {
+                                ?>
+                    <div class="col px-0 mx-2 px-1 ">
+                        <a href="./detail.php?id=<?php echo $row['id_product'];?>" class="text-decoration-none">
+                            <img class="img-fluid  mb-3" src="img/<?php echo $row['img'];?>" alt="">
                             <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">KHĂN LỤA IN HÌNH GC FLORA</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
+                                face="Candara" size="3"><?php echo $row['name_product'];?></font><br>
+                            <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                <?php echo number_format($row['price']); ?> VNĐ</p>
                         </a>
                     </div>
-
-                    <div class="col px-0 me-4">
-                        <a href="product/bottom.php" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/summer2.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Nơ cổ GG Flora in lụa</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col  px-0 me-4">
-                        <a href="product/skirt.php" class="text-decoration-none">
-                            <img class="img-fluid mb-3" src="img/summer3.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Ví đựng thẻ Ophidia GG Flora</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col px-0">
-                        <a href="product/phukien.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-3" src="img/summer4.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Mũ bóng chày GG Supreme Flora</font><br>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-                    </div>
+                    <?php
+                                    }
+                                }         
+                                ?>
 
                 </div>
             </div>
@@ -224,7 +195,6 @@ if (session_id() == '') {
             <div class="container">
                 <div class="p-5">
                     <div class="" style="padding-left:200px;padding-right:200px;">
-
                         <div class="text-center mt-5">
                             <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">GG SUPREME
                                 FLORA</font>
@@ -238,48 +208,29 @@ if (session_id() == '') {
                 <div class="px-5">
                     <img src="img/panel3.avif" class=" img-fluid " alt="">
                 </div>
-                <div class="row mx-5 mt-5 pt-5">
-                    <div class="col px-0 me-4">
-                        <a href="" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/flora.avif" alt="">
+                <div class="row  px-5 mt-5 pt-5">
+                    <?php 
+                                $sql1 = "SELECT * FROM product WHERE event='flora2023' ";
+                                $res1 = mysqli_query($conn, $sql1);
+                                $count1 = mysqli_num_rows($res1);
+                                if($count1>0)
+                                {
+                                    while($row=mysqli_fetch_assoc($res1))
+                                    {
+                                ?>
+                    <div class="col px-0 mx-2 px-1">
+                        <a href="./detail.php?id=<?php echo $row['id_product'];?>" class="text-decoration-none">
+                            <img class="img-fluid  mb-3" src="img/<?php echo $row['img'];?>" alt="">
                             <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">KHĂN LỤA IN HÌNH GC FLORA</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
+                                face="Candara" size="3"><?php echo $row['name_product'];?></font><br>
+                            <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                <?php echo number_format($row['price']); ?> VNĐ</p>
                         </a>
                     </div>
-
-                    <div class="col px-0 me-4">
-                        <a href="product/bottom.php" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/flora2.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Nơ cổ GG Flora in lụa</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col  px-0 me-4">
-                        <a href="product/skirt.php" class="text-decoration-none">
-                            <img class="img-fluid mb-3" src="img/flora1.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Ví đựng thẻ Ophidia GG Flora</font>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-
-                    </div>
-
-                    <div class="col px-0">
-                        <a href="product/phukien.php" class="text-decoration-none">
-                            <img class="img-fluid rounded-3 mb-3" src="img/flora3.avif" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3">Mũ bóng chày GG Supreme Flora</font><br>
-                            <font class="link-dark pe-3" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                size="3">10.000.000 VNĐ</font>
-                        </a>
-                    </div>
+                    <?php
+                                    }
+                                }         
+                                ?>
 
                 </div>
             </div>
