@@ -80,7 +80,7 @@ a {
 }
 
 .nav_logo {
-    background:#e68e12 ;
+    background:#f6f1eb ;
     height: 68px;
 }
 .nav_icon2{
@@ -95,16 +95,16 @@ a {
 
 .nav_link:hover {
     color: black;
-    background: #fffeae;
+    background: #f6f1eb;
     
 }
 
 
 .active {
     color: black;
-    background: #fffeae;
+    background: #f6f1eb;
 }
 .height-100 {
-    background: #fffeae;
+    background: #f6f1eb;
 }
 
