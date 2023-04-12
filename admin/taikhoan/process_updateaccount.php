@@ -9,7 +9,7 @@
     $chucvu = $_POST['chucvu'];
     $luong = $_POST['luong'];
      
-    $conn = mysqli_connect('localhost','root','','cse481');
+    $conn = mysqli_connect('localhost','root','','wb_banquanao');
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }

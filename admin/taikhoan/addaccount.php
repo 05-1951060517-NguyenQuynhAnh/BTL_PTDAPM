@@ -13,8 +13,7 @@ if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
     }
-    else{
-                
+    else{               
         $error = "Xin lỗi! Bạn chưa đăng nhập";
         header("location:login.php?id=$id&error=$error");
     

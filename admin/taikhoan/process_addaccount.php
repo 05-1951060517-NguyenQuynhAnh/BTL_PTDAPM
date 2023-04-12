@@ -27,7 +27,7 @@ $id1 = $_GET['id'];
     $result1 = mysqli_query($conn,$sql02);
     if(mysqli_num_rows($result1) > 0){
         $row=mysqli_fetch_assoc($result1);}
-        if($id==$row['id']){
+        if($id==$row['id_admin']){
             $error = "Mã nhân viên đã tồn tại";
             header("location:addaccount.php?id=$id1&error=$error"); 
             exit;

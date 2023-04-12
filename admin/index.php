@@ -57,12 +57,11 @@ endif;
             <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
                 <?php echo $row['name']; ?>
             </p>
-
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="taikhoan/update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
-                <a href="logout.php">
+                <a href="../logout.php">
                     <li><button class="dropdown-item" type="button">Log out</button></li>
                 </a>
             </ul>

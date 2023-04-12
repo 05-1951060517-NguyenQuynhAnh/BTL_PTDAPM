@@ -1,4 +1,4 @@
-<?php include('config/database.php'); 
+<?php include('./config/connect_db.php'); 
 ?>
 <?php 
     $id =$_GET['id'];
@@ -364,7 +364,7 @@
                 <div class="col-md-6 mt-3">
                     <div class="product-title">
                         <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">
-                            <?php echo $row['name']; ?></font>
+                            <?php echo $row['name_product']; ?></font>
                        
                     </div>
                     <hr>
