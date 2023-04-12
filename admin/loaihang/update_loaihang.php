@@ -19,7 +19,7 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-warning">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào</h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -51,7 +51,7 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
                     </div>
-                    <a href="../check.php?id=<?php echo $id ?>" class="d-flex nav_link ">
+                    <a href="../index.php?id=<?php echo $id ?>" class="d-flex nav_link ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -62,7 +62,7 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../check_acount.php?id=<?php echo $row['id_admin']; ?>" class="d-flex nav_link">
+                    <a href="../taikhoan/taikhoan.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -76,7 +76,7 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link active">
+                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box-seam" viewBox="0 0 16 16">
                             <path
@@ -85,7 +85,7 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                         <span class="nav_name">Loại hàng</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                    <a href="../sanpham/sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
@@ -96,8 +96,8 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
                                     d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -143,8 +143,8 @@ $sql = "SELECT * FROM admin,catalog WHERE username='$id' and id_catalog='$id1';"
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenLH"
                             placeholder="Nhập tên loại hàng" value="<?php echo $row['name'];?>" required>
                     </div>
-                    <button type="button" style="background:#f6f1eb" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" class="btn  mt-4">Cập nhật</button>
+                    <button type="button" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="btn btn-secondary mt-4">Cập nhật</button>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">

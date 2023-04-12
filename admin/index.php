@@ -33,8 +33,8 @@ endif;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style/style1.css">
-    <title>Admin</title>
-    <link rel="shortcut icon" href="../img/1.png">
+    <title>ADMIN GUCCI</title>
+    <link rel="shortcut icon" href="../img/web.png">
 </head>
 
 <body id="body-pd">
@@ -46,7 +46,7 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-warning">Xin chào Admin</h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -70,12 +70,12 @@ endif;
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <div class="nav_logo"> </div>
+                <div class="nav_logo" style="background: #f6f1eb;"> </div>
                 <div class="nav_list">
                     <div class="nav_links">
-                        <span class="nav_names">DASHBOARD</span>
+                        <span class="nav_names" >DASHBOARD</span>
                     </div>
-                    <a href="" class="d-flex nav_link active">
+                    <a href="" class="d-flex nav_link active" style="background: #f6f1eb;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -151,7 +151,7 @@ endif;
         </nav>
     </div>
     <div class="height-100">
-        <section class="p-5">
+        <section class="p-5" style="background: #f6f1eb;">
             <div class="d-flex mb-5">
                 <?php
                 $sql = "SELECT sum(quantity) as sl_ton FROM `product` ";

@@ -32,7 +32,7 @@ if (session_id() == '') {
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-warning">Xin chào Admin</h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -56,7 +56,7 @@ if (session_id() == '') {
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <div class="nav_logo">
+                <div class="nav_logo" background:#f6f1eb ;>
 
                 </div>
 
@@ -109,7 +109,7 @@ if (session_id() == '') {
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
@@ -146,18 +146,18 @@ if (session_id() == '') {
             <div class="px-5 py-4"
                 style="background: white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a; border-radius:10px ">
                 <div class="container px-md-2">
-                    <h4 class="text-center text-warning">DANH SÁCH TÀI KHOẢN ADMIN</h4>
-                    <div class="text-center text-warning">
+                    <h4 class="text-center text-dark">DANH SÁCH TÀI KHOẢN ADMIN</h4>
+                    <div class="text-center text-dark">
                         <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
                     </div>
                     <div>
-                        <a class="btn btn-warning" href="addaccount.php?id=<?php echo $row['id_admin'];?>"><i
+                        <a class="btn btn-secondary" href="addaccount.php?id=<?php echo $row['id_admin'];?>"><i
                                 class="bi bi-plus-circle"></i> Thêm tài
                             khoản</a>
                     </div>
                     <table class="table mt-3">
                         <thead>
-                            <tr>
+                            <tr style="color:#888;">
                                 <th scope="col">ID</th>
                                 <th scope="col">Họ và tên</th>
                                 <th scope="col">Email</th>
@@ -177,15 +177,15 @@ if (session_id() == '') {
                                 while($row=mysqli_fetch_assoc($res))
                                 {
                                 ?>
-                            <tr>
+                            <tr >
                                 <th scope="row"><?php echo $row['id_admin']; ?></th>
                                 <td><?php echo $row['name']; ?></td>
                                 <td><?php echo $row['username']; ?></td>
                                 <td><?php echo $row['password']; ?></td>
                                 <td><a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="bi bi-pencil-square"></i></a></td>
+                                            class="link-dark bi bi-pencil-square"></i></a></td>
                                 <td><a href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="bi bi-trash"></i></a></td>
+                                            class="link-dark bi bi-trash"></i></a></td>
                             </tr>
                             <?php
                         }

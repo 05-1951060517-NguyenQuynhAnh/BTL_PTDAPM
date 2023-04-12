@@ -27,7 +27,7 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-warning">Xin chào,Admin</h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
 
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
@@ -41,7 +41,7 @@ endif;
             </p>
 
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="../taikhoan/update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
                 <a href="../logout.php">
@@ -147,12 +147,12 @@ endif;
             ?>
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
-                <h4 class="text-center text-warning">DANH SÁCH SẢN PHẨM</h4>
-                <div class="text-center text-warning">
+                <h4 class="text-center text-dark">DANH SÁCH SẢN PHẨM</h4>
+                <div class="text-center text-dark">
                     <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
                 </div>
                 <div>
-                    <a class="btn btn-warning" href="add_sanpham.php?id=<?php echo $id ?>"><i
+                    <a class="btn btn-secondary" href="add_sanpham.php?id=<?php echo $id ?>"><i
                             class="bi bi-plus-circle"></i> Tạo sản phẩm
                         mới</a>
                 </div>

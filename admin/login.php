@@ -98,7 +98,7 @@ endif;
             </div>
         </div>
     </div>
-    <section style="background:#fffeae; height:700px">
+    <section style="background:white; height:700px">
         <div class="container p-5">
             <div class="mt-5 pt-5 mx-3 row">
                 <div class="login col-md-12 d-flex justify-content-center">
@@ -121,7 +121,7 @@ endif;
                                 </div>
                                 <div class="mb-5 mt-3 mx-auto p-1 text-center">
                                     <button style="color:white;"
-                                        class="col-md-12 mt-3 mb-2 fw-bold btn btn-warning btn-lg btn-block"
+                                        class="col-md-12 mt-3 mb-2 fw-bold btn btn-dark btn-lg btn-block"
                                         type="submit" name="btnLogin">Đăng nhập</button>
                                 </div>
                             </div>
@@ -212,11 +212,11 @@ endif;
                                 <div class="d-flex justify-content-center">
                                     <form action="" method="GET">
                                         <div class="pt-2 d-flex">
-                                            <input class="py-2 border border-warning rounded-start" type="text"
+                                            <input class="py-2 border border-dark rounded-start" type="text"
                                                 style="padding-left: 10px;font-size:14px;width:400px" name=""
                                                 placeholder="Enter your email...">
-                                            <button type="submit" style="background:#f4cc1c;"
-                                                class="border-0 rounded-0 rounded-end link-light">
+                                            <button type="submit " style="background:#222"
+                                                class="btn btn-light border-0 rounded-0 rounded-end link-light">
                                                 <p class="mb-0">Send</p>
                                             </button>
                                         </div>

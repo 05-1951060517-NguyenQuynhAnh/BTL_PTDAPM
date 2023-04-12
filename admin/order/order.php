@@ -27,7 +27,7 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-warning">Xin chào,Admin</h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
 
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
@@ -96,7 +96,7 @@ endif;
                         <span class="nav_name">Loại hàng</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="" class="d-flex nav_link">
+                    <a href="../sanpham/sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
@@ -107,7 +107,7 @@ endif;
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
+                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
@@ -147,15 +147,15 @@ endif;
             ?>
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
-                <h4 class="text-center text-warning">DANH SÁCH ĐƠN HÀNG</h4>
-                <div class="text-center text-warning">
+                <h4 class="text-center text-dark">DANH SÁCH ĐƠN HÀNG</h4>
+                <div class="text-center text-dark">
                     <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
                 </div>
                 <table class="mt-3 table table-striped">
                     <thead>
                         <tr style="color:#888;">
                             <!-- <th scope="col"></th> -->
-                            <th style="width:200px" class="col ps-3" scope="col">ID</th>
+                            <th style="width:100px" class="col ps-3" scope="col">ID</th>
                             <!-- <th style="width:80px" scope="col">Số lượng</th> -->
                             <th style="width:90px" scope="col">Thành tiền</th>
                             <th style="width:90px" scope="col">Thời gian tạo</th>
