@@ -290,9 +290,16 @@ if (session_id() == '') {
                                 }  
                              ?>" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="px-5 pt-5  pb-0 offcanvas-header">
+                                <?php               
+                                        if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+                                    ?>
+                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
+                                        STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">TÀI KHOẢN</font>
+                                    <?php else : ?>
                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
                                         STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">ĐĂNG
                                         NHẬP</font>
+                                        <?php endif; ?>
                                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                         aria-label="Close"></button>
                                 </div>
@@ -329,7 +336,7 @@ if (session_id() == '') {
                                     <div class="text-center mt-5 pt-5">
                                         <font STYLE="letter-spacing: 1px;word-spacing:1px " class="text-uppercase"
                                             face="Candara" size="5">
-                                            Welcome, <?php echo $row['name'];?></font><br>
+                                            Welcome, <?php echo $row['name_user'];?></font><br>
                                         <font STYLE="letter-spacing: 1px;word-spacing:1px " face="Candara" size="2">
                                             Thật tuyệt khi được gặp lại bạn. </font>
                                     </div>

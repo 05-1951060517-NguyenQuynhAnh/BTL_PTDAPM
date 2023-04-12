@@ -52,11 +52,19 @@ if (session_id() == '') {
             </div>
         </div>
     </div>
-    <section style="">
+    <section style="" class="mb-5">
         <div class="container">
             <div class="row mt-5 mx-2">
                 <div class="col-8">
                     <div class="" style="background:#fffcf7;">
+                        <?php 
+                            $sql4 = "SELECT * FROM cart  WHERE id_user='$id' ";
+                            $res4 = mysqli_query($conn, $sql4);
+                            $count4 = mysqli_num_rows($res4);
+                            if($count4>0)
+                            { 
+                                
+                        ?>
                         <p class="ms-4 pt-3 fw-bold" style="font-size:14px,letter-spacing: 2.75px;word-spacing:2px">
                             Bạn có 2 mặt hàng trong giỏ hàng.</p>
                         <hr style="background:#e2d8ce" class="m-0 ">
@@ -98,7 +106,7 @@ if (session_id() == '') {
                                                     </div>
 
                                                 </div>
-                                                <div class="d-flex mt-3">
+                                                <div class="d-flex col-md-12 mt-3">
                                                     <div style="width: 50%;" class="">
                                                         <p class="mb-1"
                                                             style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
@@ -107,24 +115,25 @@ if (session_id() == '') {
                                                             style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
                                                             Kích cỡ: <?php echo $row['size'];?></p>
                                                     </div>
-                                                    <form
-                                                        action="process_update_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>"
+                                                    
+                                                    <div style="width: 25%;" class="d-flex justify-content-center">
+                                                    <form action="process_update_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>"
                                                         method="post">
-                                                        <div style="width: 25%;" class="d-flex justify-content-center">
                                                             <div class="buttons_added">
                                                                 <input class="minus is-form" value="-" type="submit"
                                                                     type="button" name="btn"
                                                                     onclick="handleminus<?php echo $row['id_product'];?>()"
                                                                     style="background:#fffcf7;">
-                                                                <input style="width : 50px" class="input-qty" name="sluong" id="<?php echo $row['id_product'];?>" type="number"
-                                                                    value="<?php echo $row['qty'];?>">
-                                                                <input class="plus is-form" value="+"  type="submit"
+                                                                <input style="width : 50px" class="input-qty"
+                                                                    name="sluong" id="<?php echo $row['id_product'];?>"
+                                                                    type="number" value="<?php echo $row['qty'];?>">
+                                                                <input class="plus is-form" value="+" type="submit"
                                                                     name="btn"
                                                                     onclick="handleplus<?php echo $row['id_product'];?>()"
                                                                     style="background:#fffcf7;">
                                                             </div>
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    </div>
                                                     <script>
                                                     let qtyElement<?php echo $row['id_product'];?> = document
                                                         .getElementById('<?php echo $row['id_product'];?>');
@@ -168,7 +177,7 @@ if (session_id() == '') {
                             <hr style="background:#e2d8ce" class="m-0 ">
                             <?php
                                 }
-                            }           
+                            }         
                             ?>
                             <?php 
                             $sql1 = "SELECT *, sum(cart.qty*cart.price) as tongtien FROM `cart` WHERE $id";
@@ -194,6 +203,39 @@ if (session_id() == '') {
                             </div>
                             <hr style="background:#e2d8ce" class="m-0 ">
                         </div>
+                        <?php 
+                            }
+                            else {
+                                ?>
+                                <div class="p-5">
+                                    <div class="m-5 p-5 mb-0 pb-4 d-flex justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                                            class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                                            <path
+                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                        </svg>
+                                    </div>
+                                    <div class="m-5 mb-0 mt-0 d-flex justify-content-center">
+                                        <font class="text-uppercase" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
+                                            size="3">Bạn không có sản phẩm nào trong giỏ hàng
+                                        </font>
+                                    </div>
+                                    <div class="m-5 pb-5 mt-0 d-flex justify-content-center">
+                                        <a href="index.php">
+                                            <button style="color:white;background:#444"
+                                                class="mt-4 pt-1 fw-bold btn btn-lg btn-block" type="submit" name="btnLogin">
+                                                <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara" size="2">
+                                                    TIẾP
+                                                    TỤC MUA HÀNG</font>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="col-4 " style="background:#fffcf7;">
