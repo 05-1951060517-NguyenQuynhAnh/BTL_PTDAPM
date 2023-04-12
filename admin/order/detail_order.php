@@ -1,29 +1,15 @@
-<?php include('../template/header.php'); 
+<?php include('../template/header.php');
 ?>
 <?php
-if (session_id() == '') {
-    session_start();
+$id = $_GET['id'];
+$sql1 = "SELECT * FROM admin WHERE username='$id';";
+$result = mysqli_query($conn, $sql1);
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
 }
 ?>
-<?php
-      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-        $id =$_SESSION['isLoginOK'];
-        $sql = "SELECT * FROM admin where admin.username='$id' ";
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            }
-            else{
-                
-                $error = "Xin lỗi! Bạn chưa đăng nhập";
-                header("location:login.php?id=$id&error=$error");
-            
-            }
-     
-      endif;
-    ?>
 
-<body id="body-pd">
+<body>
     <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
@@ -32,7 +18,10 @@ if (session_id() == '') {
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
+
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -41,10 +30,11 @@ if (session_id() == '') {
             </svg>
 
             <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php echo $row['name'];?></p>
+                <?php echo $row['name']; ?>
+            </p>
 
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
                 <a href="../logout.php">
@@ -52,11 +42,12 @@ if (session_id() == '') {
                 </a>
             </ul>
         </div>
+
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <div class="nav_logo" background:#f6f1eb ;>
+                <div class="nav_logo">
 
                 </div>
 
@@ -75,7 +66,7 @@ if (session_id() == '') {
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="" class="d-flex nav_link  active">
+                    <a href="../taikhoan/taikhoan.php?id=<?php echo $row['id_admin']; ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -109,7 +100,7 @@ if (session_id() == '') {
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
@@ -121,11 +112,10 @@ if (session_id() == '') {
                             <i class="nav_icon2 bi bi-chevron-right"></i>
                         </a>
                     </div>
-
                     <div class="nav_links">
                         <span class="nav_names">PAGES</span>
                     </div>
-                    <a href="#" class="d-flex nav_link">
+                    <a href="../../index.php" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                             class="bi bi-journal nav_icon" viewBox="0 0 16 16">
                             <path
@@ -143,61 +133,86 @@ if (session_id() == '') {
 
     <div class="height-100">
         <section class="p-5">
+            <?php
+            if (isset($_GET['error'])) {
+                echo "<h4 class='text-center'style ='color:red'>{$_GET['error']}</h4>";
+            }
+            ?>
             <div class="px-5 py-4"
-                style="background: white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a; border-radius:10px ">
-                <div class="container px-md-2">
-                    <h4 class="text-center text-dark">DANH SÁCH TÀI KHOẢN ADMIN</h4>
-                    <div class="text-center text-dark">
-                        <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
-                    </div>
-                    <div>
-                        <a class="btn btn-secondary" href="addaccount.php?id=<?php echo $row['id_admin'];?>"><i
-                                class="bi bi-plus-circle"></i> Thêm tài
-                            khoản</a>
-                    </div>
-                    <table class="table mt-3">
-                        <thead>
-                            <tr style="color:#888;">
-                                <th scope="col">ID</th>
-                                <th scope="col">Họ và tên</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Sửa</th>
-                                <th scope="col">Xóa</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-
-                                $sql = "SELECT * FROM admin ";
-                                $res = mysqli_query($conn, $sql);
-                                $count = mysqli_num_rows($res);
-                                if($count>0)
-                                {
-                                while($row=mysqli_fetch_assoc($res))
-                                {
-                                ?>
-                            <tr >
-                                <th scope="row"><?php echo $row['id_admin']; ?></th>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['username']; ?></td>
-                                <td><?php echo $row['password']; ?></td>
-                                <td><a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="link-dark bi bi-pencil-square"></i></a></td>
-                                <td><a href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="link-dark bi bi-trash"></i></a></td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                    mysqli_close($conn);
-                ?>
-                        </tbody>
-                    </table>
+                style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
+                <h4 class="text-center text-dark">CHI TIẾT ĐƠN HÀNG</h4>
+                <div class="text-center text-dark">
+                    <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
                 </div>
+                <table class="mt-3 table table-striped">
+                    <thead>
+                        <tr style="color:#888;">
+                            <!-- <th scope="col"></th> -->
+                            <th style="width:10px" class="col ps-3" scope="col">ID</th>
+                            <!-- <th style="width:80px" scope="col">Số lượng</th> -->
+                            <th style="width:90px" scope="col">Số lượng</th>
+                            <th style="width:90px" scope="col">Thành tiền</th>
+                            <th style="width:95px" scope="col">Trạng thái</th>
+                            <th style="width:10px" scope="col">Sửa</th>
+                            <th style="width:10px" scope="col">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
+                        // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
+                        $sql = "SELECT * FROM `order`,detail_order ";
+                        $res = mysqli_query($conn, $sql);
+                        $count = mysqli_num_rows($res);
+                        if ($count > 0) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                ?>
+                                <tr>
+                                    <td class="">
+                                        <p class="ms-2">
+                                            <?php echo $row['id_order']; ?>
+                                        </p>
+                                    </td>
+                                    <td class="">
+                                        <p class="">
+                                            <?php echo $row['qty']; ?>
+                                        </p>
+                                    </td>
+                                    <td class="">
+                                        <p class="ms-2">
+                                            <?php echo $row['amount']; ?>
+                                        </p>
+                                    </td>
+                                    <td class="">
+                                        <p class="">
+                                            <?php
+                                            if ($row['status'] == '1' ? 'checked' : '') {
+                                                echo 'Đã xác nhận';
+                                            } else if ($row['status'] == '0' ? 'checked' : '') {
+                                                echo 'Chưa xác nhận';
+                                            }
+                                            ?>
+                                        </p>
+                                    </td>
+                                    <td class="">
+                                        <a href="detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
+                                            <i class="link-dark me-3 bi bi-pencil-square"></i>
+                                        </a>
+                                    </td>
+                                    <td class="">
+
+                                        <a href="delete_donhang.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
+                                                class="link-dark me-3 bi bi-trash"></i></a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </section>
     </div>
-    <?php include('../template/footer.php'); 
-?>
+    <?php include('../template/footer.php');
+    ?>

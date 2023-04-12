@@ -1,21 +1,12 @@
 <?php include('../template/header.php');
 ?>
 <?php
-if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
-    $id = $_SESSION['isLoginOK'];
-    $sql = "SELECT * FROM admin where admin.username='$id' ";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-    }
-    else {
-
-        $error = "Xin lỗi! Bạn chưa đăng nhập";
-        header("location:login.php?id=$id&error=$error");
-
-    }
-
-endif;
+$id = $_GET['id'];
+$sql1 = "SELECT * FROM admin WHERE username='$id';";
+$result = mysqli_query($conn, $sql1);
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+}
 ?>
 
 <body>
@@ -27,7 +18,9 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
 
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
@@ -73,7 +66,7 @@ endif;
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../taikhoan/taikhoan.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                    <a href="../taikhoan/taikhoan.php?id=<?php echo $row['id_admin']; ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -108,7 +101,7 @@ endif;
                     </a>
                     <div>
                         <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
                                     d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -118,7 +111,7 @@ endif;
                             <span class="nav_name">Đơn hàng</span>
                             <i class="nav_icon2 bi bi-chevron-right"></i>
                         </a>
-                        </div>
+                    </div>
                     <div class="nav_links">
                         <span class="nav_names">PAGES</span>
                     </div>
@@ -155,19 +148,20 @@ endif;
                     <thead>
                         <tr style="color:#888;">
                             <!-- <th scope="col"></th> -->
-                            <th style="width:100px" class="col ps-3" scope="col">ID</th>
+                            <th style="width:10px" class="col ps-3" scope="col">ID</th>
                             <!-- <th style="width:80px" scope="col">Số lượng</th> -->
-                            <th style="width:90px" scope="col">Thành tiền</th>
+                            <th style="width:90px" scope="col">Tên khách hàng</th>
                             <th style="width:90px" scope="col">Thời gian tạo</th>
-                            <th style="width:95px" scope="col">Địa chỉ</th>
-                            <th style="width:10px" scope="col">Sửa</th>
+                            <th style="width:95px" scope="col">Địa chỉ giao hàng</th>
+                            <th style="width:10px" scope="col">Chi tiết</th>
                             <th style="width:10px" scope="col">Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
-                        $sql = "SELECT * FROM order";
+                        // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
+                        $sql = "SELECT * FROM `order`,user WHERE order.user_id = user.id_user";
                         $res = mysqli_query($conn, $sql);
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
@@ -180,43 +174,41 @@ endif;
                                         </p>
                                     </td>
                                     <td class="">
+                                        <p class="">
+                                            <?php echo $row['name_user']; ?>
+                                        </p>
+                                    </td>
+                                    <td class="">
                                         <p class="ms-2">
-                                            <?php echo $row['amount']; ?>
+                                            <?php echo $row['created']; ?>
                                         </p>
                                     </td>
                                     <td class="">
                                         <p class="">
-                                            <?php echo ($row['created']); ?>
+                                            <?php echo $row['address_order']; ?>
                                         </p>
                                     </td>
                                     <td class="">
-                                        <p class="">
-                                            <?php echo ($row['address_order']); ?>
-                                        </p>
+                                        <a href="detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                                                class="bi bi-card-list link-dark" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                                <path
+                                                    d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                            </svg>
+                                        </a>
                                     </td>
-                                   
-                                    <td class="text-center">
+                                    <td class="">
 
-                                        <a href="update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_product']; ?>"><i
-                                                class="link-dark me-3 bi bi-pencil-square"></i></a>
-                                    </td>
-                                    <td class="text-center">
-
-                                        <a href="delete_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_product']; ?>"><i
+                                        <a href="delete_donhang.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
                                                 class="link-dark me-3 bi bi-trash"></i></a>
                                     </td>
-
-
                                 </tr>
-
                                 <?php
                             }
                         }
                         ?>
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                            crossorigin="anonymous">
-                            </script>
                     </tbody>
                 </table>
             </div>

@@ -55,7 +55,7 @@ endif;
                             <p class="pt-1 ps-2 mb-0" style="font-size:13px">Menu</p>
                         </a>
                         <div class="ms-3 ">
-                            <form id="search-box" action="search1.php" method="post">
+                            <form id="search-box" action="../../search1.php" method="post">
                                 <button type="reset" class="namesearch" id="search-btn"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="ms-2 bi bi-search" viewBox="0 0 16 16">
@@ -426,7 +426,7 @@ endif;
     <section class="pb-2 border">
 
     </section>
-    <section class="pb-5" style="font-family:'Arial';background:#fafafa">
+    <section class="pb-5" style="font-family:'Arial';background:#f6f1eb">
         <div class="container">
             <div class="px-5 pt-5">
                 <div class="row px-5">
@@ -505,9 +505,9 @@ endif;
             </div>
         </div>
     </section>
-    <section style="background:#fff;">
+    <section style="background:#ffffff;">
         <div class="container">
-            <div style="font-size:15px" class="row p-5 pt-0">
+            <div style="font-size:15px" class="row p-5 pt-5">
                 <div class="col-md-4  me-5">
                     <font class="mt-5" STYLE="margin-start:20px;letter-spacing: 2.75px;word-spacing:2px" face="Candara"
                         size="6">Giới thiệu</font>
@@ -613,7 +613,7 @@ endif;
                 <div class="col-md d-flex justify-content-end">
 
                     <div class="mt-1">
-                        <a href="#" class="me-3 icon link-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        <a href="https://www.facebook.com/thuyduowg" class="me-3 icon link-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                                 <path
                                     d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
@@ -635,7 +635,7 @@ endif;
         </div>
     </section>
     <div class="d-flex justify-content-center p-5 m-5">
-        <div class=""> <img src="img/logo.png" style="weight:100px;height:66px" alt=""></div>
+        <div class=""> <img src="../../img/logo.png" style="weight:100px;height:66px" alt=""></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">

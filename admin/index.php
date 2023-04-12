@@ -58,10 +58,10 @@ endif;
                 <?php echo $row['name']; ?>
             </p>
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                <a href="./taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
-                <a href="../logout.php">
+                <a href="logout.php">
                     <li><button class="dropdown-item" type="button">Log out</button></li>
                 </a>
             </ul>
@@ -212,7 +212,7 @@ endif;
                     </div>
                 </div>
                 <?php
-                $sql2 = "SELECT sum(detail_order.qty*product.price) as doanhthu FROM product,detail_order,order where order.id_order=detail_order.id_order and product.id_product=detail_order.product_id  and year(created)= year(CURDATE()) ";
+                $sql2 = "SELECT sum(detail_order.qty*product.price) as doanhthu FROM product,detail_order,`order` where order.id_order=detail_order.id_order and product.id_product=detail_order.product_id  and year(order.created)= year(CURDATE()) ";
                 $res = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($res) > 0) {
                     $row = mysqli_fetch_assoc($res);
@@ -250,7 +250,7 @@ endif;
                     </div>
                 </div>
                 <?php
-                $sql3 = "SELECT sum(detail_order.amount*product.price)-(sum(price*import_price)) as loinhuan FROM detail_order,product,order WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id  and year(created)= year(CURDATE()) ";
+                $sql3 = "SELECT sum(detail_order.amount*product.price)-(sum(price*import_price)) as loinhuan FROM detail_order,product,`order` WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id  and year(order.created)= year(CURDATE()) ";
                 $res1 = mysqli_query($conn, $sql3);
                 if (mysqli_num_rows($res1) > 0) {
                     $row = mysqli_fetch_assoc($res1);
@@ -295,26 +295,26 @@ endif;
         </section>
     </div>
     <script>
-    const data = {
-        labels: [
-            'Tháng 1',
-            'Tháng 2',
-            'Tháng 3',
-            'Tháng 4',
-            'Tháng 5',
-            'Tháng 6',
-            'Tháng 7',
-            'Tháng 8',
-            'Tháng 9',
-            'Tháng 10',
-            'Tháng 11',
-            'Tháng 12'
-        ],
-        datasets: [{
-            type: 'bar',
-            label: 'Lợi nhuận theo tháng',
-            data: [<?php
-                $sql5 = "SELECT sum(detail_order.amount*product.price)-(sum(amount*import_price)) as loi FROM detail_order,order,product WHERE detail_order.id_order=order.id_order and product.id_product=detail_order.product_id GROUP BY month(created)";
+        const data = {
+            labels: [
+                'Tháng 1',
+                'Tháng 2',
+                'Tháng 3',
+                'Tháng 4',
+                'Tháng 5',
+                'Tháng 6',
+                'Tháng 7',
+                'Tháng 8',
+                'Tháng 9',
+                'Tháng 10',
+                'Tháng 11',
+                'Tháng 12'
+            ],
+            datasets: [{
+                type: 'bar',
+                label: 'Lợi nhuận theo tháng',
+                data: [<?php
+                $sql5 = "SELECT sum(detail_order.qty*product.price)-(sum(qty*import_price) ) as loi FROM detail_order,`order`,product WHERE detail_order.id_order=order.id_order and product.id_product=detail_order.product_id GROUP BY month(order.created)";
                 $res3 = mysqli_query($conn, $sql5);
                 $count3 = mysqli_num_rows($res3);
                 if ($count3 > 0) {
@@ -323,40 +323,40 @@ endif;
                     }
                 }
                 ?>],
-            backgroundColor: [
-                'rgba(255, 159, 64, 0.4)',
-                'rgba(75, 192, 192, 0.4)',
-                'rgba(153, 102, 255, 0.4)',
-                'rgba(54, 162, 235, 0.4)',
-                'rgba(255, 205, 86, 0.4)',
-                'rgba(255, 99, 132, 0.4)',
-                'rgba(201, 203, 207, 0.4)',
-                'rgba(247, 127, 0, 0.4)',
-                'rgba(152, 75, 1, 0.4)',
-                'rgba(48, 69, 134, 0.4)',
-                'rgba(133, 72, 173, 0.4)',
-                'rgba(206, 118, 13, 0.4)'
-            ],
-            borderColor: [
-                'rgb(255, 159, 64)',
-                'rgb(75, 192, 192)',
-                'rgb(153, 102, 255)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(255, 99, 132)',
-                'rgb(201, 203, 207)',
-                'rgb(247, 127, 0)',
-                'rgb(152, 75, 1)',
-                'rgb(48, 69, 134)',
-                'rgb(133, 72, 173)',
-                'rgb(206, 118, 13)'
-            ],
-            borderWidth: 1
-        }, {
-            type: 'line',
-            label: 'Doanh thu theo tháng',
-            data: [<?php
-                $sql4 = "SELECT sum(detail_order.amount*product.price) as don FROM detail_order,order,product WHERE detail_order.id_order=order.id_order and product.id_product = detail_order.id_product GROUP BY month(created)";
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.4)',
+                    'rgba(75, 192, 192, 0.4)',
+                    'rgba(153, 102, 255, 0.4)',
+                    'rgba(54, 162, 235, 0.4)',
+                    'rgba(255, 205, 86, 0.4)',
+                    'rgba(255, 99, 132, 0.4)',
+                    'rgba(201, 203, 207, 0.4)',
+                    'rgba(247, 127, 0, 0.4)',
+                    'rgba(152, 75, 1, 0.4)',
+                    'rgba(48, 69, 134, 0.4)',
+                    'rgba(133, 72, 173, 0.4)',
+                    'rgba(206, 118, 13, 0.4)'
+                ],
+                borderColor: [
+                    'rgb(255, 159, 64)',
+                    'rgb(75, 192, 192)',
+                    'rgb(153, 102, 255)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(255, 99, 132)',
+                    'rgb(201, 203, 207)',
+                    'rgb(247, 127, 0)',
+                    'rgb(152, 75, 1)',
+                    'rgb(48, 69, 134)',
+                    'rgb(133, 72, 173)',
+                    'rgb(206, 118, 13)'
+                ],
+                borderWidth: 1
+            }, {
+                type: 'line',
+                label: 'Doanh thu theo tháng',
+                data: [<?php
+                $sql4 = "SELECT sum(detail_order.qty*product.price) as don FROM detail_order,`order`,product WHERE detail_order.id_order=order.id_order and product.id_product=detail_order.product_id GROUP BY month(order.created)";
                 $res2 = mysqli_query($conn, $sql4);
                 $count2 = mysqli_num_rows($res2);
                 if ($count2 > 0) {
@@ -365,32 +365,32 @@ endif;
                     }
                 }
                 ?>],
-            fill: false,
-            backgroundColor: '#33cb82',
-            borderColor: '#33cb82',
-        }]
-    };
-    const config = {
-        type: 'scatter',
-        data: data,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+                fill: false,
+                backgroundColor: '#33cb82',
+                borderColor: '#33cb82',
+            }]
+        };
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    };
+        };
     </script>
     <script>
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>
