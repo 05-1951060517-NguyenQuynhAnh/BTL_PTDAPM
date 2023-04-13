@@ -341,7 +341,9 @@
                                             <input type="password" class="col-md-12 ps-3 border py-2 " name="matkhau"
                                                 required>
                                         </div>
-                                        <button style="color:white;background:#444" name="btnLogin">
+                                        <button style="color:white;background:#444"
+                                            class="mt-5 pt-1 fw-bold col-md-12 btn btn-lg btn-block" type="submit"
+                                            name="btnLogin">
                                             <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara"
                                                 size="2">ĐĂNG
                                                 NHẬP</font>
