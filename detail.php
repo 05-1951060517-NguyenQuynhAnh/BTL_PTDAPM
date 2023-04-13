@@ -220,8 +220,13 @@
                                 <?php echo $row['name_product']; ?></font>
 
                         </div>
-                        <form method="post"
-                            action="./process_cart_add.php?id=<?php echo $row['id_product']; ?>&user=<?php echo $_SESSION['isLoginOK'] ?>">
+                        <form method="post" action="
+                        <?php
+                            if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :?>
+                                ./process_cart_add.php?id=<?php echo $row['id_product']; ?>&user=<?php echo $_SESSION['isLoginOK'] ?>
+                            <?php
+                            endif;
+                            ?>">
                             <div class="d-flex">
 
                                 <p name="price" value="<?php echo $row['price']; ?>" class="ps-3 link-dark mt-1"
@@ -298,7 +303,9 @@
                                 ?>
                                 <input type="radio" class="btn-check" name="size" value="41" id="option4"
                                     autocomplete="off">
-                                <label class="link-dark text-center btn-outline-secondary" style="border: 1px solid black;width: 100px;height: 50px;font-size: 13px;padding-top:15px" for="option4">Free Size</label>
+                                <label class="link-dark text-center btn-outline-secondary"
+                                    style="border: 1px solid black;width: 100px;height: 50px;font-size: 13px;padding-top:15px"
+                                    for="option4">Free Size</label>
                                 <?php
                             }
                                 ?>
@@ -408,9 +415,11 @@
                             <?php
                                         }
                                     ?>
+                            <?php if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :?>
+
                             <div class="d-flex pb-3 justify-content-center mt-3">
                                 <div class="">
-                                    <a href="login.php">
+                                    <a href="">
                                         <button id="add-to-cart"
                                             class="add-to-cart px-5 Product button drakpay btn-addtocart btn-dark"
                                             style="font-family:courier,arial,helvetica;" name="add">Thêm
@@ -419,6 +428,43 @@
                                     </a>
                                 </div>
                             </div>
+                            <?php else : ?>
+                            
+                            <div class="d-flex pb-3 justify-content-center mt-3">
+                                <div class="">
+                                <button type="button"
+                                        class="mt-3 add-to-cart px-5 Product button drakpay btn-addtocart btn-dark"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        style="font-family:courier,arial,helvetica;" name="add">
+                                        Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Yêu cầu đăng nhập</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <p class="" style="font-size:13px;word-spacing:2px">
+                                        Bạn phải đăng nhập mới được sử dụng chức năng này của chúng tôi.</p>
+                                           
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đồng ý</button>
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+      endif;?>
                         </form>
                         <hr style="background:#e2d8ce" class="m-0 ">
                         <div class="p-3 product-title ">
