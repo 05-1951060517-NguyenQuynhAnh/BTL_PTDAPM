@@ -106,7 +106,7 @@ if (session_id() == '') {
                 </div>
                 <div class="row mx-5 mt-4">
                     <div class="col px-0 me-4">
-                        <a href="" class="text-decoration-none">
+                        <a href="product/phukien.php" class="text-decoration-none">
                             <img class="img-fluid rounded-3 mb-2" src="img/loai.png" alt="">
                             <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
                                 size="3">PHỤ KIỆN</font>
@@ -114,7 +114,7 @@ if (session_id() == '') {
                     </div>
 
                     <div class="col px-0 me-4">
-                        <a href="product/bottom.php" class="text-decoration-none">
+                        <a href="product/giay.php" class="text-decoration-none">
                             <img class="img-fluid rounded-3 mb-2" src="img/loai1.png" alt="">
                             <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
                                 size="3">GIÀY</font>
@@ -123,7 +123,7 @@ if (session_id() == '') {
                     </div>
 
                     <div class="col  px-0 me-4">
-                        <a href="product/skirt.php" class="text-decoration-none">
+                        <a href="product/tui.php" class="text-decoration-none">
                             <img class="img-fluid rounded-3 mb-2" src="img/loai2.png" alt="">
                             <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
                                 size="3">TÚI XÁCH</font>
@@ -132,7 +132,7 @@ if (session_id() == '') {
                     </div>
 
                     <div class="col px-0">
-                        <a href="product/phukien.php" class="text-decoration-none">
+                        <a href="product/quanao.php" class="text-decoration-none">
                             <img class="img-fluid rounded-3 mb-2" src="img/loai3.png" alt="">
                             <font class="link-dark" STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara"
                                 size="3">QUẦN ÁO</font>

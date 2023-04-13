@@ -169,7 +169,7 @@
                                             các hình thức thanh toán sau đây khi mua
                                             hàng trực tuyến:
                                         </div>
-                                        <img src="img/cash.png" alt="" width="300px" height="100px">
+                                        
                                     </div>
                                 </div>
                                 <div class="accordion-item">
