@@ -1,4 +1,4 @@
-<?php include('../template/header.php'); 
+<?php include('../template/header.php');
 ?>
 <?php
 if (session_id() == '') {
@@ -6,22 +6,21 @@ if (session_id() == '') {
 }
 ?>
 <?php
-      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-        $id =$_SESSION['isLoginOK'];
-        $sql = "SELECT * FROM admin where admin.username='$id' ";
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            }
-            else{
-                
-                $error = "Xin lỗi! Bạn chưa đăng nhập";
-                header("location:login.php?id=$id&error=$error");
-            
-            }
-     
-      endif;
-    ?>
+if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
+    $id = $_SESSION['isLoginOK'];
+    $sql = "SELECT * FROM admin where admin.username='$id' ";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+    } else {
+
+        $error = "Xin lỗi! Bạn chưa đăng nhập";
+        header("location:login.php?id=$id&error=$error");
+
+    }
+
+endif;
+?>
 
 <body id="body-pd">
     <header class="header" id="header">
@@ -32,7 +31,9 @@ if (session_id() == '') {
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -41,10 +42,11 @@ if (session_id() == '') {
             </svg>
 
             <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php echo $row['name'];?></p>
+                <?php echo $row['name']; ?>
+            </p>
 
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                <a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
                 <a href="../logout.php">
@@ -151,7 +153,7 @@ if (session_id() == '') {
                         <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
                     </div>
                     <div>
-                        <a class="btn btn-secondary" href="addaccount.php?id=<?php echo $row['id_admin'];?>"><i
+                        <a class="btn btn-secondary" href="addaccount.php?id=<?php echo $row['id_admin']; ?>"><i
                                 class="bi bi-plus-circle"></i> Thêm tài
                             khoản</a>
                     </div>
@@ -160,6 +162,8 @@ if (session_id() == '') {
                             <tr style="color:#888;">
                                 <th scope="col">ID</th>
                                 <th scope="col">Họ và tên</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">Ngày sinh</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Password</th>
                                 <th scope="col">Sửa</th>
@@ -167,31 +171,51 @@ if (session_id() == '') {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-
-                                $sql = "SELECT * FROM admin ";
-                                $res = mysqli_query($conn, $sql);
-                                $count = mysqli_num_rows($res);
-                                if($count>0)
-                                {
-                                while($row=mysqli_fetch_assoc($res))
-                                {
-                                ?>
-                            <tr >
-                                <th scope="row"><?php echo $row['id_admin']; ?></th>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['username']; ?></td>
-                                <td><?php echo $row['password']; ?></td>
-                                <td><a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="link-dark bi bi-pencil-square"></i></a></td>
-                                <td><a href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
-                                            class="link-dark bi bi-trash"></i></a></td>
-                            </tr>
                             <?php
-                        }
-                    }
-                    mysqli_close($conn);
-                ?>
+
+                            $sql = "SELECT * FROM `admin`";
+                            $res = mysqli_query($conn, $sql);
+                            $count = mysqli_num_rows($res);
+                            if ($count > 0) {
+                                while ($row = mysqli_fetch_assoc($res)) {
+                                    ?>
+                                    <tr>
+                                        <th scope="row">
+                                            <?php echo $row['id_admin']; ?>
+                                        </th>
+                                        <td>
+                                            <?php echo $row['name']; ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if ($row['gender'] == '1' ? 'checked' : '') {
+                                                echo 'Nam';
+                                            } else if ($row['gender'] == '2' ? 'checked' : '') {
+                                                echo 'Nữ';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['birth_date']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['username']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['password']; ?>
+                                        </td>
+                                        <td><a
+                                                href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
+                                                    class="link-dark bi bi-pencil-square"></i></a></td>
+                                        <td><a
+                                                href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>"><i
+                                                    class="link-dark bi bi-trash"></i></a></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            mysqli_close($conn);
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -199,5 +223,5 @@ if (session_id() == '') {
             </div>
         </section>
     </div>
-    <?php include('../template/footer.php'); 
-?>
+    <?php include('../template/footer.php');
+    ?>

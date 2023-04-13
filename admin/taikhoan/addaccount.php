@@ -6,17 +6,17 @@ if (session_id() == '') {
 }
 ?>
 <?php
+$id = $_GET['id'];
 if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
     $id = $_SESSION['isLoginOK'];
     $sql = "SELECT * FROM admin where admin.username='$id' ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-    }
-    else{               
+    } else {
         $error = "Xin lỗi! Bạn chưa đăng nhập";
         header("location:login.php?id=$id&error=$error");
-    
+
     }
 
 endif;
@@ -31,7 +31,9 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -110,7 +112,7 @@ endif;
                     </a>
                     <div>
                         <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
                                     d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -156,10 +158,16 @@ endif;
                                         placeholder="Mã nhân viên">
                                     <input class="col-md-12 mt-3 ps-3 border py-2 rounded-3" type="text" name="hovaten"
                                         placeholder="Họ và tên">
-                                    <input class="mt-4 ms-1 ms-3" id="radio1" type="radio" value="1" name="gioitinh">
-                                <label for="radio1">Nam</label>
-                                <input class="ms-3 " id="radio2" type="radio" value="0" name="gioitinh">
-                                <label for="radio2">Nữ</label>
+                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="gioitinh">
+                                    <label for="radio1">Nữ</label>
+                                    <input class="ms-3 " id="radio2" type="radio" value="1" name="gioitinh">
+                                    <label for="radio2">Nam</label>
+                                    <!-- <div class="">
+                                        <input type="radio" id="gioitinh" class="form__input mt-4 ms-1 ms-3" name="gioitinh"
+                                            value="1" />Nam
+                                        <input type="radio" id="gioitinh" class="form__input ms-3 " name="gioitinh"
+                                            value="0" />Nữ
+                                    </div> -->
                                     <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date"
                                         name="ngaysinh">
                                     <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="email" name="email"

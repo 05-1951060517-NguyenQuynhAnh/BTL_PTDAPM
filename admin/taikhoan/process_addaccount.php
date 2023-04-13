@@ -6,7 +6,7 @@ $id1 = $_GET['id'];
     $ngaysinh = $_POST['ngaysinh'];
     $email = $_POST['email'];
     $matkhau = $_POST['matkhau'];
-    if (!$id || !$hovaten || !$gioitinh || !$ngaysinh || !$email|| !$matkhau )
+    if (!$id || !$hovaten || !$gioitinh || !$ngaysinh || !$email || !$matkhau )
     {
         $error = "Vui lòng nhập đầy đủ thông tin";
         header("location:addaccount.php?id=$id1&error=$error"); 
@@ -19,11 +19,11 @@ $id1 = $_GET['id'];
         exit;
     }   
 
-    $conn = mysqli_connect('localhost','root','','wb_banquanao');
+    $conn = mysqli_connect('localhost','root','','web_bqao');
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
-    $sql02 = "select * from admin where id_admin = '$id'"; 
+    $sql02 = "select * from admin where id_admin= '$id'"; 
     $result1 = mysqli_query($conn,$sql02);
     if(mysqli_num_rows($result1) > 0){
         $row=mysqli_fetch_assoc($result1);}

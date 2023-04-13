@@ -1,4 +1,4 @@
-<?php include('../template/header.php'); 
+<?php include('../template/header.php');
 ?>
 <?php
 if (session_id() == '') {
@@ -6,22 +6,21 @@ if (session_id() == '') {
 }
 ?>
 <?php
-      if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-        $id =$_SESSION['isLoginOK'];
-        $sql = "SELECT * FROM admin where admin.username='$id' ";
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            }
-            else{
-                
-                $error = "Xin lỗi! Bạn chưa đăng nhập";
-                header("location:login.php?id=$id&error=$error");
-            
-            }
-     
-      endif;
-    ?>
+if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
+    $id = $_SESSION['isLoginOK'];
+    $sql = "SELECT * FROM admin where admin.username='$id' ";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+    } else {
+
+        $error = "Xin lỗi! Bạn chưa đăng nhập";
+        header("location:login.php?id=$id&error=$error");
+
+    }
+
+endif;
+?>
 
 <body id="body-pd">
     <header class="header" id="header">
@@ -32,7 +31,9 @@ if (session_id() == '') {
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -41,10 +42,11 @@ if (session_id() == '') {
             </svg>
 
             <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $row['name']; ?></p>
+                <?php echo $row['name']; ?>
+            </p>
 
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
                 <a href="../logout.php">
@@ -110,7 +112,7 @@ if (session_id() == '') {
                     </a>
                     <div>
                         <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
                                     d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -150,13 +152,13 @@ if (session_id() == '') {
                             <p class="text-center text-dark ps-4 mt-3 fs-2 mb-0 fw-bold ">SỬA THÔNG TIN ADMIN</p>
                             <hr>
                             <?php
-                                $id1 = $_GET['id1'];
-                                $sql1 = "SELECT * FROM admin WHERE id_admin='$id1';";
-                                    $result1 = mysqli_query($conn,$sql1);
-                                    if(mysqli_num_rows($result1)>0){
-                                    $row = mysqli_fetch_assoc($result1);
-                                    }
-                                ?>
+                            $id1 = $_GET['id1'];
+                            $sql1 = "SELECT * FROM admin WHERE id_admin='$id1';";
+                            $result1 = mysqli_query($conn, $sql1);
+                            if (mysqli_num_rows($result1) > 0) {
+                                $row = mysqli_fetch_assoc($result1);
+                            }
+                            ?>
                             <form class="form-addaccount"
                                 action="process_updateaccount.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>?>"
                                 method="post">
@@ -164,20 +166,30 @@ if (session_id() == '') {
                                     <div class="col">
                                         <label>Mã nhân viên</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id"
-                                            disabled placeholder="" value="<?php echo $row['id_admin'];?>">
+                                            disabled placeholder="" value="<?php echo $row['id_admin']; ?>">
                                         <label class="mt-3">Họ và tên</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="hovaten"
-                                            placeholder="" value="<?php echo $row['name'];?>">
+                                            placeholder="" value="<?php echo $row['name']; ?>">
                                         <label class="mt-3">Ngày sinh</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaysinh"
-                                            placeholder="" value="<?php echo $row['birth_date'];?>">
+                                            placeholder="" value="<?php echo $row['birth_date']; ?>">
                                         <label class="mt-3">Giới tính</label>
-                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
-                                            placeholder="" value="<?php echo $row['gender'];?>">
-                                        <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="matkhau" placeholder="Mật khẩu"
-                                            value="<?php echo $row['password'];?>">
+                                        <!-- <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
+                                            placeholder="" value="<?php echo $row['gender']; ?>"> -->
+                                        <div>
+                                            <input class="mt-4 ms-1" id="radio1" type="radio" value="0" name="gioitinh"
+                                                <?php echo $row['gender'] == 'Nữ' ? 'checked' : '' ?>>
+                                            <label for="radio1">Nữ</label>
+                                            <input class="ms-3 " id="radio2" type="radio" value="1" name="gioitinh"
+                                                <?php echo $row['gender'] == 'Nam' ? 'checked' : '' ?>>
+                                            <label for="radio2">Nam</label>
+                                        </div>
+                                        <label class="mt-3">Mật khẩu</label>
+                                        <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password"
+                                            name="matkhau" placeholder="Mật khẩu"
+                                            value="<?php echo $row['password']; ?>">
                                     </div>
-                                   
+
                                     <div class="mx-auto p-1  text-center">
                                         <button style="color:white;"
                                             class="mt-3 mb-2 fw-bold btn btn-lg btn-block btn-secondary" type="submit"
@@ -185,8 +197,7 @@ if (session_id() == '') {
                                     </div>
                                 </div>
                             </form>
-                            <a class="text-decoration-none link-dark" style="font-size:13px"
-                                href="taikhoan.php">
+                            <a class="text-decoration-none link-dark" style="font-size:13px" href="taikhoan.php">
                                 <div class="mb-3 ms-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                                         class="ms-3 d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
@@ -201,5 +212,5 @@ if (session_id() == '') {
                 </div>
             </div>
     </div>
-    <?php include('../template/footer.php'); 
-?>
+    <?php include('../template/footer.php');
+    ?>

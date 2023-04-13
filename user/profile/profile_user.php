@@ -262,7 +262,7 @@ endif;
                                     </svg>
                                     <p class="pt-1 mb-0" style="font-size:13px">Tài khoản</p>
                                 </a>
-                                <a class="pt-1 text-decoration-none text-black d-flex" href="cart.php?id=<?php echo $row['id_user'];?>">
+                                <a class="pt-1 text-decoration-none text-black d-flex" href="../../cart.php?id=<?php echo $row['id_user'];?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                         class="bi bi-cart2 me-2 ms-4" viewBox="0 0 16 16">
                                         <path
@@ -481,7 +481,7 @@ endif;
                                     <?php
                                     if( $row['gender_user'] == '1'?'checked':'')
                                     {echo 'Nam';}
-                                    else if( $row['gender_user'] == '0'?'checked':'')
+                                    else if( $row['gender_user'] == '2'?'checked':'')
                                     {echo 'Nữ';}
                                      ?>            
                                 </p>
