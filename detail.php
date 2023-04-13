@@ -18,7 +18,7 @@
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="public/styled2.css">
-    <title>GUCCI Official</title>
+    <title>Thông tin sản phẩm | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
 
@@ -169,7 +169,7 @@
                                             các hình thức thanh toán sau đây khi mua
                                             hàng trực tuyến:
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="accordion-item">
@@ -271,30 +271,30 @@
                                         autocomplete="off">
                                     <label class="link-dark text-center btn-outline-secondary size me-4"
                                         for="option">35</label>
-                                    <input type="radio" class="btn-check" name="size" value="36" id="option"
+                                    <input type="radio" class="btn-check" name="size" value="36" id="option1"
                                         autocomplete="off">
                                     <label class="link-dark text-center btn-outline-secondary size me-4"
-                                        for="option">36</label>
-                                    <input type="radio" class="btn-check" name="size" value="37" id="option1"
+                                        for="option1">36</label>
+                                    <input type="radio" class="btn-check" name="size" value="37" id="option2"
                                         autocomplete="off">
                                     <label class="link-dark text-center btn-outline-secondary size me-4"
-                                        for="option1">37</label>
-                                    <input type="radio" class="btn-check" name="size" value="38" id="option2"
+                                        for="option2">37</label>
+                                    <input type="radio" class="btn-check" name="size" value="38" id="option3"
                                         autocomplete="off">
                                     <label class="link-dark text-center btn-outline-secondary size me-4"
-                                        for="option2">38</label>
-                                    <input type="radio" class="btn-check" name="size" value="39" id="option3"
+                                        for="option3">38</label>
+                                    <input type="radio" class="btn-check" name="size" value="39" id="option4"
                                         autocomplete="off">
                                     <label class="link-dark text-center btn-outline-secondary size me-4"
-                                        for="option3">39</label>
-                                    <input type="radio" class="btn-check" name="size" value="40" id="option4"
+                                        for="option4">39</label>
+                                    <input type="radio" class="btn-check" name="size" value="40" id="option5"
                                         autocomplete="off">
                                     <label class="mt-3 link-dark text-center btn-outline-secondary size me-4"
-                                        for="option4">40</label>
-                                    <input type="radio" class="btn-check" name="size" value="41" id="option4"
+                                        for="option5">40</label>
+                                    <input type="radio" class="btn-check" name="size" value="41" id="option6"
                                         autocomplete="off">
                                     <label class="mt-3 link-dark text-center btn-outline-secondary size"
-                                        for="option4">41</label>
+                                        for="option6">41</label>
                                 </div>
 
                                 <?php
@@ -429,10 +429,10 @@
                                 </div>
                             </div>
                             <?php else : ?>
-                            
+
                             <div class="d-flex pb-3 justify-content-center mt-3">
                                 <div class="">
-                                <button type="button"
+                                    <button type="button"
                                         class="mt-3 add-to-cart px-5 Product button drakpay btn-addtocart btn-dark"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         style="font-family:courier,arial,helvetica;" name="add">
@@ -451,14 +451,14 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                        <p class="" style="font-size:13px;word-spacing:2px">
-                                        Bạn phải đăng nhập mới được sử dụng chức năng này của chúng tôi.</p>
-                                           
+                                            <p class="" style="font-size:13px;word-spacing:2px">
+                                                Bạn phải đăng nhập mới được sử dụng chức năng này của chúng tôi.</p>
+
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Đồng ý</button>
-                                         
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đồng
+                                                ý</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -473,9 +473,8 @@
                             </p>
                             <p class="" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">Mã sản phẩm:
                                 <?php echo $row['id_product']; ?></p>
-                            <p class="mt-3" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                <?php echo $row['content']; ?></p>
-
+                            <textarea name="" id="" rows="25" class="col-md-12 border-0 link-dark"
+                                style="font-size:13px; letter-spacing: 1px;word-spacing:1px;background:#fffcf7;" disabled><?php echo $row['content']; ?></textarea>
 
                         </div>
                     </div>
