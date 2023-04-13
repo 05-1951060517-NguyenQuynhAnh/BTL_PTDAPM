@@ -4,17 +4,14 @@
     $hovaten = $_POST['hovaten'];
     $gioitinh = $_POST['gioitinh'];
     $ngaysinh = $_POST['ngaysinh'];
-    $diachi = $_POST['diachi'];
-    $sdt = $_POST['sdt'];
-    $chucvu = $_POST['chucvu'];
-    $luong = $_POST['luong'];
+    $matkhau = $_POST['matkhau'];
      
-    $conn = mysqli_connect('localhost','root','','wb_banquanao');
+    $conn = mysqli_connect('localhost','root','','web_bqao');
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
     
-    $sql = "UPDATE taikhoan SET hoten='$hovaten', gioitinh='$gioitinh', ngaysinh='$ngaysinh', diachi='$diachi', sđt='$sdt', chucvu='$chucvu', luong='$luong' WHERE id='$id1'";
+    $sql = "UPDATE admin SET name='$hovaten',birth_date='$ngaysinh', gender='$gioitinh', password='$matkhau' WHERE id_admin ='$id1'";
 
     $result = mysqli_query($conn,$sql);
 

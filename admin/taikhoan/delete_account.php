@@ -2,7 +2,7 @@
     $id = $_GET['id'];
     $id1 = $_GET['id1'];
   
-    $conn = mysqli_connect('localhost','root','','wb_banquanao');
+    $conn = mysqli_connect('localhost','root','','web_bqao');
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }

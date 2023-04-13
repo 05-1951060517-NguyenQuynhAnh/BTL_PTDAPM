@@ -1,4 +1,4 @@
-<?php include('../template/header.php');
+<?php include('../template/header.php'); 
 ?>
 <?php
 if (session_id() == '') {
@@ -6,24 +6,23 @@ if (session_id() == '') {
 }
 ?>
 <?php
+$id = $_GET['id'];
 if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
     $id = $_SESSION['isLoginOK'];
     $sql = "SELECT * FROM admin where admin.username='$id' ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-    }
-    else{               
+    } else {
         $error = "Xin lỗi! Bạn chưa đăng nhập";
         header("location:login.php?id=$id&error=$error");
-    
+
     }
 
 endif;
 ?>
-
 <body id="body-pd">
-    <header class="header" id="header">
+<header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
                 class="ms-3 bi bi-list mt-2" viewBox="0 0 16 16">
@@ -31,7 +30,7 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,<?php echo $row['name']; ?></h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -40,11 +39,10 @@ endif;
             </svg>
 
             <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $row['name']; ?>
-            </p>
+                <?php echo $row['name']; ?></p>
 
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="../taikhoan/update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
                 <a href="../logout.php">
@@ -110,7 +108,7 @@ endif;
                     </a>
                     <div>
                         <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
                                     d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -141,63 +139,63 @@ endif;
     </div>
 
     <div class="height-100">
-        <section style="background:#f6f1eb; height:700px">
-            <div class="container p-3">
-                <div class="mt-2 ms-3 row">
-                    <div class="login col-md-12 d-flex justify-content-center">
-                        <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:600px;border-radius:8px"
-                            class="">
-                            <p class="text-center text-dark ps-4 mt-3 fs-2 mb-0 fw-bold ">THÊM TÀI KHOẢN</p>
-                            <hr>
-                            <form class="form-addaccount" action="process_addaccount.php?id=<?php echo $id ?>"
-                                method="post">
-                                <div class="pt-1 pb-3 mx-3">
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id"
-                                        placeholder="Mã nhân viên">
-                                    <input class="col-md-12 mt-3 ps-3 border py-2 rounded-3" type="text" name="hovaten"
-                                        placeholder="Họ và tên">
+    <section style="background:#f6f1eb; height:700px">
+        <div class="container p-3">
+            <div class="mt-2 ms-3 row">
+                <div class="login col-md-12 d-flex justify-content-center">
+                    <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:600px;border-radius:8px"
+                        class="">
+                        <p class="text-center text-dark ps-4 mt-3 fs-2 mb-0 fw-bold ">THÊM TÀI KHOẢN</p>
+                        <hr>
+                        <form class="form-addaccount" action="process_addaccount.php?id=<?php echo $id?>" method="post">
+                            <div class="pt-1 pb-3 mx-3">
+                                <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id"
+                                    placeholder="Mã nhân viên">
+                                <input class="col-md-12 mt-3 ps-3 border py-2 rounded-3" type="text" name="hovaten"
+                                    placeholder="Họ và tên">
                                     <input class="mt-4 ms-1 ms-3" id="radio1" type="radio" value="1" name="gioitinh">
-                                <label for="radio1">Nam</label>
-                                <input class="ms-3 " id="radio2" type="radio" value="0" name="gioitinh">
-                                <label for="radio2">Nữ</label>
-                                    <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date"
-                                        name="ngaysinh">
-                                    <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="email" name="email"
-                                        placeholder="Email">
-                                    <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password"
-                                        name="matkhau" placeholder="Mật khẩu">
+                                    <label for="radio1">Nam</label>
+                                    <input class="ms-3 " id="radio2" type="radio" value="0" name="gioitinh">
+                                    <label for="radio2">Nữ</label>
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date" name="ngaysinh">
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="email" name="email"
+                                    placeholder="Email">
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="matkhau"
+                                    placeholder="Mật khẩu">
                                     <div class="mt-2 ms-2">
-                                        <?php
-                                        if (isset($_GET['error'])) {
-                                            echo "<p style ='color:red'>{$_GET['error']}</p>";
+                                    <?php
+                                    if(isset($_GET['error'])){
+                                        echo "<p style ='color:red'>{$_GET['error']}</p>";
                                         }
-                                        ?>
+                                ?>
                                     </div>
                                     <div class="mx-auto p-1  text-center">
                                         <button style="color:white;"
                                             class="mt-3 mb-2 fw-bold btn btn-lg btn-block btn-secondary" type="submit"
                                             name="btnaddaccount">Thêm tài khoản</button>
                                     </div>
-                                </div>
-                            </form>
-                            <a class="text-decoration-none link-dark" style="font-size:13px"
-                                href="taikhoan.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>?>">
-                                <div class="mb-3 ms-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                        class="ms-3 d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                    </svg>
-                                    <p class="ms-2 d-inline">Quay lại</p>
-                                </div>
-                            </a>
+                            </div>
+                        </form>
+                        <a class="text-decoration-none link-dark" style="font-size:13px"href="taikhoan.php?id=<?php echo $id ?>&id1=<?php echo $row['id_admin']; ?>?>">
+                        <div class="mb-3 ms-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" fill="currentColor" class="ms-3 d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg> 
+                                <p class="ms-2 d-inline">Quay lại</p>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </section>
-
+    </section>
+        
     </div>
-    <?php include('../template/footer.php');
-    ?>
+    <?php include('../template/footer.php'); 
+?>
+
+
+
