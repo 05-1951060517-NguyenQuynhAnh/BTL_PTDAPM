@@ -23,7 +23,7 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/style13.css">
+    <link rel="stylesheet" href="public/styled2.css">
     <title>GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
@@ -164,12 +164,12 @@ if (session_id() == '') {
                 </div>
                 <div class="row px-5 mt-5 pt-5">
                     <?php 
-                                $sql = "SELECT * FROM product WHERE event='summer2023' ";
-                                $res = mysqli_query($conn, $sql);
-                                $count = mysqli_num_rows($res);
-                                if($count>0)
+                                $sql1 = "SELECT * FROM product WHERE event='summer2023' ";
+                                $res1 = mysqli_query($conn, $sql1);
+                                $count1 = mysqli_num_rows($res1);
+                                if($count1>0)
                                 {
-                                    while($row=mysqli_fetch_assoc($res))
+                                    while($row=mysqli_fetch_assoc($res1))
                                     {
                                 ?>
                     <div class="col px-0 mx-2 px-1 ">
@@ -210,12 +210,12 @@ if (session_id() == '') {
                 </div>
                 <div class="row  px-5 mt-5 pt-5">
                     <?php 
-                                $sql1 = "SELECT * FROM product WHERE event='flora2023' ";
-                                $res1 = mysqli_query($conn, $sql1);
-                                $count1 = mysqli_num_rows($res1);
-                                if($count1>0)
+                                $sql2 = "SELECT * FROM product WHERE event='flora2023' ";
+                                $res2 = mysqli_query($conn, $sql2);
+                                $count2 = mysqli_num_rows($res2);
+                                if($count2>0)
                                 {
-                                    while($row=mysqli_fetch_assoc($res1))
+                                    while($row=mysqli_fetch_assoc($res2))
                                     {
                                 ?>
                     <div class="col px-0 mx-2 px-1">

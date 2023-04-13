@@ -23,7 +23,7 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/style13.css">
+    <link rel="stylesheet" href="public/styled2.css">
     <title>Giỏ hàng | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
@@ -34,7 +34,7 @@ if (session_id() == '') {
             <div class="px-5  py-2">
                 <div class="d-flex">
                     <div style="width: 40%;" class="d-flex ps-5 py-3">
-                        <a class="pt-1 text-decoration-none text-black d-flex">
+                        <a href="./index.php" class="pt-1 text-decoration-none text-black d-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-arrow-left mt-1" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -90,25 +90,33 @@ if (session_id() == '') {
                                     <li class="list-unstyled">
                                         <div class="row me-3">
                                             <div class="d-flex">
-                                                <div class="">
-                                                    <img src="./img/a2.avif" style="width:80px;height:80px" alt="">
-                                                </div>
+                                                <a href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                    <div class="">
+                                                        <img src="./img/<?php echo $row['img'];?>"
+                                                            style="width:80px;height:80px" alt="">
+                                                    </div>
+                                                </a>
                                                 <div class="ms-3 col">
+                                                    <a href=""></a>
                                                     <div class="d-flex col-md-12">
                                                         <div style="width: 80%;">
-                                                            <font class="text-uppercase"
-                                                                STYLE="letter-spacing: 1px;word-spacing:1px"
-                                                                face="Candara" size="3">
-                                                                <?php echo $row['name_product'];?>
-                                                            </font>
+                                                            <a class="link-dark text-decoration-none"
+                                                                href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                                <font class="text-uppercase"
+                                                                    STYLE="letter-spacing: 1px;word-spacing:1px"
+                                                                    face="Candara" size="3">
+                                                                    <?php echo $row['name_product'];?>
+                                                                </font>
+                                                            </a>
                                                         </div>
                                                         <div style="width: 20%;" class="d-flex justify-content-end">
                                                             <div class="">
                                                                 <a
-                                                                    href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>">
+                                                                    href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="currentColor"
-                                                                        class="link-dark bi bi-x-lg" viewBox="0 0 16 16">
+                                                                        class="link-dark bi bi-x-lg"
+                                                                        viewBox="0 0 16 16">
                                                                         <path
                                                                             d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                     </svg>
@@ -118,56 +126,72 @@ if (session_id() == '') {
                                                     </div>
                                                     <div class="d-flex col-md-12 mt-3">
                                                         <div style="width: 50%;" class="">
-                                                            <p class="mb-1"
-                                                                style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
-                                                                Màu: <?php echo $row['color'];?></p>
-                                                            <p class="m-0"
-                                                                style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
-                                                                Kích cỡ: <?php echo $row['size'];?></p>
+                                                            <a class="link-dark text-decoration-none"
+                                                                href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                                <p class="mb-1"
+                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                    Màu: <?php echo $row['color'];?></p>
+                                                                <p class="m-0"
+                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                    Kích cỡ: <?php echo $row['size'];?></p>
+                                                            </a>
                                                         </div>
-
                                                         <div style="width: 25%;" class="d-flex justify-content-center">
                                                             <form
-                                                                action="process_update_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>"
+                                                                action="process_update_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>"
                                                                 method="post">
                                                                 <div class="buttons_added">
                                                                     <input class="minus is-form" value="-" type="submit"
                                                                         type="button" name="btn"
-                                                                        onclick="handleminus<?php echo $row['id_product'];?>()"
+                                                                        onclick="handleminus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>()"
                                                                         style="background:#fffcf7;">
                                                                     <input style="width : 50px" class="input-qty"
                                                                         name="sluong"
-                                                                        id="<?php echo $row['id_product'];?>"
+                                                                        id="<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>"
                                                                         type="number" value="<?php echo $row['qty'];?>">
                                                                     <input class="plus is-form" value="+" type="submit"
                                                                         name="btn"
-                                                                        onclick="handleplus<?php echo $row['id_product'];?>()"
+                                                                        onclick="handleplus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>()"
                                                                         style="background:#fffcf7;">
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <script>
-                                                        let qtyElement<?php echo $row['id_product'];?> = document
-                                                            .getElementById('<?php echo $row['id_product'];?>');
-                                                        let qty<?php echo $row['id_product'];?> =
-                                                            qtyElement<?php echo $row['id_product'];?>.value;
+                                                        let qtyElement<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
+                                                            document
+                                                            .getElementById(
+                                                                '<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>'
+                                                            );
+                                                        let qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
+                                                            qtyElement<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                            .value;
                                                         //console.log(qtyElement);
-                                                        let render<?php echo $row['id_product'];?> = (
-                                                            qty<?php echo $row['id_product'];?>) => {
-                                                            qtyElement<?php echo $row['id_product'];?>.value =
-                                                                qty<?php echo $row['id_product'];?>
-                                                        }
-                                                        let handleplus<?php echo $row['id_product'];?> = () => {
-                                                            qty<?php echo $row['id_product'];?>++
-                                                            render<?php echo $row['id_product'];?>(
-                                                                qty<?php echo $row['id_product'];?>);
-                                                        }
-                                                        let handleminus<?php echo $row['id_product'];?> = () => {
-                                                            if (qty<?php echo $row['id_product'];?> > 1)
-                                                                qty<?php echo $row['id_product'];?>--
-                                                            render<?php echo $row['id_product'];?>(
-                                                                qty<?php echo $row['id_product'];?>);
-                                                        }
+                                                        let render<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
+                                                            (
+                                                                qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                            ) => {
+                                                                qtyElement<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                                    .value =
+                                                                    qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                            }
+                                                        let handleplus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
+                                                            () => {
+                                                                qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>++
+                                                                render<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                                    (
+                                                                        qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                                    );
+                                                            }
+                                                        let handleminus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
+                                                            () => {
+                                                                if (qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> >
+                                                                    1)
+                                                                    qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>--
+                                                                render<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                                    (
+                                                                        qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
+                                                                    );
+                                                            }
                                                         </script>
                                                         <div style="width: 25%;"
                                                             class="d-flex align-items-end justify-content-end">
@@ -200,7 +224,7 @@ if (session_id() == '') {
                                     }
                                 ?>
                                 <div class="d-flex row m-3">
-                                    <div class="ps-0"style="width: 80%;">
+                                    <div class="ps-0" style="width: 80%;">
                                         <font class="text-uppercase" STYLE="letter-spacing: 1px;word-spacing:1px"
                                             face="Candara" size="4">tổng cộng
                                         </font>
@@ -229,7 +253,7 @@ if (session_id() == '') {
                             }
                             else {
                                 ?>
-                        <div style="background:#fffcf7;"class="p-5">
+                        <div style="background:#fffcf7;" class="p-5">
                             <div class="m-5 p-5 mb-0 pb-4 d-flex justify-content-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
                                     class="bi bi-bag-plus" viewBox="0 0 16 16">

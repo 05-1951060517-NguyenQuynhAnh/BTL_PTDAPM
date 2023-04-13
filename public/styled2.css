@@ -113,3 +113,26 @@ transition: all 0.25s ease-in-out;
     color: #080808;
     overflow: hidden;
   }
+.size{
+  border: 1px solid black;
+  border-radius: 0%;
+  width: 55px;
+  height: 55px;
+  padding-top: 17px ;
+  font-size: 13px;
+}
+.color{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+}
+.price{
+  background-color: #f6f1eb;
+color: #f6f1eb;
+border: none;
+width: 0px;
+height: 0px;
+}
+
+
