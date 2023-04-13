@@ -481,7 +481,7 @@ endif;
                                     <?php
                                     if( $row['gender_user'] == '1'?'checked':'')
                                     {echo 'Nam';}
-                                    else if( $row['gender_user'] == '0'?'checked':'')
+                                    else if( $row['gender_user'] == '2'?'checked':'')
                                     {echo 'Nữ';}
                                      ?>            
                                 </p>

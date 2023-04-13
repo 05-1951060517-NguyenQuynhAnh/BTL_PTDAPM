@@ -190,7 +190,7 @@ endif;
                                             <?php
                                             if ($row['gender'] == '1' ? 'checked' : '') {
                                                 echo 'Nam';
-                                            } else if ($row['gender'] == '0' ? 'checked' : '') {
+                                            } else if ($row['gender'] == '2' ? 'checked' : '') {
                                                 echo 'Nữ';
                                             }
                                             ?>
