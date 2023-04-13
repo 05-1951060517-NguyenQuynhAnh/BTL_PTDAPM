@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2023 lúc 08:44 PM
+-- Thời gian đã tạo: Th4 13, 2023 lúc 07:13 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -65,6 +65,14 @@ CREATE TABLE `cart` (
   `size` varchar(100) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id_user`, `id_product`, `amount`, `qty`, `color`, `size`, `price`) VALUES
+(1, 216, NULL, 1, 'rosybrown', 'XL', 18544000),
+(1, 219, NULL, 1, 'rosybrown', 'S', 17008000);
 
 -- --------------------------------------------------------
 
@@ -154,19 +162,26 @@ CREATE TABLE `detail_product` (
   `id_product` int(100) NOT NULL,
   `img1` varchar(100) NOT NULL,
   `img2` varchar(100) NOT NULL,
-  `img3` varchar(100) NOT NULL
+  `img3` varchar(100) NOT NULL,
+  `color1` varchar(100) NOT NULL,
+  `color2` varchar(100) NOT NULL,
+  `color3` varchar(100) NOT NULL,
+  `color4` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `detail_product`
 --
 
-INSERT INTO `detail_product` (`id_product`, `img1`, `img2`, `img3`) VALUES
-(216, 'summer1.avif', 'summer1_1.avif', 'summer1_2.avif'),
-(222, 'flora1.avif', 'flora1_1.avif', 'flora1_2.avif'),
-(220, 'flora.avif', 'flora_1.avif', 'flora_2.avif'),
-(221, 'flora4.avif', 'flora4_1.avif', 'flora4_2.avif'),
-(223, 'flora5.avif', 'flora5_1.avif', 'flora5_2.avif');
+INSERT INTO `detail_product` (`id_product`, `img1`, `img2`, `img3`, `color1`, `color2`, `color3`, `color4`) VALUES
+(216, 'summer1.avif', 'summer1_1.avif', 'summer1_2.avif', 'black', 'white', 'rosybrown', ''),
+(222, 'flora1.avif', 'flora1_1.avif', 'flora1_2.avif', 'black', 'white', 'rosybrown', ''),
+(220, 'flora.avif', 'flora_1.avif', 'flora_2.avif', 'black', 'white', 'rosybrown', ''),
+(221, 'flora4.avif', 'flora4_1.avif', 'flora4_2.avif', 'black', 'white', 'rosybrown', ''),
+(223, 'flora5.avif', 'flora5_1.avif', 'flora5_2.avif', 'black', 'white', 'rosybrown', ''),
+(217, 'summer2.avif', 'summer2_1.avif', 'summer2_2.avif', 'black', 'white', 'rosybrown', ''),
+(218, 'summer3.avif', 'summer3_1.avif', 'summer3_2.avif', 'black', 'white', 'rosybrown', ''),
+(219, 'summer5.avif\r\n', 'summer5_1.avif', 'summer5_2.avif', 'black', 'white', 'rosybrown', '');
 
 -- --------------------------------------------------------
 
@@ -225,7 +240,7 @@ INSERT INTO `product` (`id_product`, `catalog_id`, `name_product`, `price`, `con
 (111, 21, 'Gucci Blondie top handle bag', 2300, 'Round Interlocking G đặc trưng cho dòng Gucci Blondie bắt nguồn từ kho lưu trữ của House. Những món đồ đặc trưng như chiếc túi đeo vai và đeo chéo Gucci Blondie có tay cầm phía trên này tái hiện biểu tượng như một chi tiết vá da tinh tế hơn.\r\n+ Da đen\r\n+ Miếng dán da Round Interlocking G\r\n+ Tay cầm trên cùng với độ rơi 3,1\"\r\n+ Dây đeo vai có thể điều chỉnh với độ rơi 20,5\"\r\n+ Khóa kéo đôi với Round Interlocking G\r\n6,7\"Rộng x 5,9\"H x 3,5\"Sâu\r\n+ Sản xuất tại Ý\r\n', 0, 't1.avif\r\nt11.avif\r\nt12.avif', '2023-04-09', 30, 2100, 'Đang bán', '0'),
 (212, 12, 'Women\'s GG sneaker', 1920, 'Được sử dụng lần đầu tiên vào những năm 1970, logo GG là sự phát triển của thiết kế hình thoi nguyên bản của Gucci từ những năm 1930, và từ đó nó trở thành biểu tượng lâu đời cho di sản của Ngôi nhà. Ở đây, mẫu xác định đôi giày thể thao này có màu sắc rực rỡ. Làm sâu sắc thêm mối liên hệ với di sản của các thương hiệu, logo G lồng vào nhau được in xuất hiện ở phía sau.\r\n+ Da trắng\r\n+ Vải GG thêu nhiều màu của phụ nữ\r\n+ Logo Interlocking G được in ở mặt sau\r\n+ Đế cao su\r\n+ Đi kèm thêm cặp dây buộc đóng cửa ren\r\ngót giữa\r\n+ Chiều cao 2,2\"\r\n+ Sản xuất tại Ý\r\n', 0, 'g1.avif\r\ng11.avif\r\ng12.avif', '2023-04-09', 1000, 1800, 'Đang bán', '0'),
 (216, 4, 'Áo khoác len crepe', 18544000, 'Tiếp tục khám phá trang phục trang trọng bằng cách tiếp cận độc đáo, bộ sưu tập Xuân Hè 2023 xem xét khái niệm may đo theo một lăng kính mới. Ngôi nhà diễn giải lại những hình bóng cổ điển, kết hợp những chiếc áo khoác tối giản với những dấu hiệu từ những năm 1990 để tạo nên một bản cập nhật sáng tạo cho tủ quần áo. Chiếc áo khoác len crêpe này có khóa G hình chữ nhật đậm.\r\n+Len crepe màu ngà\r\n+Nút GG có tông vàng\r\n+Cổ áo có thể tháo rời\r\n+Thắt lưng tự buộc có thể tháo rời với khóa G hình chữ nhật đậm\r\n+Hai túi phía trước\r\n+Chiều dài: 71cm, dựa trên cỡ 40 (CNTT)\r\n+Sản xuất tại Ý\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT)\r\n+Dây da rời: Da bò.\r\n+Vải: 100% Len.\r\n+Lớp lót: 100% Viscose.', 0, 'summer1.avif', '2023-04-13', 12, 8000000, 'Đang bán', 'summer2023'),
-(217, 1, 'Áo sơ mi vải bông', 4736000, 'Thể hiện phong cách ready-to-wear cổ điển. Chiếc áo sơ mi bằng cotton poplin màu đen này có cổ áo nhọn và chi tiết cầu vai. Một nút đóng hoàn thành thiết kế.\r\n\r\n+Poplin bông màu đen\r\n+Cổ áo điểm\r\n+Đóng nút\r\n+Chiều dài: 35cm dựa trên cỡ 40 (CNTT)\r\n+Sản xuất tại Ý\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT)\r\n+Vải: 100% Cotton.\r\n+Các chi tiết có thể tháo rời: 100% Silk.', 0, 'summer2.avif', '2023-04-13', 8, 3315200, 'Đang bán', 'summer2023'),
+(217, 1, 'Áo sơ mi vải bông', 4736000, 'Thể hiện phong cách ready-to-wear cổ điển. Chiếc áo sơ mi bằng cotton poplin màu đen này có cổ áo nhọn và chi tiết cầu vai. Một nút đóng hoàn thành thiết kế.<br>\r\n\r\n+Poplin bông màu đen <br>\r\n+Cổ áo điểm <br>\r\n+Đóng nút <br>\r\n+Chiều dài: 35cm dựa trên cỡ 40 (CNTT)<br>\r\n+Sản xuất tại Ý <br>\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT) <br>\r\n+Vải: 100% Cotton. <br>\r\n+Các chi tiết có thể tháo rời: 100% Silk.', 0, 'summer2.avif', '2023-04-13', 8, 3315200, 'Đang bán', 'summer2023'),
 (218, 4, 'Áo khoác len lụa mềm mại', 19728000, 'Tiếp tục khám phá trang phục trang trọng bằng cách tiếp cận độc đáo, bộ sưu tập Xuân Hè 2023 xem xét khái niệm may đo theo một lăng kính mới. The House diễn giải lại những hình bóng cổ điển, kết hợp những chiếc áo khoác tối giản với những dấu hiệu từ những năm 1990, bao gồm cả những cảm hứng về nội y, để tạo ra một bản cập nhật sáng tạo cho tủ quần áo. Chiếc áo khoác lụa có cấu trúc này được trình bày bằng vải lụa len mềm mại, đặc trưng bởi thắt lưng da có thể tháo rời với khóa kim loại tương phản.\r\n+Len lụa mềm màu đen\r\n+cổ tròn\r\n+Tay áo ngắn với còng bật lên\r\n+Bốn túi phía trước\r\n+Thắt lưng da có thể tháo rời với khóa kim loại\r\n+Lỗ thông hơi phía sau\r\n+Chiều dài: 72cm, dựa trên cỡ 38 (CNTT)\r\n+Sản xuất tại Ý\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 38 (CNTT)\r\n+Dây da rời: Da bò.\r\n+Chất liệu vải: 75% Len, 25% Lụa.\r\n+Lớp lót: 100% Lụa.\r\n+Lớp lót túi: 100% Viscose.', 0, 'summer3.avif', '2023-04-13', 7, 10809600, 'Đang bán', 'summer2023'),
 (219, 21, 'Túi đeo vai nhỏ Gucci Deco', 17008000, 'Bị cuốn hút bởi quá khứ, Gucci tiếp tục mở rộng tầm nhìn của mình bằng cách xem lại những kiểu dáng cổ điển và chất liệu tinh tế. Với thiết kế chần bông, những chiếc túi mới làm nổi bật các biểu tượng tiêu biểu từ kho lưu trữ để tạo cảm giác cổ điển, chẳng hạn như phần cứng G lồng vào nhau trên nắp đóng, viền da lấy cảm hứng từ thập niên 70 và dây đeo vai dạng chuỗi, giống như chiếc túi đeo vai này.\r\n\r\n+Da chần bông màu trắng\r\n+Phần cứng tông vàng\r\n+Lót da\r\n+Chi tiết G lồng vào nhau\r\n+Nội thất: 1 túi khóa kéo\r\n+Dây đeo xích trượt có thể được đeo như một dây đeo vai với độ rơi 47,5 cm hoặc có thể đeo như một tay cầm trên cùng với độ rơi 26 cm\r\n+Trọng lượng: xấp xỉ .9kg\r\n+Kích thước trung bình: W25cm x H19.5cm x D8cm\r\n+Sản xuất tại Ý', 0, 'summer5.avif', '2023-04-13', 4, 11809600, 'Đang bán', 'summer2023'),
 (220, 35, 'Khăn lụa in hình GG Flora', 2704000, 'Các thiết kế lưu trữ tiếp tục là nguồn cảm hứng cho các bộ sưu tập mới. Các họa tiết thực vật phức tạp đã được tái sử dụng qua lăng kính hiện đại, nở rộ trên nền chữ lồng GG.\r\n+GG Flora in hoa hồng và lụa ngà\r\n+W90cm x H90cm\r\n+Sản xuất tại Ý\r\n+100% lụa', 0, 'flora.avif', '2023-04-13', 1304000, 1304000, 'Đang bán', 'flora2023'),
