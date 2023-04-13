@@ -153,7 +153,7 @@ endif;
                                     placeholder="Mã nhân viên">
                                 <input class="col-md-12 mt-3 ps-3 border py-2 rounded-3" type="text" name="hovaten"
                                     placeholder="Họ và tên">
-                                    <input class="mt-4 ms-1 ms-3" id="radio1" type="radio" value="1" name="gioitinh">
+                                    <input class="mt-4 ms-1 ms-3" id="radio1" type="radio" value="1" name="gioitinh" checked>
                                     <label for="radio1">Nam</label>
                                     <input class="ms-3 " id="radio2" type="radio" value="0" name="gioitinh">
                                     <label for="radio2">Nữ</label>
