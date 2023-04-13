@@ -43,6 +43,7 @@
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                 aria-label="Close"></button>
                         </div>
+<<<<<<< Updated upstream
                         <div class="p-5 pt-3 offcanvas-body">
                             <div class="accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
@@ -193,6 +194,168 @@
                                                     Mũ & Găng tay
                                                 </p>
                                             </a>
+=======
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                            aria-labelledby="offcanvasExampleLabel">
+                            <div class="px-5 pt-5  pb-0 offcanvas-header">
+                                <font class="offcanvas-title" id="offcanvasExampleLabel"
+                                    STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">MENU</font>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="p-5 pt-3 offcanvas-body">
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <span class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                QUẦN ÁO
+                                            </span>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="me-5 ps-4" style="font-size:15px">
+                                                <a class="link-dark text-decoration-none" href="product/shirt.php">
+                                                    <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Áo & Sơ mi
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/dress.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Váy đầm
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/pant.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Quần
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/jacket.php">
+                                                    <p class="mt-2 mb-0 " style="font-family:courier,arial,helvetica;">
+                                                        Áo khoác & Blazer
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/biki.php">
+                                                    <p class="mt-2 " style="font-family:courier,arial,helvetica;">
+                                                        Đồ bơi
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                            <span class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                GIÀY
+                                            </span>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                            <div class="me-5 ps-4" style="font-size:15px">
+                                                <a class="link-dark text-decoration-none" href="product/sandal.php">
+                                                    <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Giày & Dép
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/sneaker.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Giày thể thao
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/boots.php">
+                                                    <p class="mt-2" style="font-family:courier,arial,helvetica;">
+                                                        Bốt
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                            <span class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                aria-expanded="false" aria-controls="flush-collapseThree">
+                                                TÚI XÁCH
+                                            </span>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingThree"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="me-5 ps-4" style="font-size:15px">
+                                                <a class="link-dark text-decoration-none" href="product/bag1.php">
+                                                    <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Túi đeo vai
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/bag2.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Túi quai chéo
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/bag3.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Túi tote
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/bag4.php">
+                                                    <p class="mt-2" style="font-family:courier,arial,helvetica;">
+                                                        Túi thắt lưng & Balo
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingFour">
+                                            <span class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
+                                                aria-expanded="false" aria-controls="flush-collapseFour">
+                                                PHỤ KIỆN
+                                            </span>
+                                        </h2>
+                                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                            <div class="me-5 ps-4" style="font-size:15px">
+                                                <a class="link-dark text-decoration-none" href="product/vi.php">
+                                                    <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Ví
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/trangsuc.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Trang sức
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/dongho.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Đồng hồ
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/kinhmat.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Kính mắt
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/khan.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Khăn & lụa
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/tl.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Thắt lưng
+                                                    </p>
+                                                </a>
+                                                <a class="link-dark text-decoration-none" href="product/mu.php">
+                                                    <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                        Mũ & Găng tay
+                                                    </p>
+                                                </a>
+                                            </div>
+>>>>>>> Stashed changes
                                         </div>
                                     </div>
                                 </div>

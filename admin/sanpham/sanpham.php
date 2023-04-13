@@ -187,15 +187,15 @@ endif;
                                             data-bs-interval="false">
                                             <div class="carousel-inner mt-3" action="load_image.php">
                                                 <div class="carousel-item active">
-                                                    <img src="../../img/<?php echo $row["image_list"] ?>" width="50px"
+                                                    <img src="../../img/<?php echo $row["img"] ?>" width="50px"
                                                         height="50px" class="img-fluid d-block w-100" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="../../img/<?php echo $row["image_list"] ?>" width="50px"
+                                                    <img src="../../img/<?php echo $row["img"] ?>" width="50px"
                                                         height="50px" class="img-fluid d-block w-100" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="../../img/<?php echo $row["image_list"] ?>" width="50px"
+                                                    <img src="../../img/<?php echo $row["img"] ?>" width="50px"
                                                         height="50px" class="img-fluid d-block w-100" alt="...">
                                                 </div>
                                             </div>

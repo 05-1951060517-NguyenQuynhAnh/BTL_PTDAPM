@@ -33,15 +33,15 @@ endif;
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-        <link rel="stylesheet" href="../../public/style.css">
+    <link rel="stylesheet" href="../../public/style.css">
     <link rel="stylesheet" href="../../public/style13.css">
     <title>CSE481 - Tiệm thời trang</title>
-    <link rel="shortcut icon" href="img/1.png">
+    <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body>
-<div class="header">
-        <div class="container-fluid px-5" style="background: #f6f1eb;" >
+    <div class="header">
+        <div class="container-fluid px-5" style="background: #f6f1eb;">
             <div class="px-5  py-2">
                 <div class="d-flex">
                     <div style="width: 40%;" class="d-flex  py-3">
@@ -242,7 +242,8 @@ endif;
                     </div>
 
                     <div style="width: 20%;" class="d-flex justify-content-center">
-                        <div class=""> <img id="logo" src="../../img/logo.png" style="width:100px;height:66px" alt=""></div>
+                        <div class=""> <img id="logo" src="../../img/logo.png" style="width:100px;height:66px" alt="">
+                        </div>
 
                     </div>
                     <div style="width: 40%;" class=" d-flex justify-content-end">
@@ -262,7 +263,8 @@ endif;
                                     </svg>
                                     <p class="pt-1 mb-0" style="font-size:13px">Tài khoản</p>
                                 </a>
-                                <a class="pt-1 text-decoration-none text-black d-flex" href="../../cart.php?id=<?php echo $row['id_user'];?>">
+                                <a class="pt-1 text-decoration-none text-black d-flex"
+                                    href="../../cart.php?id=<?php echo $row['id_user'];?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                         class="bi bi-cart2 me-2 ms-4" viewBox="0 0 16 16">
                                         <path
@@ -292,7 +294,8 @@ endif;
                              ?>" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="px-5 pt-5  pb-0 offcanvas-header">
                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
-                                        STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">Xin chào</font>
+                                        STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">Xin chào
+                                    </font>
                                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                         aria-label="Close"></button>
                                 </div>
@@ -300,7 +303,8 @@ endif;
                                     <?php               
                                         if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
                                     ?>
-                                    <a href="profile_user.php?id=<?php echo $row['id_user'];?>" class="text-decoration-none link-dark">
+                                    <a href="profile_user.php?id=<?php echo $row['id_user'];?>"
+                                        class="text-decoration-none link-dark">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                             fill="currentColor" class="bi bi-gear me-1" viewBox="0 0 16 16">
@@ -349,7 +353,7 @@ endif;
                                                 </svg>
                                                 <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
                                                     size="2">
-                                                   <?php echo $_GET['error']?></font>
+                                                    <?php echo $_GET['error']?></font>
                                             </div>
                                             <?php
                                         }
@@ -428,10 +432,11 @@ endif;
             <div class="px-5 pt-5">
                 <div class="row px-5">
                     <div class="col-md-2">
-                    <a class="text-decoration-none"href="user.php?id=<?php echo $row['id_user'];?>">
+                        <a class="text-decoration-none" href="user.php?id=<?php echo $row['id_user'];?>">
                             <p class="mt-2 fw-bold link-dark"><?php echo $row['name_user'];?></p>
-                    </a>
-                        <a href="edit_profile.php?id=<?php echo $row['id_user'];?>" class="text-decoration-none link-dark">
+                        </a>
+                        <a href="edit_profile.php?id=<?php echo $row['id_user'];?>"
+                            class="text-decoration-none link-dark">
                             <div class="py-2 ">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="d-inline bi bi-pen-fill" viewBox="0 0 16 16">
@@ -459,34 +464,49 @@ endif;
                             <p class="" style="font-size:14px">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                         </div>
                         <hr>
-                        <form class="form-signin" action="process_edit_pass.php?id=<?php echo $row['id_user'];?>" method="post">
-                            <div class="col-md-8">
-                                <div class="pt-1 pb-3 mx-3">
-                                    <label style="font-size:13px" class="fw-bold" for="txtpass">Mật khẩu cũ</label>
-                                    <input class="form-control col-md-12 ps-3 border py-2 rounded-3" type="password" name="txtpass"
-                                        placeholder="Mật khẩu cũ" required autofocus>
-                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtpassnew">Mật khẩu mới</label>
-                                    <input class=" form-control col-md-12 ps-3  border py-2 rounded-3" type="password" name="txtpassnew" placeholder="Mật khẩu mới" required autofocus >
-                                </div>
-                            </div>
-                            <div class="mt-2 ms-3">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <form class="form-signin"
+                                    action="process_edit_pass.php?id=<?php echo $row['id_user'];?>" method="post">
+                                    <div class="col-md-8">
+                                        <div class="pt-1 pb-3 mx-3">
+                                            <label style="font-size:13px" class="fw-bold" for="txtpass">Mật khẩu
+                                                cũ</label>
+                                            <input class="form-control col-md-12 ps-3 border py-2 rounded-3"
+                                                type="password" name="txtpass" placeholder="Mật khẩu cũ" required
+                                                autofocus>
+                                            <label style="font-size:13px" class="mt-2 fw-bold" for="txtpassnew">Mật khẩu
+                                                mới</label>
+                                            <input class=" form-control col-md-12 ps-3  border py-2 rounded-3"
+                                                type="password" name="txtpassnew" placeholder="Mật khẩu mới" required
+                                                autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 ms-3">
 
-                                    <?php
+                                        <?php
                                     if(isset($_GET['error'])){
                                         echo "<p style ='color:red'>{$_GET['error']}</p>";
                                         }
                                 ?>
+                                    </div>
+                                    <div class="ms-5">
+                                        <button type="submit" name=""
+                                            class="link-light fw-bold btn btn-secondary mt-3 ms-5 mb-4 px-4">Save</button>
+                                    </div>
+
+                                </form>
                             </div>
-                            <button type="submit" name="" style="background: #e68e12;"
-                        class="link-light fw-bold btn mt-3 ms-5 mb-4 px-3">Save</button>
-                        </form>
+                            <div class="col-md-3"></div>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
-    <section style="background:#f6f1eb;">
+    <section>
         <div class="container">
             <div style="font-size:15px" class="row p-5 pt-5">
                 <div class="col-md-4  me-5">
@@ -566,11 +586,11 @@ endif;
                                 <div class="d-flex justify-content-center">
                                     <form action="" method="GET">
                                         <div class="pt-2 d-flex">
-                                            <input class="py-2 border border-warning rounded-start" type="text"
+                                            <input class="py-2 border rounded-start" type="text"
                                                 style="padding-left: 10px;font-size:14px;width:400px" name=""
                                                 placeholder="Enter your email...">
-                                            <button type="submit" style="background:#f4cc1c;"
-                                                class="border-0 rounded-0 rounded-end link-light">
+                                            <button type="submit" style="background:#dee2e6;"
+                                                class="border-0 rounded-0 rounded-end link-dark">
                                                 <p class="mb-0">Send</p>
                                             </button>
                                         </div>
@@ -594,8 +614,9 @@ endif;
                 <div class="col-md d-flex justify-content-end">
 
                     <div class="mt-1">
-                        <a href="https://www.facebook.com/thuyduowg" class="me-3 icon link-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <a href="https://www.facebook.com/thuyduowg" class="me-3 icon link-dark"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-facebook" viewBox="0 0 16 16">
                                 <path
                                     d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                             </svg></a>

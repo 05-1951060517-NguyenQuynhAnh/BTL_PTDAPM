@@ -33,15 +33,15 @@ endif;
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-        <link rel="stylesheet" href="../../public/style.css">
+    <link rel="stylesheet" href="../../public/style.css">
     <link rel="stylesheet" href="../../public/style13.css">
     <title>CSE481 - Tiệm thời trang</title>
-    <link rel="shortcut icon" href="img/1.png">
+    <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body>
-<div class="header">
-        <div class="container-fluid px-5" style="background: #f6f1eb;" >
+    <div class="header">
+        <div class="container-fluid px-5" style="background: #f6f1eb;">
             <div class="px-5  py-2">
                 <div class="d-flex">
                     <div style="width: 40%;" class="d-flex  py-3">
@@ -241,7 +241,8 @@ endif;
                     </div>
 
                     <div style="width: 20%;" class="d-flex justify-content-center">
-                        <div class=""> <img id="logo" src="../../img/logo.png" style="width:100px;height:66px" alt=""></div>
+                        <div class=""> <img id="logo" src="../../img/logo.png" style="width:100px;height:66px" alt="">
+                        </div>
 
                     </div>
                     <div style="width: 40%;" class=" d-flex justify-content-end">
@@ -261,7 +262,8 @@ endif;
                                     </svg>
                                     <p class="pt-1 mb-0" style="font-size:13px">Tài khoản</p>
                                 </a>
-                                <a class="pt-1 text-decoration-none text-black d-flex" href="cart.php?id=<?php echo $row['id_user'];?>">
+                                <a class="pt-1 text-decoration-none text-black d-flex"
+                                    href="cart.php?id=<?php echo $row['id_user'];?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                         class="bi bi-cart2 me-2 ms-4" viewBox="0 0 16 16">
                                         <path
@@ -291,7 +293,8 @@ endif;
                              ?>" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="px-5 pt-5  pb-0 offcanvas-header">
                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
-                                        STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">Xin chào</font>
+                                        STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">Xin chào
+                                    </font>
                                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                         aria-label="Close"></button>
                                 </div>
@@ -299,7 +302,8 @@ endif;
                                     <?php               
                                         if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
                                     ?>
-                                    <a href="profile_user.php?id=<?php echo $row['id_user'];?>" class="text-decoration-none link-dark">
+                                    <a href="profile_user.php?id=<?php echo $row['id_user'];?>"
+                                        class="text-decoration-none link-dark">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                             fill="currentColor" class="bi bi-gear me-1" viewBox="0 0 16 16">
@@ -348,7 +352,7 @@ endif;
                                                 </svg>
                                                 <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
                                                     size="2">
-                                                   <?php echo $_GET['error']?></font>
+                                                    <?php echo $_GET['error']?></font>
                                             </div>
                                             <?php
                                         }
@@ -422,12 +426,12 @@ endif;
             </div>
         </div>
     </div>
-    <section class="pb-5" style="font-family:'Arial';background:#f6f1eb">                                    
+    <section class="pb-5" style="font-family:'Arial';background:#fafafa">
         <div class="container">
             <div class="px-5 pt-5">
                 <div class="row px-5">
                     <div class="col-md-2">
-                        <a class="text-decoration-none"href="profile_user.php?id=<?php echo $row['id_user'];?>">
+                        <a class="text-decoration-none" href="profile_user.php?id=<?php echo $row['id_user'];?>">
                             <p class="mt-2 fw-bold link-dark"><?php echo $row['name_user'];?></p>
                         </a>
                         <a href="#" class="text-decoration-none link-dark">
@@ -454,7 +458,7 @@ endif;
                     <div style="background:white" class="border col-md px-5">
 
                         <div class="mt-3">
-                            <p class="mb-0 fs-4">Sử hồ sơ của tôi</p>
+                            <p class="mb-0 fs-4">Sửa hồ sơ của tôi</p>
                             <p class="" style="font-size:14px">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                         </div>
                         <hr>
@@ -463,30 +467,38 @@ endif;
                                 <div class="pt-1 pb-3 mx-3">
                                     <label style="font-size:13px" class="fw-bold" for="txtten">Họ và tên</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtten"
-                                        placeholder="Nhập họ và tên"value="<?php echo $row['name_user'];?>">
+                                        placeholder="Nhập họ và tên" value="<?php echo $row['name_user'];?>">
 
 
-                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtngaysinh">Ngày sinh</label>
-                                    <input class="col-md-12 ps-3  border py-2 rounded-3" type="date" value="<?php echo $row['date_birth'];?>" name="txtngaysinh" >
+                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtngaysinh">Ngày
+                                        sinh</label>
+                                    <input class="col-md-12 ps-3  border py-2 rounded-3" type="date"
+                                        value="<?php echo $row['date_birth'];?>" name="txtngaysinh">
 
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtdiachi">Địa chỉ</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtdiachi"
-                                        placeholder="Nhập địa chị"value="<?php echo $row['address'];?>">
+                                        placeholder="Nhập địa chị" value="<?php echo $row['address'];?>">
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtname">Email</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtemail"
-                                        placeholder="Nhập email"value="<?php echo $row['email'];?>">
-                                        <label style="font-size:13px" class="mt-2 fw-bold" for="txtsdt">Số điện thoại</label>
+                                        placeholder="Nhập email" value="<?php echo $row['email'];?>">
+                                    <label style="font-size:13px" class="mt-2 fw-bold" for="txtsdt">Số điện
+                                        thoại</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtsdt"
-                                        placeholder="Nhập số điện thoại"value="<?php echo $row['phone'];?>">
+                                        placeholder="Nhập số điện thoại" value="<?php echo $row['phone'];?>">
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtgender">Giới tính</label>
-                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="txtgender" <?php echo $row['gender_user'] == 'Nữ'?'checked':''?>>
+                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="txtgender"
+                                        <?php echo $row['gender_user'] == 'Nữ'?'checked':''?>>
                                     <label for="radio1">Nữ</label>
-                                    <input class="ms-3 " id="radio2" type="radio" value="1" name="txtgender"<?php echo $row['gender_user'] == 'Nam'?'checked':''?>>
+                                    <input class="ms-3 " id="radio2" type="radio" value="1" name="txtgender"
+                                        <?php echo $row['gender_user'] == 'Nam'?'checked':''?>>
                                     <label for="radio2">Nam</label>
                                 </div>
                             </div>
-                            <button type="submit" name="" style="background: #e68e12;"
-                        class="link-light fw-bold btn mt-3 ms-5 mb-4 px-3">Save</button>
+                            <div class="text-center">
+                                <button type="submit" name=""
+                                    class="link-light fw-bold btn btn-secondary mt-3 ms-5 mb-4 px-3">Save</button>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -574,11 +586,11 @@ endif;
                                 <div class="d-flex justify-content-center">
                                     <form action="" method="GET">
                                         <div class="pt-2 d-flex">
-                                            <input class="py-2 border border-warning rounded-start" type="text"
+                                            <input class="py-2 border rounded-start" type="text"
                                                 style="padding-left: 10px;font-size:14px;width:400px" name=""
                                                 placeholder="Enter your email...">
-                                            <button type="submit" style="background:#f4cc1c;"
-                                                class="border-0 rounded-0 rounded-end link-light">
+                                            <button type="submit" style="background:#dee2e6;"
+                                                class="border-0 rounded-0 rounded-end link-dark">
                                                 <p class="mb-0">Send</p>
                                             </button>
                                         </div>

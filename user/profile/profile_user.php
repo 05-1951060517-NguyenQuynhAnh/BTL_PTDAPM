@@ -36,7 +36,7 @@ endif;
     <link rel="stylesheet" href="../../public/style.css">
     <link rel="stylesheet" href="../../public/style13.css">
     <title>CSE481 - Tiệm thời trang</title>
-    <link rel="shortcut icon" href="img/1.png">
+    <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body>
@@ -426,17 +426,17 @@ endif;
     <section class="pb-2 border">
 
     </section>
-    <section class="pb-5" style="font-family:'Arial';background:#f6f1eb">
+    <section class="pb-5" style="font-family:'Arial';background:#fafafa">
         <div class="container">
             <div class="px-5 pt-5">
                 <div class="row px-5">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <p class="fw-bold">
                             <?php echo $row['name_user']; ?>
                         </p>
                         <a href="edit_profile.php?id=<?php echo $row['id_user'] ?>"
                             class="text-decoration-none link-dark">
-                            <div class="py-2 ">
+                            <div class="py-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="d-inline bi bi-pen-fill" viewBox="0 0 16 16">
                                     <path
@@ -585,11 +585,11 @@ endif;
                                 <div class="d-flex justify-content-center">
                                     <form action="" method="GET">
                                         <div class="pt-2 d-flex">
-                                            <input class="py-2 border border-warning rounded-start" type="text"
+                                        <input class="py-2 border rounded-start" type="text"
                                                 style="padding-left: 10px;font-size:14px;width:400px" name=""
                                                 placeholder="Enter your email...">
-                                            <button type="submit" style="background:#f4cc1c;"
-                                                class="border-0 rounded-0 rounded-end link-light">
+                                            <button type="submit" style="background:#dee2e6;"
+                                                class="border-0 rounded-0 rounded-end link-dark">
                                                 <p class="mb-0">Send</p>
                                             </button>
                                         </div>
