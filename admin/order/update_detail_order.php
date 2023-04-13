@@ -2,14 +2,15 @@
 ?>
 <?php
 $id = $_GET['id'];
-$sql = "SELECT * FROM admin WHERE username='$id' ";
+$id1 = $_GET['id1'];
+$sql = "SELECT * FROM admin,detail_order,user WHERE username='$id' and id_order='$id1';";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 }
 ?>
 
-<body>
+<body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
@@ -18,10 +19,7 @@ if (mysqli_num_rows($result) > 0) {
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào,
-            <?php echo $row['name']; ?>
-        </h4>
-
+        <h4 class="mt-1 text-center text-dark">Xin chào</h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -42,7 +40,6 @@ if (mysqli_num_rows($result) > 0) {
                 </a>
             </ul>
         </div>
-
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -66,7 +63,7 @@ if (mysqli_num_rows($result) > 0) {
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../taikhoan/taikhoan.php?id=<?php echo $row['id_admin']; ?>" class="d-flex nav_link">
+                    <a href="../taikhoan/taikhoan.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -80,7 +77,7 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box-seam" viewBox="0 0 16 16">
                             <path
@@ -100,7 +97,7 @@ if (mysqli_num_rows($result) > 0) {
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
+                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
@@ -133,104 +130,89 @@ if (mysqli_num_rows($result) > 0) {
 
     <div class="height-100">
         <section class="p-5">
-            <?php
-            if (isset($_GET['error'])) {
-                echo "<h4 class='text-center'style ='color:red'>{$_GET['error']}</h4>";
-            }
-            ?>
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
-                <h4 class="text-center text-dark">CHI TIẾT ĐƠN HÀNG</h4>
-                <div class="text-center text-dark">
-                    <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
-                </div>
-                <table class="mt-3 table table-striped">
-                    <thead>
-                        <tr style="color:#888;">
-                            <!-- <th scope="col"></th> -->
-                            <th style="width:10px" class="col ps-3" scope="col">ID</th>
-                            <!-- <th style="width:80px" scope="col">Số lượng</th> -->
-                            <th style="width:90px" scope="col">Tên khách hàng</th>
-                            <th style="width:30px" scope="col">Thời gian tạo</th>
-                            <th style="width:90px" scope="col">Địa chỉ giao hàng</th>
-                            <th style="width:20px" scope="col">Số lượng</th>
-                            <th style="width:50px" scope="col">Thành tiền</th>
-                            <th style="width:70px" scope="col">Trạng thái</th>
-                            <th style="width:10px" scope="col">Sửa</th>
-                            <th style="width:10px" scope="col">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                <p class="fs-4 fw-bold">Sửa thông tin loại hàng</p>
 
-                        // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
-                        $sql = "SELECT * FROM `order`,detail_order,user ";
-                        $res = mysqli_query($conn, $sql);
-                        $count = mysqli_num_rows($res);
-                        if ($count > 0) {
-                            while ($row = mysqli_fetch_assoc($res)) {
-                                ?>
-                                <tr>
-                                    <td class="">
-                                        <p class="ms-2">
-                                            <?php echo $row['id_order']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['name_user']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="ms-2">
-                                            <?php echo $row['created']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['address_order']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['qty']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="ms-2">
-                                            <?php echo $row['amount']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php
-                                            if ($row['status'] == '1' ? 'checked' : '') {
-                                                echo 'Đã xác nhận';
-                                            } else if ($row['status'] == '0' ? 'checked' : '') {
-                                                echo 'Chưa xác nhận';
-                                            }
-                                            ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <a href="update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
-                                            <i class="link-dark me-3 bi bi-pencil-square"></i>
-                                        </a>
-                                    </td>
-                                    <td class="">
+                <form action="process_update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"
+                    method="post">
+                    <label for="txtMaSP">ID đơn hàng</label>
+                    <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
+                        placeholder="Nhập mã sản phẩm" value="<?php echo $row['id_order']; ?>" readonly>
 
-                                        <a href="delete_donhang.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
-                                                class="link-dark me-3 bi bi-trash"></i></a>
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                    <div class="form-group mt-2">
+
+                        <label for="txtTenSP">Tên khách hàng</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTen"
+                            placeholder="" value="<?php echo $row['name_user']; ?>" required>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="txtSoluong">Số lượng</label>
+                        <input type="number" min=1 max=100 class="col-md-12 ps-3 border py-2 rounded-3"
+                            name="txtSoluong" placeholder="Nhập số lượng" value="<?php echo $row['qty']; ?>" required>
+                    </div>
+                    <label class="mt-3">Ngày tạo</label>
+                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaytao"
+                                            placeholder="" value="<?php echo $row['created']; ?>">
+                    <div class="form-group mt-2">
+                        <label for="txtTrangthai">Trạng thái</label>
+                        <select id="inputState" name="txtTrangthai" required=""
+                            class="col-md-12 ps-3 border py-2 rounded-3">
+                            <option value="0" <?php echo $row['status'] == 'Đã xác nhận' ? 'selected' : '' ?>>Đã xác nhận
+                            </option>
+                            <option value="1" <?php echo $row['status'] == 'Chưa xác nhận' ? 'selected' : '' ?>>
+                                Chưa xác nhận</option>
+                        </select>
+                    </div>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        class="btn btn-secondary mt-4">Cập nhật</button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Xác nhận đơn hàng</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có chắc chắn muốn xác nhận sản phẩm này?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Có</button></a>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Không</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        class="btn btn-secondary mt-4">Cập nhật</button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Xác nhận đơn hàng</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có chắc chắn muốn thay đổi thông tin sản phẩm này?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Có</button></a>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Không</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                 <a class="text-decoration-none link-dark" style="font-size:13px"
-                    href="order.php?id=<?php echo $row['id_admin']; ?>">
+                    href="detail_order.php?id=<?php echo $row['username']; ?>">
                     <div class="mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                             class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
