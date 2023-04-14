@@ -250,7 +250,7 @@ endif;
                     </div>
                 </div>
                 <?php
-                $sql3 = "SELECT sum(detail_order.amount*product.price)-(sum(price*import_price)) as loinhuan FROM detail_order,product,`order` WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id  and year(order.created)= year(CURDATE()) ";
+                $sql3 = "SELECT sum(detail_order.qty*product.price)-(sum(detail_order.qty*import_price)) as loinhuan FROM detail_order,product,`order` WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id  and year(order.created)= year(CURDATE()) ";
                 $res1 = mysqli_query($conn, $sql3);
                 if (mysqli_num_rows($res1) > 0) {
                     $row = mysqli_fetch_assoc($res1);
