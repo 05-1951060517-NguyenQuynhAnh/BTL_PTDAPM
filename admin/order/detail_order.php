@@ -153,6 +153,7 @@ if (mysqli_num_rows($result) > 0) {
                             <th style="width:10px" class="col ps-3" scope="col">ID</th>
                             <!-- <th style="width:80px" scope="col">Số lượng</th> -->
                             <th style="width:90px" scope="col">Tên khách hàng</th>
+                            <th style="width:90px" scope="col">Tên Sản Phẩm</th>
                             <th style="width:30px" scope="col">Thời gian tạo</th>
                             <th style="width:90px" scope="col">Địa chỉ giao hàng</th>
                             <th style="width:20px" scope="col">Số lượng</th>
@@ -166,7 +167,7 @@ if (mysqli_num_rows($result) > 0) {
                         <?php
 
                         // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
-                        $sql = "SELECT * FROM `order`,detail_order,user WHERE order.id_order = detail_order.id_order and order.user_id = user.id_user and detail_order.id_order=$id1 ";
+                        $sql = "SELECT *, detail_order.status as status_detail_order FROM `order`,detail_order,user,product WHERE order.id_order = detail_order.id_order and order.user_id = user.id_user and product.id_product=detail_order.product_id and detail_order.id_order=$id1 ";
                         $res = mysqli_query($conn, $sql);
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
@@ -181,6 +182,11 @@ if (mysqli_num_rows($result) > 0) {
                                     <td class="">
                                         <p class="">
                                             <?php echo $row['name_user']; ?>
+                                        </p>
+                                    </td>
+                                    <td class="">
+                                        <p class="">
+                                            <?php echo $row['name_product']; ?>
                                         </p>
                                     </td>
                                     <td class="">
@@ -206,9 +212,9 @@ if (mysqli_num_rows($result) > 0) {
                                     <td class="">
                                         <p class="">
                                             <?php
-                                            if ($row['status'] == '2' ? 'checked' : '') {
+                                            if ($row['status_detail_order'] == '2' ? 'checked' : '') {
                                                 echo 'Đã xác nhận';
-                                            } else if ($row['status'] == '1' ? 'checked' : '') {
+                                            } else if ($row['status_detail_order'] == '1' ? 'checked' : '') {
                                                 echo 'Chưa xác nhận';
                                             }
                                             ?>
@@ -221,7 +227,7 @@ if (mysqli_num_rows($result) > 0) {
                                     </td>
                                     <td class="">
 
-                                        <a href="delete_donhang.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
+                                        <a href="delete_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>&id2=<?php echo $row['product_id']; ?>"><i
                                                 class="link-dark me-3 bi bi-trash"></i></a>
                                     </td>
                                 </tr>

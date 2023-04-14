@@ -4,7 +4,7 @@
 $id = $_GET['id'];
 $id1 = $_GET['id1'];
 $id2 = $_GET['id2'];
-$sql = "SELECT * FROM admin,detail_order,user WHERE username='$id' and id_order='$id1' and product_id = '$id2';";
+$sql = "SELECT * FROM admin,detail_order,user WHERE username='$id' and id_order='$id1' and product_id = '$id2'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -134,27 +134,34 @@ if (mysqli_num_rows($result) > 0) {
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
                 <p class="fs-4 fw-bold">Sửa thông tin loại hàng</p>
-                <form action="process_update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"
+                <form action="process_update_detail.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']?>&id2=<?php echo $row['product_id'];?>"
                     method="post">
-                    <label for="txtMaSP">ID đơn hàng</label>
+                    <label for="txtMaDH">ID đơn hàng</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
                         placeholder="Nhập mã sản phẩm" value="<?php echo $row['id_order']; ?>" readonly>
 
                     <div class="form-group mt-2">
 
-                        <label for="txtTenSP">Tên khách hàng</label>
-                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTen"
-                            placeholder="" value="<?php echo $row['name_user']; ?>" required>
+                        <label for="txtKH">Tên khách hàng</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtKH" placeholder=""
+                            value="<?php echo $row['name_user']; ?>" readonly>
                     </div>
 
                     <div class="form-group mt-2">
                         <label for="txtSoluong">Số lượng</label>
                         <input type="number" min=1 max=100 class="col-md-12 ps-3 border py-2 rounded-3"
-                            name="txtSoluong" placeholder="Nhập số lượng" value="<?php echo $row['qty']; ?>" required>
+                            name="txtSoluong" placeholder="Nhập số lượng" value="<?php echo $row['qty']; ?>" readonly>
+                    </div>
+                    <div class="form-group mt-2">
+
+                        <label for="txtthanhtien">Thành tiền</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtthanhtien" placeholder=""
+                            value="<?php echo $row['amount']; ?>" readonly>
                     </div>
                     <label class="mt-3">Ngày tạo</label>
-                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaytao"
-                                            placeholder="" value="<?php echo $row['created']; ?>">
+                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="txtngaytao" placeholder=""
+                        value="<?php echo $row['created']; ?>"readonly>
+                    
                     <div class="form-group mt-2">
                         <label for="txtTrangthai">Trạng thái</label>
                         <!-- <select id="inputState" name="txtTrangthai" required=""
@@ -165,17 +172,17 @@ if (mysqli_num_rows($result) > 0) {
                                 Chưa xác nhận</option>
                         </select> -->
                         <div>
-                        <input class="mt-4 ms-1" id="radio1" type="radio" value="1" name="txtTrangthai"
-                            <?php echo $row['status'] == '1' ? 'checked' : '' ?>>
-                        <label for="radio1">Chưa xác nhận</label>
-                        <input class="ms-3 " id="radio2" type="radio" value="2" name="txtTrangthai"
-                            <?php echo $row['status'] == '2' ? 'checked' : '' ?>>
-                        <label for="radio2">Đã xác nhận</label>
+                            <input class="mt-4 ms-1" id="radio1" type="radio" value="1" name="txtTrangthai"
+                                <?php echo $row['status'] == '1' ? 'checked' : '' ?>>
+                            <label for="radio1">Chưa xác nhận</label>
+                            <input class="ms-3 " id="radio2" type="radio" value="2" name="txtTrangthai"
+                                <?php echo $row['status'] == '2' ? 'checked' : '' ?>>
+                            <label for="radio2">Đã xác nhận</label>
                         </div>
 
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        class="btn btn-secondary mt-4">Cập nhật</button>
+                    <button type="button" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="btn btn-secondary mt-4">Xác nhận</button>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -186,10 +193,10 @@ if (mysqli_num_rows($result) > 0) {
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Bạn có chắc chắn muốn xác nhận sản phẩm này?
+                                    Bạn có chắc chắn muốn xác nhận thông tin đơn hàng này?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Có</button></a>
+                                   <button type="submit" class="btn btn-primary">Có</button></a>
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Không</button>
                                 </div>

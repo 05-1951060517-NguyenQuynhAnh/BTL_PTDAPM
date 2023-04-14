@@ -1,14 +1,9 @@
 <?php
 $id = $_GET['id'];
 $id1 = $_GET['id1'];
-    $MaSP = $_POST['txtMaSP'];
-    $TenSP = $_POST['txtTenSP'];
-    $Giaban = $_POST['txtGiaban'];
-    $Gianhap = $_POST['txtGianhap'];
-    $Soluong = $_POST['txtSoluong'];
+$id2 = $_GET['id2'];
     $Trangthai= $_POST['txtTrangthai'];
-    $Mota = $_POST['txtMota'];
-    $file3 = $_POST['file3'];
+
     require_once '../../config/connect_db.php';
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
@@ -19,11 +14,11 @@ $id1 = $_GET['id1'];
     //    }else{
     //        header("location: error.php"); 
     //    }
-    $sql = "UPDATE product SET name_product='$TenSP', price='$Giaban',import_price='$Gianhap',quantity='$Soluong',status='$Trangthai',content='$Mota',image_list='$file3' WHERE id_product='$id1'";
+    $sql = "UPDATE detail_order SET status='$Trangthai' WHERE detail_order.id_order= '$id1' and product_id='$id2'";
     $number = mysqli_query($conn,$sql);
 
     if($number > 0){
-     header("location: sanpham.php?id=$id"); 
+     header("location: detail_order.php?id=$id&id1=$id1"); 
     }else{
         header("location: error.php"); 
     }
