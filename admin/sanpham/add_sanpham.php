@@ -21,7 +21,9 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -100,7 +102,7 @@ endif;
                     </a>
                     <div>
                         <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
                                     d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -166,22 +168,23 @@ endif;
                     <div class="form-group mt-2" action="display_data.php" method="post">
                         <label for="txtMaLSP">Mã loại sản phẩm</label>
                         <div>
-                        <select name="txtMaLSP" id="inputState" required="" class="col-md-12 ps-3 border py-2 rounded-3">
-                            <?php
-                            // Truy vấn để lấy các giá trị từ cột tương ứng
-                            $query = "SELECT name_dcatalog,id_dtcatalog FROM detail_catalog";
-                            $result = mysqli_query($conn, $query);
+                            <select name="txtMaLSP" id="inputState" required=""
+                                class="col-md-12 ps-3 border py-2 rounded-3">
+                                <?php
+                                // Truy vấn để lấy các giá trị từ cột tương ứng
+                                $query = "SELECT name_dcatalog,id_dtcatalog FROM detail_catalog";
+                                $result = mysqli_query($conn, $query);
 
-                            // Tạo option cho từng giá trị lấy được
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='" . $row['id_dtcatalog'] . "'>" . $row['name_dcatalog'] . "</option>";
+                                // Tạo option cho từng giá trị lấy được
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='" . $row['id_dtcatalog'] . "'>" . $row['name_dcatalog'] . "</option>";
+                                    }
                                 }
-                            }
-                            // Đóng kết nối
-                            mysqli_close($conn);
-                            ?>
-                        </select>
+                                // Đóng kết nối
+                                mysqli_close($conn);
+                                ?>
+                            </select>
                         </div>
                     </div>
 
@@ -220,8 +223,8 @@ endif;
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtngaytao">Ngày tạo</label>
-                        <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date"
-                            name="txtngaytao"required>
+                        <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date" id="currentDate"
+                            name="txtngaytao" required>
                     </div>
                     <div class="form-group mt-2">
                         Mô tả<br>
@@ -231,8 +234,8 @@ endif;
                     <div class="form-group mt-2">
                         <input type="file" required="" name="file3" class="form-control-file">
                     </div>
-                    <button type="submit" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" class="btn btn-secondary mt-4">Tạo sản phẩm mới</button>
+                    <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        class="btn btn-secondary mt-4">Tạo sản phẩm mới</button>
                 </form>
                 <?php
                 if (isset($_GET['error'])) {
@@ -275,6 +278,10 @@ endif;
                 </a>
             </div>
         </section>
+        <script>
+            const currentDate = new Date().toISOString().slice(0, 10);
+            document.getElementById('currentDate').value = currentDate;
+        </script>
     </div>
     <?php include('../template/footer.php');
     ?>

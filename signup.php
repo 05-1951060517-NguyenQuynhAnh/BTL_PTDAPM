@@ -377,7 +377,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <label style="font-size:12px" for="ngaysinh">Ngày sinh*</label>
-                                    <input class="col-md-12 ps-3  border py-2 " type="date" name="ngaysinh">
+                                    <input class="col-md-12 ps-3  border py-2 " type="date" name="ngaysinh" id="currentDate">
                                 </div>
                                 <div class="mt-3">
                                     <label style="font-size:12px" for="diachi">Địa chỉ*</label>
@@ -545,6 +545,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script>
+            const currentDate = new Date().toISOString().slice(0, 10);
+            document.getElementById('currentDate').value = currentDate;
+        </script>
 </body>
 
 </html>

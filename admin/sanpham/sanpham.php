@@ -183,33 +183,6 @@ endif;
                                     <td class="">
                                         <img class="" width="100px" height="100px"
                                             src="../../img/<?php echo $row['img']; ?>" alt="">
-                                        <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
-                                            data-bs-interval="false">
-                                            <div class="carousel-inner mt-3" action="load_image.php">
-                                                <div class="carousel-item active">
-                                                    <img src="../../img/<?php echo $row["img1"] ?>" width="50px"
-                                                        height="50px" class="img-fluid d-block w-100" alt="...">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="../../img/<?php echo $row["img2"] ?>" width="50px"
-                                                        height="50px" class="img-fluid d-block w-100" alt="...">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="../../img/<?php echo $row["img3"] ?>" width="50px"
-                                                        height="50px" class="img-fluid d-block w-100" alt="...">
-                                                </div>
-                                            </div>
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div> -->
                                     </td>
                                     <td class="">
                                         <p class="ms-2">

@@ -154,26 +154,47 @@ endif;
                             <form class="form-addaccount" action="process_addaccount.php?id=<?php echo $id ?>"
                                 method="post">
                                 <div class="pt-1 pb-3 mx-3">
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id"
-                                        placeholder="Mã nhân viên">
-                                    <input class="col-md-12 mt-3 ps-3 border py-2 rounded-3" type="text" name="hovaten"
-                                        placeholder="Họ và tên">
-                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="gioitinh" checked>
-                                    <label for="radio1">Nữ</label>
-                                    <input class="ms-3 " id="radio2" type="radio" value="1" name="gioitinh">
-                                    <label for="radio2">Nam</label>
+                                    <div class="form-group mt-2">
+                                        <label for="id">Mã Admin</label>
+                                        <input class="col-md-12 mt-2 ps-3 border py-2 rounded-3" type="text" name="id"
+                                            placeholder="Mã Admin">
+                                    </div>
+
+                                    <div class="form-group mt-2">
+                                        <label for="hovaten">Họ và tên</label>
+                                        <input class="col-md-12 mt-2 ps-3 border py-2 rounded-3" type="text"
+                                            name="hovaten" placeholder="Họ và tên">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="gioitinh">Giới tính</label>
+                                            <input class="mt-2 ms-3" id="radio1" type="radio" value="2" name="gioitinh"
+                                                checked>
+                                            <label for="radio1">Nữ</label>
+                                            <input class="ms-3 " id="radio2" type="radio" value="1" name="gioitinh">
+                                            <label for="radio2">Nam</label>
+                                    </div>
                                     <!-- <div class="">
                                         <input type="radio" id="gioitinh" class="form__input mt-4 ms-1 ms-3" name="gioitinh"
                                             value="1" />Nam
                                         <input type="radio" id="gioitinh" class="form__input ms-3 " name="gioitinh"
                                             value="0" />Nữ
                                     </div> -->
-                                    <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date"
-                                        name="ngaysinh">
-                                    <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="email" name="email"
+                                    <div class="form-group mt-3">
+                                        <label for="ngaysinh">Họ và tên</label>
+                                        <input class="col-md-12 ps-3 mt-2 border py-2 rounded-3" type="date"
+                                        name="ngaysinh" id="currentDate">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="email">Email</label>
+                                        <input class="col-md-12 ps-3 mt-2 border py-2 rounded-3" type="email" name="email"
                                         placeholder="Email">
-                                    <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password"
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="matkhau">Mật khẩu</label>
+                                        <input class="col-md-12 ps-3 mt-2 border py-2 rounded-3" type="password"
                                         name="matkhau" placeholder="Mật khẩu">
+                                    </div>
+                                    
                                     <div class="mt-2 ms-2">
                                         <?php
                                         if (isset($_GET['error'])) {
@@ -205,7 +226,10 @@ endif;
             </div>
 
         </section>
-
+        <script>
+            const currentDate = new Date().toISOString().slice(0, 10);
+            document.getElementById('currentDate').value = currentDate;
+        </script>                                   
     </div>
     <?php include('../template/footer.php');
     ?>
