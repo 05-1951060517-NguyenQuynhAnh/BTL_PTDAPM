@@ -27,9 +27,9 @@ endif;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/style13.css">
+    <link rel="stylesheet" href="../public/styled2.css">
     <title>CSE481 - Admin Đăng nhập</title>
-    <link rel="shortcut icon" href="img/1.png">
+    <link rel="shortcut icon" href="../img/web.png">
 </head>
 
 <body style="font-family:'Arial'">
@@ -42,17 +42,7 @@ endif;
                 <div class="d-flex">
                     <div style="width: 40%;" class="d-flex  py-3">
                         <div class="ms-3 ">
-                            <form id="search-box">
-                                <button type="reset" class="search" id="search-btn"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="ms-2 bi bi-search" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                    </svg></button>
-                                <input type="text" name="input" class="input pt-2 pb-2 pe-2" id="search-text"
-                                    placeholder="Tìm kiếm..." required>
-
-                            </form>
+                            
                         </div>
                     </div>
                     <div style="width: 20%;" class="d-flex justify-content-center">
@@ -62,35 +52,7 @@ endif;
                     </div>
                     <div style="width: 40%;" class=" d-flex justify-content-end">
 
-                        <div class="mt-3">
-                            <?php
-                            // Đã đăng nhập rồi -> hiển thị tên Người dùng và menu Đăng xuất
-                            if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
-                                ?>
-                                <div class="d-flex">
-                                    <a class="pt-1 text-decoration-none text-black d-flex" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                            class="me-2 bi bi-person" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                                        </svg>
-                                        <p class="pt-1 mb-0" style="font-size:13px">Tài khoản</p>
-                                    </a>
-                                </div>
-                            <?php else: ?>
-                                <a class="pt-1 text-decoration-none text-black d-flex" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                                        class="me-2 bi bi-person" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                                    </svg>
-                                    <p class="pt-1 mb-0" style="font-size:13px">Đăng nhập</p>
-                                </a>
-                            <?php endif; ?>
-                            
-                        </div>
+                       
 
                     </div>
 
@@ -212,11 +174,11 @@ endif;
                                 <div class="d-flex justify-content-center">
                                     <form action="" method="GET">
                                         <div class="pt-2 d-flex">
-                                            <input class="py-2 border border-dark rounded-start" type="text"
+                                        <input class="py-2 border rounded-start" type="text"
                                                 style="padding-left: 10px;font-size:14px;width:400px" name=""
                                                 placeholder="Enter your email...">
-                                            <button type="submit " style="background:#222"
-                                                class="btn btn-light border-0 rounded-0 rounded-end link-light">
+                                            <button type="submit" style="background:#dee2e6"
+                                                class="border-0 rounded-0 rounded-end link-dark">
                                                 <p class="mb-0">Send</p>
                                             </button>
                                         </div>

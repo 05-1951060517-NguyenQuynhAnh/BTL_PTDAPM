@@ -19,7 +19,7 @@ endif;
 ?>
 
 <body>
-    <header class="header" id="header">
+<header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
                 class="ms-3 bi bi-list mt-2" viewBox="0 0 16 16">
@@ -27,8 +27,9 @@ endif;
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
-
+        <h4 class="mt-1 text-center text-dark">Xin chào,
+            <?php echo $row['name']; ?>
+        </h4>
         <div class="mt-3 d-flex py-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
                 viewBox="0 0 16 16">
@@ -41,7 +42,7 @@ endif;
             </p>
 
             <ul class="dropdown-menu dropdown-menu-end">
-                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                <a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $id ?>">
                     <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
                 </a>
                 <a href="../logout.php">
@@ -49,7 +50,6 @@ endif;
                 </a>
             </ul>
         </div>
-
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -259,10 +259,10 @@ endif;
                             }
                         }
                         ?>
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                             crossorigin="anonymous">
-                            </script>
+                            </script> -->
                     </tbody>
                 </table>
             </div>
