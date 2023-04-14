@@ -431,7 +431,7 @@ endif;
         <div class="container">
             <div class="px-5 pt-5">
                 <div class="row px-5">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <a class="text-decoration-none" href="profile_user.php?id=<?php echo $row['id_user'];?>">
                             <p class="mt-2 fw-bold link-dark"><?php echo $row['name_user'];?></p>
                         </a>
