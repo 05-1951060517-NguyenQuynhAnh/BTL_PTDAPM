@@ -1,7 +1,6 @@
 <?php include('./config/connect_db.php'); 
 ?>
 <?php
-$id =$_GET['id'];
 if (session_id() == '') {
     session_start();
 }
@@ -24,7 +23,7 @@ if (session_id() == '') {
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="public/styled2.css">
-    <title>Giỏ hàng | GUCCI Official</title>
+    <title>Thanh toán | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
 
@@ -55,18 +54,23 @@ if (session_id() == '') {
     <section>
         <div class="container mt-5">
             <ul class="d-flex m-0 p-0">
-                <li class="list-unstyled col text-center"><p class="pt-1 ps-2 mb-0" style="font-size:13px">Giỏ hàng</p></li>
-                <li class="list-unstyled col text-center"><p class="pt-1 ps-2 mb-0" style="font-size:13px">Thanh toán</p></li>
-                <li class="list-unstyled col text-center"><p class="pt-1 ps-2 mb-0" style="font-size:13px">Xác nhận</p></li>
+                <li class="list-unstyled col text-center">
+                    <p class="pt-1 ps-2 mb-0" style="font-size:13px">Giỏ hàng</p>
+                </li>
+                <li class="list-unstyled col text-center">
+                    <p class="pt-1 ps-2 mb-0" style="font-size:13px">Thanh toán</p>
+                </li>
+                <li class="list-unstyled col text-center">
+                    <p class="pt-1 ps-2 mb-0" style="font-size:13px">Xác nhận</p>
+                </li>
             </ul>
             <div class="position-relative m-4 mt-1">
                 <div class="progress" style="background-color: #e0e0e0;height: 2px;">
-                    <div class="fw-bold progress-bar" role="progressbar"
-                        style="background-color:#444;width: 15.5%;height:3px;" aria-valuenow="50" aria-valuemin="0"
-                        aria-valuemax="100"></div>
+                    <div class="fw-bold progress-bar" role="progressbar" style="background-color:#444;width: 100%;"
+                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <div class="border-0 position-absolute translate-middle " style="top:1px;left:15.5%">
-                    
+
                     <a href="" style="color:#444">
                         <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor"
                             class="bi bi-dot" viewBox="0 0 16 16">
@@ -74,19 +78,19 @@ if (session_id() == '') {
                         </svg>
                     </a>
                 </div>
-                <div class="border-0 position-absolute  translate-middle " style="top:-1px;left:50.4%">
+                <div class="border-0 position-absolute  translate-middle " style="top:1px;left:50.4%">
                     <a href="" style="color:#444">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
-                            class="bi bi-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor"
+                            class="bi bi-dot" viewBox="0 0 16 16">
+                            <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                         </svg>
                     </a>
                 </div>
-                <div class="border-0 position-absolute  translate-middle " style="top:-1px;right:14%">
+                <div class="border-0 position-absolute  translate-middle " style="top:1px;right:9.8%">
                     <a href="" style="color:#444">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
-                            class="bi bi-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor"
+                            class="bi bi-dot" viewBox="0 0 16 16">
+                            <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                         </svg>
                     </a>
                 </div>
@@ -98,41 +102,39 @@ if (session_id() == '') {
             <div class="row mt-5 mx-2">
                 <div class="col-8">
                     <div class="">
-                        <?php 
-                            $sql4 = "SELECT * FROM cart  WHERE id_user='$id' ";
-                            $res4 = mysqli_query($conn, $sql4);
-                            $count4 = mysqli_num_rows($res4);
-                            if($count4>0)
-                            { $row=mysqli_fetch_assoc($res4)
-                                
-                        ?>
-                        <?php 
-                                $sql5 = "SELECT count(id_product) as count FROM `cart` WHERE $id";
-                                $result5 = mysqli_query($conn,$sql5);
-                                if(mysqli_num_rows($result5)>0){
-                                    $row = mysqli_fetch_assoc($result5);
-                                    }
-                                ?>
-                        <div class="" style="background:#fffcf7;">
-                            <p class="ms-4 pt-3 fw-bold" style="font-size:14px,letter-spacing: 2.75px;word-spacing:2px">
-                                Bạn có <?php echo $row['count'];?> mặt hàng trong giỏ hàng.</p>
+                        <?php
+                        if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+                            $id =$_SESSION['isLoginOK'];
+                            $sql = "SELECT * FROM user WHERE user.email='$id' ";
+                            $result = mysqli_query($conn,$sql);
+                            if(mysqli_num_rows($result)>0){
+                            $row = mysqli_fetch_assoc($result);
+                            $user = $row['id_user'];
+                            }
+                            endif;
+                    ?>
+                        <div class="" >
+                        <div class="pb-3"style="background:#fffcf7;">
+                            <p class="ps-4 pt-3 mb-0 fw-bold" style="font-size:14px,letter-spacing: 2.75px;word-spacing:2px">
+                                Bạn có đơn hàng.</p>
+                        </div>
                             <hr style="background:#e2d8ce" class="m-0 ">
-                            <div style="background:#fffcf7;" class="">
-                                <?php 
-                                $sql = "SELECT *,cart.qty*cart.price as thanhtien  FROM user,cart INNER JOIN product ON product.id_product = cart.id_product WHERE user.id_user='$id' ";
-                                $res = mysqli_query($conn, $sql);
-                                $count = mysqli_num_rows($res);
-                                if($count>0)
-                                {
-                                    while($row=mysqli_fetch_assoc($res))
-                                    {
+                            <div  class="">
+                                <?php
+                                if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+                                $sql1 = "SELECT *, SUM(detail_order.qty*product.price) as tongtien FROM `order`, detail_order, product  WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id and order.user_id='$user'GROUP by detail_order.id_order";
+                                $result1 = mysqli_query($conn,$sql1);
+                                if(mysqli_num_rows($result1)>0)
+                                 {
+                                 while($row=mysqli_fetch_assoc($result1))
+                                 {
                                 ?>
-                                <ul class="py-3 ps-4 m-0">
+                                <ul style="background:#fffcf7;" class="p-0 m-0 mt-3">
                                     <li class="list-unstyled">
-                                        <div class="row me-3">
-                                            <div class="d-flex">
+                                        <div class="row">
+                                            <div class="d-flex px-4 py-3">
                                                 <a href="./detail.php?id=<?php echo $row['id_product'];?>">
-                                                    <div class="">
+                                                    <div class="ps-3">
                                                         <img src="./img/<?php echo $row['img'];?>"
                                                             style="width:80px;height:80px" alt="">
                                                     </div>
@@ -151,7 +153,7 @@ if (session_id() == '') {
                                                             </a>
                                                         </div>
                                                         <div style="width: 20%;" class="d-flex justify-content-end">
-                                                            <div class="">
+                                                            <div class="pe-3">
                                                                 <a
                                                                     href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -178,150 +180,62 @@ if (session_id() == '') {
                                                             </a>
                                                         </div>
                                                         <div style="width: 25%;" class="d-flex justify-content-center">
-                                                            <form
-                                                                action="process_update_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>"
-                                                                method="post">
-                                                                <div class="buttons_added">
-                                                                    <input class="minus is-form" value="-" type="submit"
-                                                                        type="button" name="btn"
-                                                                        onclick="handleminus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>()"
-                                                                        style="background:#fffcf7;">
-                                                                    <input style="width : 50px" class="input-qty"
-                                                                        name="sluong"
-                                                                        id="<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>"
-                                                                        type="number" value="<?php echo $row['qty'];?>">
-                                                                    <input class="plus is-form" value="+" type="submit"
-                                                                        name="btn"
-                                                                        onclick="handleplus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>()"
-                                                                        style="background:#fffcf7;">
-                                                                </div>
-                                                            </form>
+                                                            <p class="m-0 d-flex align-items-end"
+                                                                style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                Số lượng: <?php echo $row['qty'];?></p>
                                                         </div>
-                                                        <script>
-                                                        let qtyElement<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
-                                                            document
-                                                            .getElementById(
-                                                                '<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>'
-                                                            );
-                                                        let qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
-                                                            qtyElement<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                            .value;
-                                                        //console.log(qtyElement);
-                                                        let render<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
-                                                            (
-                                                                qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                            ) => {
-                                                                qtyElement<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                                    .value =
-                                                                    qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                            }
-                                                        let handleplus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
-                                                            () => {
-                                                                qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>++
-                                                                render<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                                    (
-                                                                        qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                                    );
-                                                            }
-                                                        let handleminus<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> =
-                                                            () => {
-                                                                if (qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?> >
-                                                                    1)
-                                                                    qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>--
-                                                                render<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                                    (
-                                                                        qty<?php echo $row['id_product'];?><?php echo $row['size']; ?><?php echo $row['color']; ?>
-                                                                    );
-                                                            }
-                                                        </script>
                                                         <div style="width: 25%;"
                                                             class="d-flex align-items-end justify-content-end">
-                                                            <div class="">
+                                                            <div class="pe-3">
                                                                 <p class="mb-1"
                                                                     style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                                                    <?php echo number_format($row['thanhtien']); ?> VNĐ
+                                                                    VNĐ
                                                                 </p>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <hr style="background:#e2d8ce" class="m-0 ">
+                                            <div class="d-flex m-3 mb-1">
+                                                <div class="ps-3" style="width: 60%;">
+                                                    <font class="text-uppercase"
+                                                        STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
+                                                        size="4">tổng cộng
+                                                    </font>
+                                                </div>
+                                                <div style="width: 40%;" class="d-flex justify-content-end">
+                                                    <div class="pe-5">
+                                                        <p class=""
+                                                            style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                                            <?php echo number_format($row['tongtien']); ?> VNĐ </p>
+                                                    </div>
 
+                                                </div>
+                                            </div>
+                                            <hr style="background:#e2d8ce" class="m-0 ">
+                                            <div class="p-4 d-flex justify-content-end" >
+                                                    <button style="color:white;background:#5ec073f5"
+                                                        class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
+                                                        name="btnLogin">
+                                                        <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
+                                                            face="Candara" size="2">
+                                                            CHỜ XÁC NHẬN</font>
+                                                    </button>
+                                            </div>
+                                            <hr style="background:#e2d8ce" class="m-0 ">
                                         </div>
                                     </li>
                                 </ul>
                                 <hr style="background:#e2d8ce" class="m-0 ">
                                 <?php
                                     }
-                                }         
+                                }    
+                                endif;     
                                 ?>
-                                <?php 
-                                $sql1 = "SELECT *, sum(cart.qty*cart.price) as tongtien FROM `cart` WHERE $id";
-                                $result = mysqli_query($conn,$sql1);
-                                if(mysqli_num_rows($result)>0){
-                                    $row = mysqli_fetch_assoc($result);
-                                    }
-                                ?>
-                                <div class="d-flex row m-3">
-                                    <div class="ps-1" style="width: 80%;">
-                                        <font class="text-uppercase" STYLE="letter-spacing: 1px;word-spacing:1px"
-                                            face="Candara" size="4">tổng cộng
-                                        </font>
-                                    </div>
-                                    <div style="width: 20%;" class="d-flex justify-content-end">
-                                        <div class="">
-                                            <p class="" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                                <?php echo number_format($row['tongtien']); ?> VNĐ </p>
-                                        </div>
+                            </div>
+                        </div>
 
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4 d-flex justify-content-center" style="background:#fffcf7;">
-                            <a href="checkout.php">
-                                <button style="color:white;background:#444"
-                                    class="px-5 pt-1 fw-bold btn btn-lg btn-block" type="submit" name="btnLogin">
-                                    <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara" size="2">
-                                        THANH TOÁN</font>
-                                </button>
-                            </a>
-                        </div>
-                        <?php 
-                            }
-                            else {
-                                ?>
-                        <div style="background:#fffcf7;" class="p-5">
-                            <div class="m-5 p-5 mb-0 pb-4 d-flex justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
-                                    class="bi bi-bag-plus" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                                    <path
-                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                                </svg>
-                            </div>
-                            <div class="m-5 mb-0 mt-0 d-flex justify-content-center">
-                                <font class="text-uppercase" STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
-                                    size="3">Bạn không có sản phẩm nào trong giỏ hàng
-                                </font>
-                            </div>
-                            <div class="m-5 pb-5 mt-0 d-flex justify-content-center">
-                                <a href="index.php">
-                                    <button style="color:white;background:#444"
-                                        class="mt-4 pt-1 fw-bold btn btn-lg btn-block" type="submit" name="btnLogin">
-                                        <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara" size="2">
-                                            TIẾP
-                                            TỤC MUA HÀNG</font>
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        <?php
-                            }
-                        ?>
                     </div>
 
                 </div>

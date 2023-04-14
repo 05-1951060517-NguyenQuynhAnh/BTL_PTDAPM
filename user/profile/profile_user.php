@@ -35,8 +35,13 @@ endif;
         crossorigin="anonymous" />
     <link rel="stylesheet" href="../../public/style.css">
     <link rel="stylesheet" href="../../public/styled2.css">
+<<<<<<< Updated upstream
     <title>Profile | GUCCI Official</title>
     <link rel="shortcut icon" href="../../img/web.png">
+=======
+    <title>Thông tin cá nhân | GUCCI Official</title>
+    <link rel="shortcut icon" href="img/web.png">
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -283,6 +288,29 @@ endif;
                                     </svg>
                                     <p class="pt-1 mb-0" style="font-size:13px">Đăng nhập</p>
                                 </a>
+<<<<<<< Updated upstream
+=======
+                                <a class="pt-1 text-decoration-none text-black d-flex"
+                                    href="../../cart.php?id=<?php echo $row['id_user'];?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                        class="bi bi-cart2 me-2 ms-4" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                    </svg>
+                                    <p class="pt-1 mb-0" style="font-size:13px">Giỏ hàng</p>
+                                </a>
+                            </div>
+                            <?php else : ?>
+                            <a class="pt-1 text-decoration-none text-black d-flex" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" role="button" aria-controls="offcanvasRight">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                                    class="me-2 bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                </svg>
+                                <p class="pt-1 mb-0" style="font-size:13px">Đăng nhập</p>
+                            </a>
+>>>>>>> Stashed changes
                             <?php endif; ?>
                             <div class="offcanvas    <?php
                             if (isset($_GET['error'])) {
@@ -299,11 +327,19 @@ endif;
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="px-5 offcanvas-body">
+<<<<<<< Updated upstream
                                     <?php
                                     if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
                                         ?>
                                         <a href="profile_user.php?id=<?php echo $row['id_user']; ?>"
                                             class="text-decoration-none link-dark">
+=======
+                                    <?php               
+                                        if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+                                    ?>
+                                    <a href="profile_user.php?id=<?php echo $row['id_user'];?>"
+                                        class="text-decoration-none link-dark">
+>>>>>>> Stashed changes
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 fill="currentColor" class="bi bi-gear me-1" viewBox="0 0 16 16">
@@ -325,6 +361,7 @@ endif;
                                                     <path fill-rule="evenodd"
                                                         d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                                                 </svg>
+<<<<<<< Updated upstream
                                                 <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="3">
                                                     Đăng xuất</font>
                                             </a>
@@ -376,6 +413,24 @@ endif;
                                                 </button>
 
                                                 <hr style="height:0.45px" class="mt-4">
+=======
+                                                <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara"
+                                                    size="2">
+                                                    <?php echo $_GET['error']?></font>
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
+                                            <div class="form-login">
+                                                <label style="font-size:12px" for="email">E-mail*</label>
+                                                <input type="text" class="col-md-12 ps-3 border py-2 " name="mail"
+                                                    required>
+                                            </div>
+                                            <div class="form-login mt-3">
+                                                <label style="font-size:12px" for="matkhau">Mật khẩu*</label>
+                                                <input type="password" class="col-md-12 ps-3 border py-2 "
+                                                    name="matkhau" required>
+>>>>>>> Stashed changes
                                             </div>
                                         </form>
                                         <a class="text-decoration-none" href="signup.php">
@@ -425,12 +480,17 @@ endif;
                 </div>
             </div>
         </div>
+<<<<<<< Updated upstream
     </div>                                          
     <section class="pb-5" style="font-family:'Arial';background:#fafafa">
+=======
+    </div>
+    <section class="pb-5" style="font-family:'Arial';background:#f6f1eb">
+>>>>>>> Stashed changes
         <div class="container">
             <div class="px-5 pt-5">
                 <div class="row px-5">
-                    <div class="col-md-3">
+                    <div class="col-md-3 pt-3 me-4 ps-3"style="background:#fffcf7">
                         <p class="fw-bold">
                             <?php echo $row['name_user']; ?>
                         </p>
@@ -467,7 +527,7 @@ endif;
                             </div>
                         </a>
                     </div>
-                    <div style="background:white" class="border pb-2 col-md px-5">
+                    <div style="background:#fffcf7" class="border pb-2 col-md px-5">
 
                         <div class="mt-3">
                             <p class="mb-0 fs-4">Hồ sơ của tôi</p>
@@ -490,12 +550,20 @@ endif;
                                 </p>
                                 <p class="">
                                     <?php
+<<<<<<< Updated upstream
                                     if ($row['gender_user'] == '1' ? 'checked' : '') {
                                         echo 'Nam';
                                     } else if ($row['gender_user'] == '2' ? 'checked' : '') {
                                         echo 'Nữ';
                                     }
                                     ?>
+=======
+                                    if( $row['gender_user'] == '1'?'checked':'')
+                                    {echo 'Nam';}
+                                    else if( $row['gender_user'] == '2'?'checked':'')
+                                    {echo 'Nữ';}
+                                     ?>
+>>>>>>> Stashed changes
                                 </p>
                                 <p class="">
                                     <?php echo $row['date_birth']; ?>
@@ -652,7 +720,7 @@ endif;
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

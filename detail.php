@@ -392,8 +392,8 @@
                                 }
                                 let handleminus = () => {
                                     if (qty > 1)
-                                        qty--
-                                    render(Sqty);
+                                    qty--
+                                    render(qty);
                                 }
                                 </script>
                             </div>
