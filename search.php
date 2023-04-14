@@ -18,7 +18,7 @@
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="public/style.css">
-    <link rel="stylesheet" href="public/style13.css">
+    <link rel="stylesheet" href="public/styled2.css">
     <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
@@ -483,9 +483,9 @@
                         ?>
 
                     <div class="card me-0 border-0" style="width: 18rem;">
-                        <img src="img/<?php echo $row['image_list'];?>" class="img-fluid card-img-top" alt="...">
+                        <img src="img/<?php echo $row['img'];?>" class="img-fluid card-img-top" alt="...">
                         <div class="overlay d-flex">
-                            <a href="detail1.php?id=<?php echo $row['MaSP']?>">
+                            <a href="detail1.php?id=<?php echo $row['id_product']?>">
                                 <div class="detail rounded-circle">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                         style="margin:18.5px" class="bi bi-card-heading" viewBox="0 0 16 16">
