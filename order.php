@@ -214,15 +214,46 @@ if (session_id() == '') {
                                                 </div>
                                             </div>
                                             <hr style="background:#e2d8ce" class="m-0 ">
-                                            <div class="p-4 d-flex justify-content-end" >
-                                                    <button style="color:white;background:#5ec073f5"
-                                                        class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
-                                                        name="btnLogin">
-                                                        <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
-                                                            face="Candara" size="2">
-                                                            CHỜ XÁC NHẬN</font>
-                                                    </button>
-                                            </div>
+                                            <?php
+                                            $status = $row['status_order'];
+                                            if($status == '0'){
+                                                ?>
+                                                <div class="p-4 d-flex justify-content-end" >
+                                                        <button style="color:white;background:#5ec073f5"
+                                                            class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
+                                                            name="btnLogin">
+                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
+                                                                face="Candara" size="2">
+                                                                CHỜ XÁC NHẬN</font>
+                                                        </button>
+                                                </div>
+                                            <?php
+                                            }
+                                            elseif($status == '1'){?>
+                                                <div class="p-4 d-flex justify-content-end" >
+                                                        <button style="color:white;background:#f60000e8"
+                                                            class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
+                                                            name="btnLogin">
+                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
+                                                                face="Candara" size="2">
+                                                                ĐANG GIAO HÀNG</font>
+                                                        </button>
+                                                </div>
+                                            <?php
+                                            } else{
+                                                ?>
+                                                 <div class="p-4 d-flex justify-content-end" >
+                                                        <button style="color:white;background:#444444f0"
+                                                            class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
+                                                            name="btnLogin">
+                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
+                                                                face="Candara" size="2">
+                                                                ĐÃ NHẬN HÀNG</font>
+                                                        </button>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                             <hr style="background:#e2d8ce" class="m-0 ">
                                         </div>
                                     </li>

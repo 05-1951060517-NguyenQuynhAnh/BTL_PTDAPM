@@ -157,7 +157,8 @@ if (session_id() == '') {
                                             <div class="rounded-circle"
                                                 style="background:#f6f1eb;width: 35px;height: 35px;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    fill="currentColor" class="mt-2 ms-2 bi bi-pencil " viewBox="0 0 16 16">
+                                                    fill="currentColor" class="mt-2 ms-2 bi bi-pencil "
+                                                    viewBox="0 0 16 16">
                                                     <path
                                                         d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                                 </svg>
@@ -188,6 +189,23 @@ if (session_id() == '') {
                                             Phương thức thanh toán.</p>
                                         <hr style="background:#e2d8ce" class="m-0 ">
                                     </div>
+                                    <?php
+                                            if (isset($_GET['bug'])) { ?>
+                                    <div class="ms-4 mt-2"style="color:red">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                                        </svg>
+                                        <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                            <?php echo $_GET['bug'] ?>
+                                        </font>
+                                    </div>
+                                    <?php
+                                            }
+                                            ?>
                                     <div class="px-4 py-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="thanhtoan"
@@ -218,60 +236,64 @@ if (session_id() == '') {
                                     <div class="">
                                         <div class="mx-4 py-3 d-flex form-check">
                                             <div class="">
-                                                <input class="form-check-input" type="radio" name="vanchuyen" value="Giao hàng nhanh" 
-                                                    id="chx_vanchuyen4" checked>
+                                                <input class="form-check-input" type="radio" name="vanchuyen"
+                                                    value="Giao hàng nhanh" id="chx_vanchuyen4" checked>
                                                 <label class="form-check-label" for="chx_vanchuyen4">
                                                     <font STYLE="letter-spacing: 1px" face="Candara" size="3">
                                                         Giao hàng nhanh.</font>
                                                 </label>
                                             </div>
                                             <div class="col d-flex justify-content-end align-items-center">
-                                                <p class="mb-0" style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
+                                                <p class="mb-0"
+                                                    style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
                                                     30,000 VNĐ</p>
                                             </div>
                                         </div>
                                         <hr style="background:#e2d8ce" class="m-0 ">
                                         <div class="mx-4 py-3 d-flex form-check">
                                             <div class="">
-                                                <input class="form-check-input" type="radio" name="vanchuyen" value="Giao hàng tiết kiệm" 
-                                                    id="chx_vanchuyen1">
+                                                <input class="form-check-input" type="radio" name="vanchuyen"
+                                                    value="Giao hàng tiết kiệm" id="chx_vanchuyen1">
                                                 <label class="form-check-label" for="chx_vanchuyen1">
                                                     <font STYLE="letter-spacing: 1px" face="Candara" size="3">
                                                         Giao hàng tiết kiệm.</font>
                                                 </label>
                                             </div>
                                             <div class="col d-flex justify-content-end align-items-center">
-                                                <p class="mb-0" style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
+                                                <p class="mb-0"
+                                                    style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
                                                     15,000 VNĐ</p>
                                             </div>
                                         </div>
                                         <hr style="background:#e2d8ce" class="m-0 ">
                                         <div class="mx-4 py-3 d-flex form-check">
                                             <div class="">
-                                                <input class="form-check-input" type="radio" name="vanchuyen" value="Viettel Post" 
-                                                    id="chx_vanchuyen2">
+                                                <input class="form-check-input" type="radio" name="vanchuyen"
+                                                    value="Viettel Post" id="chx_vanchuyen2">
                                                 <label class="form-check-label" for="chx_vanchuyen2">
                                                     <font STYLE="letter-spacing: 1px" face="Candara" size="3">
                                                         Viettel Post.</font>
                                                 </label>
                                             </div>
                                             <div class="col  d-flex justify-content-end align-items-center">
-                                                <p class="mb-0" style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
+                                                <p class="mb-0"
+                                                    style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
                                                     25,000 VNĐ</p>
                                             </div>
                                         </div>
                                         <hr style="background:#e2d8ce" class="m-0 ">
                                         <div class="mx-4 py-3 d-flex form-check">
                                             <div class="">
-                                                <input class="form-check-input" type="radio" name="vanchuyen" value="J&T Express" 
-                                                    id="chx_vanchuyen3">
+                                                <input class="form-check-input" type="radio" name="vanchuyen"
+                                                    value="J&T Express" id="chx_vanchuyen3">
                                                 <label class="form-check-label" for="chx_vanchuyen3">
                                                     <font STYLE="letter-spacing: 1px" face="Candara" size="3">
                                                         J&T Express.</font>
                                                 </label>
                                             </div>
                                             <div class="col  d-flex justify-content-end align-items-center">
-                                                <p class="mb-0" style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
+                                                <p class="mb-0"
+                                                    style="font-size:12px;letter-spacing: 1px;word-spacing:1px">
                                                     25,000 VNĐ</p>
                                             </div>
                                         </div>
@@ -289,9 +311,9 @@ if (session_id() == '') {
                                     </button>
                                 </a>
                             </div>
-    
+
                         </div>
-    
+
                     </div>
                     <div class="col-5 p-0 ">
                         <div style="background:#fffcf7;">
@@ -319,7 +341,8 @@ if (session_id() == '') {
                                                     <li class="list-unstyled">
                                                         <div class="row ">
                                                             <div class="d-flex">
-                                                                <a href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                                <a
+                                                                    href="./detail.php?id=<?php echo $row['id_product'];?>">
                                                                     <div class="">
                                                                         <img src="./img/<?php echo $row['img'];?>"
                                                                             style="width:80px;height:80px" alt="">
@@ -364,9 +387,10 @@ if (session_id() == '') {
                                                                                     Màu: <?php echo $row['color'];?></p>
                                                                                 <p class="m-0"
                                                                                     style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
-                                                                                    Kích cỡ: <?php echo $row['size'];?></p>
+                                                                                    Kích cỡ: <?php echo $row['size'];?>
+                                                                                </p>
                                                                             </a>
-    
+
                                                                         </div>
                                                                         <div style="width: 25%;"
                                                                             class="d-flex align-items-end">
@@ -383,18 +407,18 @@ if (session_id() == '') {
                                                                                     VNĐ
                                                                                 </p>
                                                                             </div>
-    
+
                                                                         </div>
-    
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-    
+
                                                         </div>
                                                     </li>
                                                 </ul>
                                                 <hr style="background:#e2d8ce" class="m-0 ">
-    
+
                                                 <?php
                                                         }
                                                     }    
@@ -419,7 +443,8 @@ if (session_id() == '') {
                                         </font>
                                     </div>
                                     <div style="width: 30%;" class="d-flex justify-content-end align-items-center">
-                                        <p class="mb-0" id="y" style="font-size:13px;letter-spacing: 1px;word-spacing:1px">
+                                        <p class="mb-0" id="y"
+                                            style="font-size:13px;letter-spacing: 1px;word-spacing:1px">
                                             <?php echo number_format($row['tongtien']); ?> VNĐ</p>
                                     </div>
                                 </div>
@@ -431,13 +456,14 @@ if (session_id() == '') {
                                         </font>
                                     </div>
                                     <div style="width: 30%;" class="d-flex justify-content-end align-items-center">
-                                        <p class="mb-0" id="x" style="font-size:13px;letter-spacing: 1px;word-spacing:1px">
+                                        <p class="mb-0" id="x"
+                                            style="font-size:13px;letter-spacing: 1px;word-spacing:1px">
                                             <script language="javascript">
                                             let check = document.getElementById('chx_vanchuyen4');
                                             if (check.checked) {
                                                 document.getElementById("x").innerHTML = "30,000 VNĐ";
                                             }
-    
+
                                             document.getElementById('chx_vanchuyen1').onclick = function(e) {
                                                 if (this.checked) {
                                                     document.getElementById("x").innerHTML = "15,000 VNĐ";
@@ -480,7 +506,8 @@ if (session_id() == '') {
                                 </div>
                                 <div style="background:#fffcf7;" class="px-4 py-2">
                                     <div class="" STYLE="padding-bottom:13px;">
-                                        <font class="mt-5" STYLE="margin-start:20px;letter-spacing: 1px;word-spacing:1px"
+                                        <font class="mt-5"
+                                            STYLE="margin-start:20px;letter-spacing: 1px;word-spacing:1px"
                                             face="Candara" size="3">BAO BÌ GUCCI</font>
                                     </div>
                                     <hr style="background:#e2d8ce" class="m-0 ">
@@ -492,14 +519,15 @@ if (session_id() == '') {
                                             <p class="ms-3 mb-1"
                                                 style="vertical-align: inherit;font-size:13px; letter-spacing: 1px;word-spacing:1px">
                                                 Hầu hết các đơn đặt
-                                                hàng Gucci.com đều có một chiếc túi vải cotton có thể tái sử dụng độc quyền
+                                                hàng Gucci.com đều có một chiếc túi vải cotton có thể tái sử dụng độc
+                                                quyền
                                                 trực
                                                 tuyến.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="mt-3" style="background:#fffcf7;">
                             <div class="pt-2 ps-4" STYLE="padding-bottom:13px;">
@@ -520,7 +548,8 @@ if (session_id() == '') {
                                 <div class="mt-1" STYLE="margin-left:22px;">
                                     <p class="ms-3 mb-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
                                         Thứ 2 - Thứ 6: 9 giờ sáng - 5 giờ chiều</p>
-                                    <p class="ms-3 mt-2 mb-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                    <p class="ms-3 mt-2 mb-1"
+                                        style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
                                         Thứ 7: 10 giờ sáng - 5 giờ chiều</p>
                                 </div>
                             </div>
@@ -528,8 +557,8 @@ if (session_id() == '') {
                             <div class="m-3 d-flex">
                                 <div class="" style="width: 33%;">
                                     <div class="d-flex justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
-                                            class="bi bi-truck" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                            fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
                                             <path
                                                 d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                                         </svg>
@@ -541,8 +570,8 @@ if (session_id() == '') {
                                 </div>
                                 <div class="" style="width: 33%;">
                                     <div class="d-flex justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
-                                            class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                            fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
                                                 d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
                                         </svg>
@@ -554,8 +583,8 @@ if (session_id() == '') {
                                 </div>
                                 <div class="" style="width: 33%;">
                                     <div class="d-flex justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
-                                            class="bi bi-shield-lock" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                            fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
                                             <path
                                                 d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
                                             <path
@@ -568,7 +597,7 @@ if (session_id() == '') {
                                     </div>
                                 </div>
                             </div>
-    
+
                         </div>
                     </div>
                 </div>

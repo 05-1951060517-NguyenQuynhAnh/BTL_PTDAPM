@@ -5,7 +5,7 @@
         require_once './config/connect_db.php';
         if (!$thanhtoan )
         {
-            $error = "Bạn chưa chọn size cần mua.";
+            $error = "Bạn chưa chọn phương thức thanh toán.";
             header("location:checkout.php?bug=$error"); 
             exit;
         }
