@@ -122,7 +122,7 @@ if (session_id() == '') {
                             <div  class="">
                                 <?php
                                 if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-                                $sql1 = "SELECT *, SUM(detail_order.qty*product.price) as tongtien FROM `order`, detail_order, product  WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id and order.user_id='$user'GROUP by detail_order.id_order";
+                                $sql1 = "SELECT *, SUM(detail_order.qty*product.price) as tongtien, order.status as stt FROM `order`, detail_order, product  WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id and order.user_id='$user'GROUP by detail_order.id_order";
                                 $result1 = mysqli_query($conn,$sql1);
                                 if(mysqli_num_rows($result1)>0)
                                  {
@@ -215,7 +215,7 @@ if (session_id() == '') {
                                             </div>
                                             <hr style="background:#e2d8ce" class="m-0 ">
                                             <?php
-                                            $status = $row['status_order'];
+                                            $status = $row['stt'];
                                             if($status == '0'){
                                                 ?>
                                                 <div class="p-4 d-flex justify-content-end" >
