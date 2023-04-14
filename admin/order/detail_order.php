@@ -2,7 +2,9 @@
 ?>
 <?php
 $id = $_GET['id'];
-$sql = "SELECT * FROM admin WHERE username='$id' ";
+$id1 = $_GET['id1'];
+
+$sql = "SELECT * FROM admin WHERE username='$id'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -164,7 +166,7 @@ if (mysqli_num_rows($result) > 0) {
                         <?php
 
                         // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
-                        $sql = "SELECT * FROM `order`,detail_order,user ";
+                        $sql = "SELECT * FROM `order`,detail_order,user WHERE order.id_order = detail_order.id_order and order.user_id = user.id_user and detail_order.id_order=$id1 ";
                         $res = mysqli_query($conn, $sql);
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
@@ -204,16 +206,16 @@ if (mysqli_num_rows($result) > 0) {
                                     <td class="">
                                         <p class="">
                                             <?php
-                                            if ($row['status'] == '1' ? 'checked' : '') {
+                                            if ($row['status'] == '2' ? 'checked' : '') {
                                                 echo 'Đã xác nhận';
-                                            } else if ($row['status'] == '0' ? 'checked' : '') {
+                                            } else if ($row['status'] == '1' ? 'checked' : '') {
                                                 echo 'Chưa xác nhận';
                                             }
                                             ?>
                                         </p>
                                     </td>
                                     <td class="">
-                                        <a href="update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
+                                        <a href="update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order'];?>&id2=<?php echo $row['product_id']; ?>">
                                             <i class="link-dark me-3 bi bi-pencil-square"></i>
                                         </a>
                                     </td>
@@ -230,7 +232,7 @@ if (mysqli_num_rows($result) > 0) {
                     </tbody>
                 </table>
                 <a class="text-decoration-none link-dark" style="font-size:13px"
-                    href="order.php?id=<?php echo $row['id_admin']; ?>">
+                    href="order.php?id=<?php echo $id; ?>">
                     <div class="mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                             class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">

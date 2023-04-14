@@ -3,7 +3,8 @@
 <?php
 $id = $_GET['id'];
 $id1 = $_GET['id1'];
-$sql = "SELECT * FROM admin,detail_order,user WHERE username='$id' and id_order='$id1';";
+$id2 = $_GET['id2'];
+$sql = "SELECT * FROM admin,detail_order,user WHERE username='$id' and id_order='$id1' and product_id = '$id2';";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -77,7 +78,7 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link active">
+                    <a href="../loaihang/loaihang.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box-seam" viewBox="0 0 16 16">
                             <path
@@ -97,7 +98,7 @@ if (mysqli_num_rows($result) > 0) {
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div>
-                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                        <a href="../order/order.php?id=<?php echo $id ?>" class="d-flex nav_link active">
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                                 class="bi bi-card-list" viewBox="0 0 16 16">
                                 <path
@@ -133,8 +134,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
                 <p class="fs-4 fw-bold">Sửa thông tin loại hàng</p>
-
-                <form action="process_update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"
+                <form action="process_update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"
                     method="post">
                     <label for="txtMaSP">ID đơn hàng</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
@@ -157,13 +157,22 @@ if (mysqli_num_rows($result) > 0) {
                                             placeholder="" value="<?php echo $row['created']; ?>">
                     <div class="form-group mt-2">
                         <label for="txtTrangthai">Trạng thái</label>
-                        <select id="inputState" name="txtTrangthai" required=""
+                        <!-- <select id="inputState" name="txtTrangthai" required=""
                             class="col-md-12 ps-3 border py-2 rounded-3">
-                            <option value="0" <?php echo $row['status'] == 'Đã xác nhận' ? 'selected' : '' ?>>Đã xác nhận
+                            <option value="2" <?php echo $row['status'] == '2' ? 'selected' : '' ?>>Đã xác nhận
                             </option>
-                            <option value="1" <?php echo $row['status'] == 'Chưa xác nhận' ? 'selected' : '' ?>>
+                            <option value="1" <?php echo $row['status'] == '1' ? 'selected' : '' ?>>
                                 Chưa xác nhận</option>
-                        </select>
+                        </select> -->
+                        <div>
+                        <input class="mt-4 ms-1" id="radio1" type="radio" value="1" name="txtTrangthai"
+                            <?php echo $row['status'] == '1' ? 'checked' : '' ?>>
+                        <label for="radio1">Chưa xác nhận</label>
+                        <input class="ms-3 " id="radio2" type="radio" value="2" name="txtTrangthai"
+                            <?php echo $row['status'] == '2' ? 'checked' : '' ?>>
+                        <label for="radio2">Đã xác nhận</label>
+                        </div>
+
                     </div>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                         class="btn btn-secondary mt-4">Cập nhật</button>
@@ -212,7 +221,7 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div> -->
                 <a class="text-decoration-none link-dark" style="font-size:13px"
-                    href="detail_order.php?id=<?php echo $row['username']; ?>">
+                    href="detail_order.php?id=<?php echo $row['username']; ?>&id1=<?php echo $row['id_order'];?>">
                     <div class="mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                             class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">

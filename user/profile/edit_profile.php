@@ -34,9 +34,9 @@ endif;
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="../../public/style.css">
-    <link rel="stylesheet" href="../../public/style13.css">
-    <title>CSE481 - Tiệm thời trang</title>
-    <link rel="shortcut icon" href="img/web.png">
+    <link rel="stylesheet" href="../../public/styled2.css">
+    <title>Edit Profile | GUCCI Official</title>
+    <link rel="shortcut icon" href="../../img/web.png">
 </head>
 
 <body>
@@ -454,6 +454,17 @@ endif;
                                 <p class="d-inline pt-1" style="font-size:14px">Đổi mật khẩu</p>
                             </div>
                         </a>
+                        <a class="text-decoration-none link-dark" style="font-size:13px"
+                            href="profile_user.php?id=<?php echo $row['email']; ?>">
+                            <div class="mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                    class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg>
+                                <p class="ms-2 d-inline">Quay lại</p>
+                            </div>
+                        </a>
                     </div>
                     <div style="background:white" class="border col-md px-5">
 
@@ -487,10 +498,10 @@ endif;
                                         placeholder="Nhập số điện thoại" value="<?php echo $row['phone'];?>">
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtgender">Giới tính</label>
                                     <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="txtgender"
-                                        <?php echo $row['gender_user'] == 'Nữ'?'checked':''?>>
+                                        <?php echo $row['gender_user'] == '2'?'checked':''?>>
                                     <label for="radio1">Nữ</label>
                                     <input class="ms-3 " id="radio2" type="radio" value="1" name="txtgender"
-                                        <?php echo $row['gender_user'] == 'Nam'?'checked':''?>>
+                                        <?php echo $row['gender_user'] == '1'?'checked':''?>>
                                     <label for="radio2">Nam</label>
                                 </div>
                             </div>

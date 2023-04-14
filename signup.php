@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -382,12 +383,12 @@
                                     <label style="font-size:12px" for="diachi">Địa chỉ*</label>
                                     <input type="text" class="col-md-12 ps-3 border py-2 " name="diachi" required>
                                 </div>
-                                <input class="mt-4 ms-1" id="radio1" type="radio" value="Nữ" name="gender">
+                                <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="gender">
                                 <label for="radio1">
                                     <font STYLE="margin-start:20px;" face="Candara" size="4">Nữ
                                     </font>
                                 </label>
-                                <input class="ms-3 " id="radio2" type="radio" value="Nam" name="gender">
+                                <input class="ms-3 " id="radio2" type="radio" value="1" name="gender">
                                 <label for="radio2">
                                     <font STYLE="margin-start:20px;" face="Candara" size="4">Nam
                                     </font>

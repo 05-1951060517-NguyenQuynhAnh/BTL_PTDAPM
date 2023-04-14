@@ -34,9 +34,9 @@ endif;
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="../../public/style.css">
-    <link rel="stylesheet" href="../../public/style13.css">
-    <title>CSE481 - Tiệm thời trang</title>
-    <link rel="shortcut icon" href="img/web.png">
+    <link rel="stylesheet" href="../../public/styled2.css">
+    <title>Edit Profile | GUCCI Official</title>
+    <link rel="shortcut icon" href="../../img/web.png">
 </head>
 
 <body>
@@ -432,7 +432,7 @@ endif;
             <div class="px-5 pt-5">
                 <div class="row px-5">
                     <div class="col-md-2">
-                        <a class="text-decoration-none" href="user.php?id=<?php echo $row['id_user'];?>">
+                        <a class="text-decoration-none" href="profile_user.php?id=<?php echo $row['id_user'];?>">
                             <p class="mt-2 fw-bold link-dark"><?php echo $row['name_user'];?></p>
                         </a>
                         <a href="edit_profile.php?id=<?php echo $row['id_user'];?>"
@@ -454,6 +454,17 @@ endif;
                                         d="m4.736 1.968-.892 3.269-.014.058C2.113 5.568 1 6.006 1 6.5 1 7.328 4.134 8 8 8s7-.672 7-1.5c0-.494-1.113-.932-2.83-1.205a1.032 1.032 0 0 0-.014-.058l-.892-3.27c-.146-.533-.698-.849-1.239-.734C9.411 1.363 8.62 1.5 8 1.5c-.62 0-1.411-.136-2.025-.267-.541-.115-1.093.2-1.239.735Zm.015 3.867a.25.25 0 0 1 .274-.224c.9.092 1.91.143 2.975.143a29.58 29.58 0 0 0 2.975-.143.25.25 0 0 1 .05.498c-.918.093-1.944.145-3.025.145s-2.107-.052-3.025-.145a.25.25 0 0 1-.224-.274ZM3.5 10h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5Zm-1.5.5c0-.175.03-.344.085-.5H2a.5.5 0 0 1 0-1h3.5a1.5 1.5 0 0 1 1.488 1.312 3.5 3.5 0 0 1 2.024 0A1.5 1.5 0 0 1 10.5 9H14a.5.5 0 0 1 0 1h-.085c.055.156.085.325.085.5v1a2.5 2.5 0 0 1-5 0v-.14l-.21-.07a2.5 2.5 0 0 0-1.58 0l-.21.07v.14a2.5 2.5 0 0 1-5 0v-1Zm8.5-.5h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5Z" />
                                 </svg>
                                 <p class="d-inline pt-1" style="font-size:14px">Đổi mật khẩu</p>
+                            </div>
+                        </a>
+                        <a class="text-decoration-none link-dark" style="font-size:13px"
+                            href="profile_user.php?id=<?php echo $row['email']; ?>">
+                            <div class="mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                    class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg>
+                                <p class="ms-2 d-inline">Quay lại</p>
                             </div>
                         </a>
                     </div>

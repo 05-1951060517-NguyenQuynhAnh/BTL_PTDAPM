@@ -1,4 +1,4 @@
-<?php include('./config/connect_db.php'); 
+<?php include('./config/connect_db.php');
 ?>
 <?php
 if (session_id() == '') {
@@ -29,8 +29,8 @@ if (session_id() == '') {
 </head>
 
 <body>
-    <?php include('./template/header.php'); 
-?>
+    <?php include('./template/header.php');
+    ?>
     <section>
         <div class="container-fluid">
             <div class="container">
@@ -163,28 +163,27 @@ if (session_id() == '') {
                     <img src="img/summer.avif" class=" img-fluid " alt="">
                 </div>
                 <div class="row px-5 mt-5 pt-5">
-                    <?php 
-                                $sql1 = "SELECT * FROM product WHERE event='summer2023' ";
-                                $res1 = mysqli_query($conn, $sql1);
-                                $count1 = mysqli_num_rows($res1);
-                                if($count1>0)
-                                {
-                                    while($row=mysqli_fetch_assoc($res1))
-                                    {
-                                ?>
-                    <div class="col px-0 mx-2 px-1 ">
-                        <a href="./detail.php?id=<?php echo $row['id_product'];?>" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/<?php echo $row['img'];?>" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3"><?php echo $row['name_product'];?></font><br>
-                            <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                <?php echo number_format($row['price']); ?> VNĐ</p>
-                        </a>
-                    </div>
                     <?php
-                                    }
-                                }         
-                                ?>
+                    $sql1 = "SELECT * FROM product WHERE event='summer2023' ";
+                    $res1 = mysqli_query($conn, $sql1);
+                    $count1 = mysqli_num_rows($res1);
+                    if ($count1 > 0) {
+                        while ($row = mysqli_fetch_assoc($res1)) {
+                            ?>
+                            <div class="col px-0 mx-2 px-1 ">
+                                <a href="./detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
+                                    <img class="img-fluid  mb-3" src="img/<?php echo $row['img']; ?>" alt="">
+                                    <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
+                                        face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
+                                    <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                        <?php echo number_format($row['price']); ?> VNĐ
+                                    </p>
+                                </a>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
 
                 </div>
             </div>
@@ -209,28 +208,27 @@ if (session_id() == '') {
                     <img src="img/panel3.avif" class=" img-fluid " alt="">
                 </div>
                 <div class="row  px-5 mt-5 pt-5">
-                    <?php 
-                                $sql2 = "SELECT * FROM product WHERE event='flora2023' ";
-                                $res2 = mysqli_query($conn, $sql2);
-                                $count2 = mysqli_num_rows($res2);
-                                if($count2>0)
-                                {
-                                    while($row=mysqli_fetch_assoc($res2))
-                                    {
-                                ?>
-                    <div class="col px-0 mx-2 px-1">
-                        <a href="./detail.php?id=<?php echo $row['id_product'];?>" class="text-decoration-none">
-                            <img class="img-fluid  mb-3" src="img/<?php echo $row['img'];?>" alt="">
-                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                face="Candara" size="3"><?php echo $row['name_product'];?></font><br>
-                            <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                <?php echo number_format($row['price']); ?> VNĐ</p>
-                        </a>
-                    </div>
                     <?php
-                                    }
-                                }         
-                                ?>
+                    $sql2 = "SELECT * FROM product WHERE event='flora2023' ";
+                    $res2 = mysqli_query($conn, $sql2);
+                    $count2 = mysqli_num_rows($res2);
+                    if ($count2 > 0) {
+                        while ($row = mysqli_fetch_assoc($res2)) {
+                            ?>
+                            <div class="col px-0 mx-2 px-1">
+                                <a href="./detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
+                                    <img class="img-fluid  mb-3" src="img/<?php echo $row['img']; ?>" alt="">
+                                    <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
+                                        face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
+                                    <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                        <?php echo number_format($row['price']); ?> VNĐ
+                                    </p>
+                                </a>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
 
                 </div>
             </div>
@@ -259,11 +257,11 @@ if (session_id() == '') {
             </div>
         </div>
     </section>
-    <?php include('./template/footer.php'); 
-?>
+    <?php include('./template/footer.php');
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>

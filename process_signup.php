@@ -30,7 +30,7 @@ $gioitinh = $_POST['gender'];
     $error = "Tài khoản Email đã tồn tại";
     header("location:signup.php?error=$error"); 
     }else{
-    $sql1 = "INSERT INTO user(name, email, phone, address, password, date_birth, gender) VALUES('$hovaten ', '$email', '$sđt', '$diachi', '$matkhau','$ngaysinh','$gioitinh')";
+    $sql1 = "INSERT INTO user(name_user, email, phone, address, password, date_birth, gender_user) VALUES('$hovaten ', '$email', '$sđt', '$diachi', '$matkhau','$ngaysinh','$gioitinh')";
     $result1 = mysqli_query($conn,$sql1);
     if($result1 ==true){
         header("location:index.php"); 

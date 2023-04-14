@@ -177,12 +177,21 @@ endif;
                                         <!-- <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
                                             placeholder="" value="<?php echo $row['gender']; ?>"> -->
                                         <div>
-                                            <input class="mt-4 ms-1" id="radio1" type="radio" value="0" name="gioitinh"
-                                                <?php echo $row['gender'] == 'Nữ' ? 'checked' : '' ?>>
+                                            <input class="mt-4 ms-1" id="radio1" type="radio" value="2" name="gioitinh"
+                                                <?php echo $row['gender'] == '2' ? 'checked' : '' ?>>
                                             <label for="radio1">Nữ</label>
                                             <input class="ms-3 " id="radio2" type="radio" value="1" name="gioitinh"
-                                                <?php echo $row['gender'] == 'Nam' ? 'checked' : '' ?>>
+                                                <?php echo $row['gender'] == '1' ? 'checked' : '' ?>>
                                             <label for="radio2">Nam</label>
+
+                                            <!-- <select id="inputState" name="gioitinh" required=""
+                                            class="col-md-12 ps-3 border py-2 rounded-3">
+                                            <option value="1"
+                                                <?php echo $row['gender'] == '1'?'selected':''?>>Nam</option>
+                                            <option value="2"
+                                                <?php echo $row['gender'] == '2'?'selected':''?>>
+                                                Nữ</option> -->
+                                            <!-- </select> -->
                                         </div>
                                         <label class="mt-3">Mật khẩu</label>
                                         <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password"

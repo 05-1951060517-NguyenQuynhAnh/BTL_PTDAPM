@@ -352,7 +352,7 @@
                                         <hr style="height:0.45px" class="mt-4">
                                     </div>
                                 </form>
-                                <a class="text-decoration-none" href="../signup.php">
+                                <a class="text-decoration-none" href="signup.php">
                                     <button style="color:white;background:#444"
                                         class="mt-2 pt-1 fw-bold col-md-12 btn btn-lg btn-block" type="submit"
                                         name="btnLogin">

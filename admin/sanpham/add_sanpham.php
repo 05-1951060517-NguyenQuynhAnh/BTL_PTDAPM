@@ -169,13 +169,13 @@ endif;
                         <select name="txtMaLSP" id="inputState" required="" class="col-md-12 ps-3 border py-2 rounded-3">
                             <?php
                             // Truy vấn để lấy các giá trị từ cột tương ứng
-                            $query = "SELECT DISTINCT name_dcatalog FROM detail_catalog";
+                            $query = "SELECT name_dcatalog,id_dtcatalog FROM detail_catalog";
                             $result = mysqli_query($conn, $query);
 
                             // Tạo option cho từng giá trị lấy được
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='" . $row['name_dcatalog'] . "'>" . $row['name_dcatalog'] . "</option>";
+                                    echo "<option value='" . $row['id_dtcatalog'] . "'>" . $row['name_dcatalog'] . "</option>";
                                 }
                             }
                             // Đóng kết nối
