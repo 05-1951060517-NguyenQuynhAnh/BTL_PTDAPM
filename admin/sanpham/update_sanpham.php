@@ -176,7 +176,7 @@ endif;
                     </div>
                     <div class="form-group mt-2">
                         <input type="file" required="" name="file3" class="form-control-file">
-                        <img name="file3"style="width:90px;height:90px"src="../../img/<?php echo $row['image_list'];?>" alt="">
+                        <img name="file3"style="width:90px;height:90px"src="../../img/<?php echo $row['img'];?>" alt="">
                     </div>
                     <button type="button" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop" class="btn btn-secondary mt-4">Cập nhật</button>

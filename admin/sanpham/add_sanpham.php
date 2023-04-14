@@ -219,6 +219,11 @@ endif;
                             placeholder="Nhập giá discount" required>
                     </div>
                     <div class="form-group mt-2">
+                        <label for="txtngaytao">Ngày tạo</label>
+                        <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date"
+                            name="txtngaytao"required>
+                    </div>
+                    <div class="form-group mt-2">
                         Mô tả<br>
                         <textarea class="ps-3 border py-2 rounded-3 col-md-12" rows="7" name="txtMota"
                             required></textarea><br>

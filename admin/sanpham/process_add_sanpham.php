@@ -8,6 +8,7 @@ $id = $_GET['id'];
     $Soluong = $_POST['txtSoluong'];
     $Trangthai= $_POST['txtTrangthai'];
     $Giamgia= $_POST['txtGiamgia'];
+    $Ngaytao= $_POST['txtngaytao'];
     $Mota = $_POST['txtMota'];
     $file3 = $_POST['file3'];
 
@@ -24,7 +25,7 @@ $id = $_GET['id'];
     $error = "MaSP bị trùng";
     header("location:add_sanpham.php?id=$id&error=$error"); 
     }else{
-    $sql = "INSERT INTO product (id_product,catalog_id,name_product,price,import_price,quantity,content,discount,status,img) VALUES('$MaSP','$MaLSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Giamgia','$Trangthai','$file3')";
+    $sql = "INSERT INTO product (id_product,catalog_id,name_product,price,import_price,quantity,content,discount,created,status,img) VALUES('$MaSP','$MaLSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Giamgia','$Ngaytao','$Trangthai','$file3')";
     $result = mysqli_query($conn,$sql);
     if($result ==true){
         header("location:sanpham.php?id=$id"); 

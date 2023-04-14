@@ -181,21 +181,21 @@ endif;
                                 ?>
                                 <tr>
                                     <td class="">
-                                        <!-- <img class="" width="100px" height="100px"
-                                            src="../../img/<?php echo $row['image_list']; ?>" alt=""> -->
-                                        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
+                                        <img class="" width="100px" height="100px"
+                                            src="../../img/<?php echo $row['img']; ?>" alt="">
+                                        <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
                                             data-bs-interval="false">
                                             <div class="carousel-inner mt-3" action="load_image.php">
                                                 <div class="carousel-item active">
-                                                    <img src="../../img/<?php echo $row["img"] ?>" width="50px"
+                                                    <img src="../../img/<?php echo $row["img1"] ?>" width="50px"
                                                         height="50px" class="img-fluid d-block w-100" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="../../img/<?php echo $row["img"] ?>" width="50px"
+                                                    <img src="../../img/<?php echo $row["img2"] ?>" width="50px"
                                                         height="50px" class="img-fluid d-block w-100" alt="...">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="../../img/<?php echo $row["img"] ?>" width="50px"
+                                                    <img src="../../img/<?php echo $row["img3"] ?>" width="50px"
                                                         height="50px" class="img-fluid d-block w-100" alt="...">
                                                 </div>
                                             </div>
@@ -209,7 +209,7 @@ endif;
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
-                                        </div>
+                                        </div> -->
                                     </td>
                                     <td class="">
                                         <p class="ms-2">
@@ -232,7 +232,7 @@ endif;
                                         </p>
                                     </td>
                                     <td class="">
-                                        <p class="">
+                                        <p class="content_product">
                                             <?php echo $row['content']; ?>
                                         </p>
                                     </td>
