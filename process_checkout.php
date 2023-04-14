@@ -44,7 +44,17 @@
                             $sql4="INSERT INTO `detail_order`(`id_order`, `product_id`, `qty`, `color`, `size`,amount) VALUES ('$id_order','$id_product','$qty','$color','$size','$amount')";
                             $result4 = mysqli_query($conn,$sql4);
                             if($result4 == true){
-                                header("location:order.php");
+                                $sql5="SELECT * from `product` WHERE id_product='$id_product'";
+                                $result5 = mysqli_query($conn,$sql5);
+                                if(mysqli_num_rows($result5) > 0){
+                                    $row = mysqli_fetch_assoc($result5);
+                                    $q_ty = $row['quantity'] - $qty;
+                                    $sql6="UPDATE `product` SET `quantity`='$q_ty' WHERE id_product='$id_product'";
+                                    $result6 = mysqli_query($conn,$sql6);
+                                    header("location:order.php");
+                                }
+                                //$sql5="UPDATE `product` SET `quantity`='[value-9]' WHERE id_product='$id_product'"
+                                //header("location:order.php");
                             }
                         }  
                     }
