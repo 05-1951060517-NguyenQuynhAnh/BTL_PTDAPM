@@ -301,7 +301,7 @@
                             }
                             else{
                                 ?>
-                                <input type="radio" class="btn-check" name="size" value="41" id="option4"
+                                <input type="radio" class="btn-check" name="size" value="Free Size" id="option4"
                                     autocomplete="off">
                                 <label class="link-dark text-center btn-outline-secondary"
                                     style="border: 1px solid black;width: 100px;height: 50px;font-size: 13px;padding-top:15px"

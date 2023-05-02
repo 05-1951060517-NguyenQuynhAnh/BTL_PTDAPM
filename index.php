@@ -39,11 +39,10 @@ if (session_id() == '') {
 
                         <div class="text-center mt-3">
                             <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">VŨ TRỤ
-                                THỜI TRANG</font>
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Cách bạn ăn mặc thật sự phản ánh cảm nhận, lối sống, kiến
-                                thức và cả lựa chọn của bạn. Đó là điều tôi muốn đưa vào các thiết kế của Gucci.
-                            </p>
+                                THỜI TRANG</font><br>
+                            <font class="mt-3" STYLE="letter-spacing: 1px;word-spacing:1px;" face="Candara"
+                                size="3">Cách bạn ăn mặc thật sự phản ánh cảm nhận, lối sống, kiến
+                                thức và cả lựa chọn của bạn. Đó là điều tôi muốn đưa vào các thiết kế của Gucci.</font>
                         </div>
                     </div>
                 </div>
@@ -51,7 +50,7 @@ if (session_id() == '') {
         </div>
     </section>
     <section>
-        <div class="container">
+        <div class="container mt-3">
             <div class="px-5">
                 <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -151,15 +150,16 @@ if (session_id() == '') {
                     <div class="" style="padding-left:200px;padding-right:200px;">
                         <div class="text-center mt-5">
                             <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">GUCCI SPRING
-                                SUMMER 2023</font>
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Các cặp song sinh giống hệt nhau trong chiến dịch này diễn giải khái niệm về tính hai
-                                mặt/tính cá nhân thông qua quần áo may sẵn, đồ da và phụ kiện.
-                            </p>
+                                SUMMER 2023</font><br>
+                            <font class="mt-3 " STYLE="letter-spacing: 1px;word-spacing:1px;" face="Candara"
+                                size="3"> Các cặp song sinh giống hệt nhau trong chiến dịch này diễn giải khái niệm về
+                                tính hai
+                                mặt/tính cá nhân thông qua quần áo may sẵn, đồ da và phụ kiện.</font>
+
                         </div>
                     </div>
                 </div>
-                <div class="px-5">
+                <div class="px-5 mt-3">
                     <img src="img/summer.avif" class=" img-fluid " alt="">
                 </div>
                 <div class="row px-5 mt-5 pt-5">
@@ -170,17 +170,17 @@ if (session_id() == '') {
                     if ($count1 > 0) {
                         while ($row = mysqli_fetch_assoc($res1)) {
                             ?>
-                            <div class="col px-0 mx-2 px-1 ">
-                                <a href="./detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
-                                    <img class="img-fluid  mb-3" src="img/<?php echo $row['img']; ?>" alt="">
-                                    <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                        face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
-                                    <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                        <?php echo number_format($row['price']); ?> VNĐ
-                                    </p>
-                                </a>
-                            </div>
-                            <?php
+                    <div class="col px-0 mx-2 px-1 ">
+                        <a href="./detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
+                            <img class="img-fluid  mb-3" src="img/<?php echo $row['img']; ?>" alt="">
+                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
+                                face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
+                            <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                <?php echo number_format($row['price']); ?> VNĐ
+                            </p>
+                        </a>
+                    </div>
+                    <?php
                         }
                     }
                     ?>
@@ -196,15 +196,15 @@ if (session_id() == '') {
                     <div class="" style="padding-left:200px;padding-right:200px;">
                         <div class="text-center mt-5">
                             <font STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">GG SUPREME
-                                FLORA</font>
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Một bộ sưu tập đặc biệt kết hợp hai trong số những thiết kế đặc biệt nhất của Ngôi nhà
-                                thành một loại vải bất ngờ và đương đại.
-                            </p>
+                                FLORA</font><br>
+                            <font class="mt-3" STYLE="letter-spacing: 1px;word-spacing:1px;" face="Candara"
+                                size="3">Một bộ sưu tập đặc biệt kết hợp hai trong số những thiết kế đặc biệt nhất của Ngôi nhà
+                                thành một loại vải bất ngờ và đương đại.</font>
+
                         </div>
                     </div>
                 </div>
-                <div class="px-5">
+                <div class="px-5 mt-3">
                     <img src="img/panel3.avif" class=" img-fluid " alt="">
                 </div>
                 <div class="row  px-5 mt-5 pt-5">
@@ -215,17 +215,17 @@ if (session_id() == '') {
                     if ($count2 > 0) {
                         while ($row = mysqli_fetch_assoc($res2)) {
                             ?>
-                            <div class="col px-0 mx-2 px-1">
-                                <a href="./detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
-                                    <img class="img-fluid  mb-3" src="img/<?php echo $row['img']; ?>" alt="">
-                                    <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
-                                        face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
-                                    <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                        <?php echo number_format($row['price']); ?> VNĐ
-                                    </p>
-                                </a>
-                            </div>
-                            <?php
+                    <div class="col px-0 mx-2 px-1">
+                        <a href="./detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
+                            <img class="img-fluid  mb-3" src="img/<?php echo $row['img']; ?>" alt="">
+                            <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
+                                face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
+                            <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                <?php echo number_format($row['price']); ?> VNĐ
+                            </p>
+                        </a>
+                    </div>
+                    <?php
                         }
                     }
                     ?>
@@ -247,10 +247,10 @@ if (session_id() == '') {
                     </div>
                     <div class="pb-5 border-bottom" style="padding-left:200px;padding-right:200px;">
                         <div class="text-center mt-3">
-                            <p class="mt-3" style="font-family:courier,arial,helvetica;">
-                                Nhân viên của Gucci trên toàn thế giới cam kết thể hiện các giá trị của ngôi nhà cho
-                                khách hàng của chúng tôi.
-                            </p>
+                        <font class="mt-3" STYLE="letter-spacing: 1px;word-spacing:1px;" face="Candara"
+                                size="3"> Nhân viên của Gucci trên toàn thế giới cam kết thể hiện các giá trị của ngôi nhà cho
+                                khách hàng của chúng tôi.</font>
+                          
                         </div>
                     </div>
                 </div>
@@ -261,7 +261,7 @@ if (session_id() == '') {
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

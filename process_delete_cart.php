@@ -8,6 +8,7 @@
     $sql = "DELETE FROM cart WHERE id_user='$id' and id_product='$product' and color='$color' and size='$size'";
     $number = mysqli_query($conn,$sql);
     if($number > 0){
+        $_SESSION['isDelCart'] = "Xoá thành công";
         header("location: cart.php?id=$id");
     }else{
         header("location: index.php"); 

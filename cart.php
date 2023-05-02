@@ -23,12 +23,29 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/styled2.css">
+    <link rel="stylesheet" href="public/styless.css">
     <title>Giỏ hàng | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body style="background:#f6f1eb">
+    <?php
+// Kiểm tra xem có thông báo nào được lưu trữ trong session không
+if(isset($_SESSION['isDelCart'])) {
+    $message = $_SESSION['isDelCart'];?>
+    <div class="toast show position-fixed " style="left:20px;bottom:20px">
+        <div class="d-flex">
+            <div class="toast-body">
+                Đã xoá sản phẩm.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+    <?php
+   unset($_SESSION['isDelCart']);
+}
+?>
     <div class="header">
         <div class="container-fluid px-5 shadow" style="background:#f6f1eb;">
             <div class="px-5  py-2">
@@ -43,11 +60,13 @@ if (session_id() == '') {
                             <p class="pt-1 ps-2 mb-0" style="font-size:13px">Quay lại</p>
                         </a>
                     </div>
+                    <a href="/BTL_PTDAPM/index.php">
 
-                    <div style="width: 20%;" class="d-flex justify-content-center">
-                        <div class=""> <img id="logo" src="img/logo.png" style="width:100px;height:66px" alt=""></div>
-
-                    </div>
+                        <div style="width: 20%;" class="d-flex justify-content-center">
+                            <div class=""> <img id="logo" src="img/logo.png" style="width:100px;height:66px" alt="">
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -55,9 +74,15 @@ if (session_id() == '') {
     <section>
         <div class="container mt-5">
             <ul class="d-flex m-0 p-0">
-                <li class="list-unstyled col text-center"><p class="pt-1 ps-2 mb-0" style="font-size:13px">Giỏ hàng</p></li>
-                <li class="list-unstyled col text-center"><p class="pt-1 ps-2 mb-0" style="font-size:13px">Thanh toán</p></li>
-                <li class="list-unstyled col text-center"><p class="pt-1 ps-2 mb-0" style="font-size:13px">Xác nhận</p></li>
+                <li class="list-unstyled col text-center">
+                    <p class="pt-1 ps-2 mb-0" style="font-size:13px">Giỏ hàng</p>
+                </li>
+                <li class="list-unstyled col text-center">
+                    <p class="pt-1 ps-2 mb-0" style="font-size:13px">Thanh toán</p>
+                </li>
+                <li class="list-unstyled col text-center">
+                    <p class="pt-1 ps-2 mb-0" style="font-size:13px">Xác nhận</p>
+                </li>
             </ul>
             <div class="position-relative m-4 mt-1">
                 <div class="progress" style="background-color: #e0e0e0;height: 2px;">
@@ -66,7 +91,7 @@ if (session_id() == '') {
                         aria-valuemax="100"></div>
                 </div>
                 <div class="border-0 position-absolute translate-middle " style="top:1px;left:15.5%">
-                    
+
                     <a href="" style="color:#444">
                         <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor"
                             class="bi bi-dot" viewBox="0 0 16 16">
@@ -151,17 +176,54 @@ if (session_id() == '') {
                                                             </a>
                                                         </div>
                                                         <div style="width: 20%;" class="d-flex justify-content-end">
-                                                            <div class="">
-                                                                <a
-                                                                    href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>">
+                                                            <div class="d-flex justify-content-center">
+                                                                <div class="">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="currentColor"
-                                                                        class="link-dark bi bi-x-lg"
-                                                                        viewBox="0 0 16 16">
+                                                                        class="link-dark bi bi-x-lg" viewBox="0 0 16 16"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#exampleModal"
+                                                                        style="font-family:courier,arial,helvetica;"
+                                                                        name="add">
                                                                         <path
                                                                             d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                     </svg>
-                                                                </a>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Xác nhận xoá
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p class=""
+                                                                                style="font-size:13px;word-spacing:2px">
+                                                                                Bạn có chắc chắn muốn xoá sản phẩm này.
+                                                                            </p>
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary">Huỷ</button>
+                                                                            <a
+                                                                                href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>">
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    data-bs-dismiss="modal">Đồng
+                                                                                    ý</button>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -206,7 +206,9 @@ endif;
                     </div>
                 </div>
                 <div style="width: 20%;" class="d-flex justify-content-center">
-                    <div class=""> <img id="logo" src="img/logo.png" style="width:100px;height:66px" alt=""></div>
+                    <div class=""> <a href="/BTL_PTDAPM/index.php">
+                        <img id="logo" src="img/logo.png" style="width:100px;height:66px" alt=""></div>
+                        </a>
 
                 </div>
                 <div style="width: 40%;" class=" d-flex justify-content-end">
