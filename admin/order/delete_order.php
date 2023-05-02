@@ -8,6 +8,8 @@ $id1 = $_GET['id1'];
     $sql = "DELETE FROM `order` WHERE  id_order= '$id1' ";
     $number = mysqli_query($conn,$sql);
     if($number > 0){
+        $_SESSION['message'] = "Xóa thành công!";
+        $_SESSION['status'] = "success";
         header("location: order.php?id=$id");
     }else{
         header("location: error.php"); 

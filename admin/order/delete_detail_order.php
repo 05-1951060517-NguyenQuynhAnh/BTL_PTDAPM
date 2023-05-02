@@ -9,6 +9,8 @@ $id = $_GET['id'];
     $sql = "DELETE  FROM detail_order WHERE  id_order= '$id1' and product_id='$id2' ";
     $number = mysqli_query($conn,$sql);
     if($number > 0){
+        $_SESSION['message'] = "Xóa thành công!";
+        $_SESSION['status'] = "success";
         header("location: order.php?id=$id");
     }else{
         header("location: error.php"); 

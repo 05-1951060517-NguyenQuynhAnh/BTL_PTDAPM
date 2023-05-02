@@ -10,7 +10,19 @@ if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 }
 ?>
-
+<?php
+// Kiểm tra xem có thông báo nào được lưu trữ trong session không
+if(isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $status = $_SESSION['status'];
+    // Hiển thị thông báo trên cùng trang
+    echo "<div class='alert alert-$status text-center'>$message</div>";
+    // Xóa thông báo và trạng thái khỏi session
+    unset($_SESSION['message']);
+    unset($_SESSION['status']);
+}
+// Tiếp tục xử lý trang danh sách sản phẩm
+?>
 <body>
     <header class="header" id="header">
         <div class="header_toggle">

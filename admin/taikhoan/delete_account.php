@@ -12,11 +12,11 @@
     $number = mysqli_query($conn,$sql);
 
     if($number > 0){
+        $_SESSION['message'] = "Xóa thành công!";
+        $_SESSION['status'] = "success";
         header("location: taikhoan.php?id=$id"); 
     }else{
         header("location: error.php"); 
     }
-
-   
     mysqli_close($conn);
 ?>

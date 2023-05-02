@@ -17,7 +17,19 @@ if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
 
 endif;
 ?>
-
+<?php
+// Kiểm tra xem có thông báo nào được lưu trữ trong session không
+if(isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $status = $_SESSION['status'];
+    // Hiển thị thông báo trên cùng trang
+    echo "<div class='alert alert-$status text-center'>$message</div>";
+    // Xóa thông báo và trạng thái khỏi session
+    unset($_SESSION['message']);
+    unset($_SESSION['status']);
+}
+// Tiếp tục xử lý trang danh sách sản phẩm
+?>
 <body>
 <header class="header" id="header">
         <div class="header_toggle">
@@ -221,7 +233,7 @@ endif;
                                     </td>
                                     <td class="text-center">
 
-                                        <a href="delete_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_product']; ?>"><i
+                                        <a onclick="return confirm('Bạn có muốn xóa không?'); " href="delete_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['id_product']; ?>"><i
                                                 class="link-dark me-3 bi bi-trash"></i></a>
                                     </td>
 

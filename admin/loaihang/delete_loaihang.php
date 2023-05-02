@@ -8,6 +8,8 @@ $id = $_GET['id'];
     $sql = "DELETE  FROM catalog WHERE id_catalog= '$id1' ";
     $number = mysqli_query($conn,$sql);
     if($number > 0){
+        $_SESSION['message'] = "Xóa thành công!";
+        $_SESSION['status'] = "success";
         header("location: loaihang.php?id=$id");
     }else{
         header("location: error.php"); 

@@ -8,7 +8,19 @@ if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 }
 ?>
-
+<?php
+// Kiểm tra xem có thông báo nào được lưu trữ trong session không
+if(isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $status = $_SESSION['status'];
+    // Hiển thị thông báo trên cùng trang
+    echo "<div class='alert alert-$status text-center'>$message</div>";
+    // Xóa thông báo và trạng thái khỏi session
+    unset($_SESSION['message']);
+    unset($_SESSION['status']);
+}
+// Tiếp tục xử lý trang danh sách sản phẩm
+?>
 <body>
     <header class="header" id="header">
         <div class="header_toggle">
@@ -201,7 +213,7 @@ if (mysqli_num_rows($result) > 0) {
                             </td>
                             <td class="">
 
-                                <a href="delete_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
+                                <a onclick="return confirm('Bạn có muốn xóa không?'); " href="delete_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
                                         class="link-dark me-3 bi bi-trash"></i></a>
                             </td>
                         </tr>

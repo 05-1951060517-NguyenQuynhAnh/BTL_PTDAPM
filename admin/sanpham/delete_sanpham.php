@@ -9,6 +9,8 @@ $id = $_GET['id'];
     // $sql = "ALTER TABLE sanpham DROP CONSTRAINT MaSP WHERE MaSP = '$id1';";
     $number = mysqli_query($conn,$sql);
     if($number > 0){
+        $_SESSION['message'] = "Xóa thành công!";
+        $_SESSION['status'] = "success";
         header("location: sanpham.php?id=$id");
     }else{
         header("location: error.php"); 
