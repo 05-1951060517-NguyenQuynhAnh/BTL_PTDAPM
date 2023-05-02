@@ -23,7 +23,7 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/styless.css">
+    <link rel="stylesheet" href="public/stylessss.css">
     <title>Giỏ hàng | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
@@ -33,7 +33,7 @@ if (session_id() == '') {
 // Kiểm tra xem có thông báo nào được lưu trữ trong session không
 if(isset($_SESSION['isDelCart'])) {
     $message = $_SESSION['isDelCart'];?>
-    <div class="toast show position-fixed " style="left:20px;bottom:20px">
+    <div class="toast show position-fixed " style="z-index: 1">
         <div class="d-flex">
             <div class="toast-body">
                 Đã xoá sản phẩm.
@@ -60,13 +60,12 @@ if(isset($_SESSION['isDelCart'])) {
                             <p class="pt-1 ps-2 mb-0" style="font-size:13px">Quay lại</p>
                         </a>
                     </div>
-                    <a href="/BTL_PTDAPM/index.php">
-
-                        <div style="width: 20%;" class="d-flex justify-content-center">
+                    <div style="width: 20%;" class="d-flex justify-content-center">
+                        <a href="/BTL_PTDAPM/index.php">
                             <div class=""> <img id="logo" src="img/logo.png" style="width:100px;height:66px" alt="">
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,7 +118,7 @@ if(isset($_SESSION['isDelCart'])) {
         </div>
     </section>
     <section style="" class="mb-5">
-        <div class="container">
+        <div class="container" style="z-index:-1">
             <div class="row mt-5 mx-2">
                 <div class="col-8">
                     <div class="">
@@ -144,13 +143,16 @@ if(isset($_SESSION['isDelCart'])) {
                             <hr style="background:#e2d8ce" class="m-0 ">
                             <div style="background:#fffcf7;" class="">
                                 <?php 
-                                $sql = "SELECT *,cart.qty*cart.price as thanhtien  FROM user,cart INNER JOIN product ON product.id_product = cart.id_product WHERE user.id_user='$id' ";
+                                $sql = "SELECT *,cart.qty*cart.price as thanhtien  FROM user,cart INNER JOIN product ON product.id_product = cart.id_product  WHERE user.id_user='$id' ORDER BY `cart`.`date` DESC";
                                 $res = mysqli_query($conn, $sql);
                                 $count = mysqli_num_rows($res);
                                 if($count>0)
                                 {
                                     while($row=mysqli_fetch_assoc($res))
                                     {
+                                        $product= $row['id_product'];   
+                                        $color=$row['color'];
+                                        $size= $row['size']; 
                                 ?>
                                 <ul class="py-3 ps-4 m-0">
                                     <li class="list-unstyled">
@@ -181,10 +183,7 @@ if(isset($_SESSION['isDelCart'])) {
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="currentColor"
                                                                         class="link-dark bi bi-x-lg" viewBox="0 0 16 16"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#exampleModal"
-                                                                        style="font-family:courier,arial,helvetica;"
-                                                                        name="add">
+                                                                        data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $product;echo $color;echo $size;?>" style="font-family:courier,arial,helvetica;" name="add">
                                                                         <path
                                                                             d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                     </svg>
@@ -192,8 +191,8 @@ if(isset($_SESSION['isDelCart'])) {
                                                             </div>
 
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="exampleModal<?php echo $product;echo $color;echo $size;?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
@@ -213,12 +212,12 @@ if(isset($_SESSION['isDelCart'])) {
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
-                                                                                class="btn btn-secondary">Huỷ</button>
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Huỷ</button>
                                                                             <a
-                                                                                href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>">
+                                                                                href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $product; ?>&size=<?php echo $size; ?>&color=<?php echo $color; ?>">
                                                                                 <button type="button"
-                                                                                    class="btn btn-primary"
-                                                                                    data-bs-dismiss="modal">Đồng
+                                                                                    class="btn btn-primary">Đồng
                                                                                     ý</button>
                                                                             </a>
                                                                         </div>
@@ -309,7 +308,6 @@ if(isset($_SESSION['isDelCart'])) {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </li>
                                 </ul>

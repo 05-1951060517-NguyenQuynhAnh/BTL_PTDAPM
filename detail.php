@@ -17,12 +17,29 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/styled2.css">
+    <link rel="stylesheet" href="./public/stylessss.css">
     <title>Thông tin sản phẩm | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body style="background:#f6f1eb">
+<?php
+// Kiểm tra xem có thông báo nào được lưu trữ trong session không
+if(isset($_SESSION['isAddCart'])) {
+    $message = $_SESSION['isAddCart'];?>
+    <div class="toast show position-fixed " style="z-index: 1">
+        <div class="d-flex">
+            <div class="toast-body"><?php
+                echo $message;?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+    <?php
+   unset($_SESSION['isAddCart']);
+}
+?>
     <?php include('./template/header.php'); 
 ?>
     <?php 
@@ -33,12 +50,13 @@
         $row = mysqli_fetch_assoc($result);
         }
     ?>
+    
     <section class="mb-5">
         <div class="container pt-5">
             <div class="row px-5">
-                <div style="width: 60%;" class="pe-5">
+                <div style="width: 60%;" class="pe-5" style="z-index: -1">
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
-                        data-bs-interval="false">
+                        >
                         <div class="carousel-inner mt-3">
                             <div class="carousel-item active">
                                 <img src="./img/<?php echo $row['img1']; ?>" style="height:675px"
@@ -464,7 +482,7 @@
                                 </div>
                             </div>
                             <?php
-      endif;?>
+                 endif;?>
                         </form>
                         <hr style="background:#e2d8ce" class="m-0 ">
                         <div class="p-3 product-title ">

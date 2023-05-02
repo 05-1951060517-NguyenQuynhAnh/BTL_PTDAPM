@@ -25,17 +25,21 @@ if (mysqli_num_rows($result) > 0) {
 $sql = "SELECT * FROM `cart` WHERE id_user='$id_user' and id_product='$id' and color='$color' and size='$size'";
 $result1 = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result1) > 0) {
+    $_SESSION['isAddCart'] = "Sản phẩm đã có trong giỏ hàng.";
     $row = mysqli_fetch_assoc($result1);
     $qty = $row['qty'] + 1;
-    $sql1 = "UPDATE `cart` SET `qty`='$qty' WHERE id_user='$id_user' and id_product='$id' and color='$color' and size='$size'";
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $date = date('Y-m-d H:i:s');
+    echo $date;
+    $sql1 = "UPDATE `cart` SET `qty`='$qty',`date`='$date' WHERE id_user='$id_user' and id_product='$id' and color='$color' and size='$size'";
     $result2 = mysqli_query($conn, $sql1);
     header("location:detail.php?id=$id");
 } else {
     $sql2 = "INSERT INTO `cart`(`id_user`,`id_product`,`qty`, `color`, `size`, `price`) VALUES ('$id_user','$id','$sluong','$color','$size','$price')";
     $number = mysqli_query($conn, $sql2);
     if ($number > 0) {
+        $_SESSION['isAddCart'] = "Thêm thành công";
         header("location:detail.php?id=$id");
-
     } else {
 
     }

@@ -22,12 +22,29 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/styled2.css">
+    <link rel="stylesheet" href="public/stylessss.css">
     <title>Thanh toán | GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body style="background:#f6f1eb">
+<?php
+// Kiểm tra xem có thông báo nào được lưu trữ trong session không
+if(isset($_SESSION['isDelOrder'])) {
+    $message = $_SESSION['isDelOrder'];?>
+    <div class="toast show position-fixed " style="z-index: 1">
+        <div class="d-flex">
+            <div class="toast-body"><?php
+                echo $message;?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+    <?php
+   unset($_SESSION['isDelOrder']);
+}
+?>
     <div class="header">
         <div class="container-fluid px-5 shadow" style="background:#f6f1eb;">
             <div class="px-5  py-2">
@@ -113,90 +130,116 @@ if (session_id() == '') {
                             }
                             endif;
                     ?>
-                        <div class="" >
-                        <div class="pb-3"style="background:#fffcf7;">
-                            <p class="ps-4 pt-3 mb-0 fw-bold" style="font-size:14px,letter-spacing: 2.75px;word-spacing:2px">
-                                Bạn có đơn hàng.</p>
-                        </div>
+                        <div class="">
+                            <div class="pb-3" style="background:#fffcf7;">
+                                <p class="ps-4 pt-3 mb-0 fw-bold"
+                                    style="font-size:14px,letter-spacing: 2.75px;word-spacing:2px">
+                                    Bạn có đơn hàng.</p>
+                            </div>
                             <hr style="background:#e2d8ce" class="m-0 ">
-                            <div  class="">
+                            <div class="">
                                 <?php
                                 if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-                                $sql1 = "SELECT *, SUM(detail_order.qty*product.price) as tongtien, order.status as stt FROM `order`, detail_order, product  WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id and order.user_id='$user'GROUP by detail_order.id_order DESC";
+                                $sql1 = "SELECT *,order.status as stt FROM `order`, detail_order, product  WHERE order.id_order=detail_order.id_order and product.id_product=detail_order.product_id and order.user_id='$user'GROUP by detail_order.id_order DESC";
                                 $result1 = mysqli_query($conn,$sql1);
                                 if(mysqli_num_rows($result1)>0)
                                  {
                                  while($row=mysqli_fetch_assoc($result1))
                                  {
+                                    $id_order=$row['id_order'];
+                                    $mount = $row['amount'];
+                                    $status = $row['stt'];
                                 ?>
                                 <ul style="background:#fffcf7;" class="p-0 m-0 mt-3">
                                     <li class="list-unstyled">
                                         <div class="row">
-                                            <div class="d-flex px-4 py-3">
-                                                <a href="./detail.php?id=<?php echo $row['id_product'];?>">
-                                                    <div class="ps-3">
-                                                        <img src="./img/<?php echo $row['img'];?>"
-                                                            style="width:80px;height:80px" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="ms-3 col">
-                                                    <a href=""></a>
-                                                    <div class="d-flex col-md-12">
-                                                        <div style="width: 80%;">
-                                                            <a class="link-dark text-decoration-none"
-                                                                href="./detail.php?id=<?php echo $row['id_product'];?>">
-                                                                <font class="text-uppercase"
-                                                                    STYLE="letter-spacing: 1px;word-spacing:1px"
-                                                                    face="Candara" size="3">
-                                                                    <?php echo $row['name_product'];?>
-                                                                </font>
-                                                            </a>
-                                                        </div>
-                                                        <div style="width: 20%;" class="d-flex justify-content-end">
-                                                            <div class="pe-3">
+                                            <div class="pt-2">
+                                                <?php
+                                                                if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
+                                                                $sql10 = "SELECT * FROM `order`, detail_order, product WHERE order.id_order=detail_order.id_order AND detail_order.product_id=product.id_product AND detail_order.id_order='$id_order'";
+                                                                $result10 = mysqli_query($conn,$sql10);
+                                                                if(mysqli_num_rows($result10)>0)
+                                                                    {
+                                                                        while($row=mysqli_fetch_assoc($result10))
+                                                                    {
+                                                            ?>
+                                                <ul class="px-4 p-0 mt-2">
+                                                    <li class="list-unstyled">
+                                                        <div class="row ">
+                                                            <div class="d-flex">
                                                                 <a
-                                                                    href="process_delete_cart.php?id=<?php echo $id ?>&product=<?php echo $row['id_product']; ?>&size=<?php echo $row['size']; ?>&color=<?php echo $row['color']; ?>">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                        height="16" fill="currentColor"
-                                                                        class="link-dark bi bi-x-lg"
-                                                                        viewBox="0 0 16 16">
-                                                                        <path
-                                                                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                                                    </svg>
+                                                                    href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                                    <div class="">
+                                                                        <img src="./img/<?php echo $row['img'];?>"
+                                                                            style="width:80px;height:80px" alt="">
+                                                                    </div>
                                                                 </a>
+                                                                <div class="ms-3 col">
+                                                                    <a href=""></a>
+                                                                    <div class="d-flex col-md-12">
+                                                                        <div style="width: 80%;">
+                                                                            <a class="link-dark text-decoration-none"
+                                                                                href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                                                <font class="text-uppercase"
+                                                                                    STYLE="letter-spacing: 1px;word-spacing:1px"
+                                                                                    face="Candara" size="3">
+                                                                                    <?php echo $row['name_product'];?>
+                                                                                </font>
+                                                                            </a>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="d-flex col-md-12 mt-3">
+                                                                        <div style="width: 45%;" class="">
+                                                                            <a class="link-dark text-decoration-none"
+                                                                                href="./detail.php?id=<?php echo $row['id_product'];?>">
+                                                                                <p class="mb-1"
+                                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                                    Màu:
+                                                                                    <?php echo $row['color'];?>
+                                                                                </p>
+                                                                                <p class="m-0"
+                                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                                    Kích cỡ:
+                                                                                    <?php echo $row['size'];?>
+                                                                                </p>
+                                                                            </a>
+
+                                                                        </div>
+                                                                        <div style="width: 25%;"
+                                                                            class="d-flex align-items-end">
+                                                                            <p class="m-0"
+                                                                                style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                                Số lượng:
+                                                                                <?php echo $row['qty'];?>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div style="width: 30%;"
+                                                                            class="d-flex align-items-end justify-content-end">
+                                                                            <div class="">
+                                                                                <p class="mb-0"
+                                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
+                                                                                    <?php echo number_format($row['detail_amount']); ?>
+                                                                                    VNĐ
+                                                                                </p>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
                                                             </div>
+
                                                         </div>
-                                                    </div>
-                                                    <div class="d-flex col-md-12 mt-3">
-                                                        <div style="width: 50%;" class="">
-                                                            <a class="link-dark text-decoration-none"
-                                                                href="./detail.php?id=<?php echo $row['id_product'];?>">
-                                                                <p class="mb-1"
-                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
-                                                                    Màu: <?php echo $row['color'];?></p>
-                                                                <p class="m-0"
-                                                                    style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
-                                                                    Kích cỡ: <?php echo $row['size'];?></p>
-                                                            </a>
-                                                        </div>
-                                                        <div style="width: 25%;" class="d-flex justify-content-center">
-                                                            <p class="m-0 d-flex align-items-end"
-                                                                style="font-size:11px; letter-spacing: 1px;word-spacing:1px">
-                                                                Số lượng: <?php echo $row['qty'];?></p>
-                                                        </div>
-                                                        <div style="width: 25%;"
-                                                            class="d-flex align-items-end justify-content-end">
-                                                            <div class="pe-3">
-                                                                <p class="mb-1"
-                                                                    style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                                                    VNĐ
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </li>
+                                                </ul>
+                                                <hr style="background:#e2d8ce" class="m-0 mt-2">
+                                                <?php
+                                                        }
+                                                    }    
+                                                endif;     
+                                                    ?>
                                             </div>
-                                            <hr style="background:#e2d8ce" class="m-0 ">
                                             <div class="d-flex m-3 mb-1">
                                                 <div class="ps-3" style="width: 60%;">
                                                     <font class="text-uppercase"
@@ -208,50 +251,93 @@ if (session_id() == '') {
                                                     <div class="pe-5">
                                                         <p class=""
                                                             style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
-                                                            <?php echo number_format($row['tongtien']); ?> VNĐ </p>
+                                                            <?php echo number_format($mount ); ?> VNĐ </p>
                                                     </div>
 
                                                 </div>
                                             </div>
                                             <hr style="background:#e2d8ce" class="m-0 ">
                                             <?php
-                                            $status = $row['stt'];
                                             if($status == '0'){
                                                 ?>
-                                                <div class="p-4 d-flex justify-content-end" >
+                                                <div class="d-flex justify-content-end">
+                                                    <div class="p-4 pe-0 d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $id_order;?>">
+                                                        <button style="color:white;background:red;"
+                                                            class="px-5 pt-1  fw-bold btn btn-lg btn-block" type="submit" 
+                                                            name="btnLogin">
+                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara"
+                                                                size="2">
+                                                                HUỶ ĐƠN HÀNG</font>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal fade" id="exampleModal<?php echo $id_order;?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Xác nhận xoá
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p class=""
+                                                                                style="font-size:13px;word-spacing:2px">
+                                                                                Bạn có chắc chắn muốn xoá sản phẩm này.
+                                                                            </p>
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Huỷ</button>
+                                                                            <a
+                                                                                href="process_del_order.php?id=<?php echo $id_order;?>">
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Đồng
+                                                                                    ý</button>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    <div class="p-4 d-flex ">
                                                         <button style="color:white;background:#5ec073f5"
                                                             class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
                                                             name="btnLogin">
-                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
-                                                                face="Candara" size="2">
+                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara"
+                                                                size="2">
                                                                 CHỜ XÁC NHẬN</font>
                                                         </button>
+                                                    </div>
                                                 </div>
                                             <?php
                                             }
                                             elseif($status == '1'){?>
-                                                <div class="p-4 d-flex justify-content-end" >
-                                                        <button style="color:white;background:#f60000e8"
-                                                            class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
-                                                            name="btnLogin">
-                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
-                                                                face="Candara" size="2">
-                                                                ĐANG GIAO HÀNG</font>
-                                                        </button>
-                                                </div>
+                                            <div class="p-4 d-flex justify-content-end">
+                                                <button style="color:white;background:#f60000e8"
+                                                    class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
+                                                    name="btnLogin">
+                                                    <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara"
+                                                        size="2">
+                                                        ĐANG GIAO HÀNG</font>
+                                                </button>
+                                            </div>
                                             <?php
                                             } else{
                                                 ?>
-                                                 <div class="p-4 d-flex justify-content-end" >
-                                                        <button style="color:white;background:#444444f0"
-                                                            class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
-                                                            name="btnLogin">
-                                                            <font STYLE="letter-spacing: 1.75px;word-spacing:1px"
-                                                                face="Candara" size="2">
-                                                                ĐÃ NHẬN HÀNG</font>
-                                                        </button>
-                                                </div>
-                                                <?php
+                                            <div class="p-4 d-flex justify-content-end">
+                                                <button style="color:white;background:#444444f0"
+                                                    class="px-5 pt-1 me-3 fw-bold btn btn-lg btn-block" type="submit"
+                                                    name="btnLogin">
+                                                    <font STYLE="letter-spacing: 1.75px;word-spacing:1px" face="Candara"
+                                                        size="2">
+                                                        ĐÃ NHẬN HÀNG</font>
+                                                </button>
+                                            </div>
+                                            <?php
                                             }
                                             ?>
                                             <hr style="background:#e2d8ce" class="m-0 ">

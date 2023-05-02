@@ -41,7 +41,7 @@
                             $color=$row['color'];
                             $size=$row['size'];
                             $amount=$row['tong'];
-                            $sql4="INSERT INTO `detail_order`(`id_order`, `product_id`, `qty`, `color`, `size`,amount) VALUES ('$id_order','$id_product','$qty','$color','$size','$amount')";
+                            $sql4="INSERT INTO `detail_order`(`id_order`, `product_id`, `qty`, `color`, `size`,detail_amount) VALUES ('$id_order','$id_product','$qty','$color','$size','$amount')";
                             $result4 = mysqli_query($conn,$sql4);
                             if($result4 == true){
                                 $sql5="SELECT * from `product` WHERE id_product='$id_product'";
