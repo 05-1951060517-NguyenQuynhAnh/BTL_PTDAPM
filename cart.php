@@ -131,7 +131,7 @@ if(isset($_SESSION['isDelCart'])) {
                                 
                         ?>
                         <?php 
-                                $sql5 = "SELECT count(id_product) as count FROM `cart` WHERE $id";
+                                $sql5 = "SELECT count(id_product) as count FROM `cart` WHERE id_user='$id'";
                                 $result5 = mysqli_query($conn,$sql5);
                                 if(mysqli_num_rows($result5)>0){
                                     $row = mysqli_fetch_assoc($result5);
@@ -143,7 +143,7 @@ if(isset($_SESSION['isDelCart'])) {
                             <hr style="background:#e2d8ce" class="m-0 ">
                             <div style="background:#fffcf7;" class="">
                                 <?php 
-                                $sql = "SELECT *,cart.qty*cart.price as thanhtien  FROM user,cart INNER JOIN product ON product.id_product = cart.id_product  WHERE user.id_user='$id' ORDER BY `cart`.`date` DESC";
+                                $sql = "SELECT *,cart.qty*cart.price as thanhtien FROM `cart`, product WHERE cart.id_product=product.id_product and id_user='$id' ORDER BY `cart`.`date` DESC";
                                 $res = mysqli_query($conn, $sql);
                                 $count = mysqli_num_rows($res);
                                 if($count>0)
@@ -317,7 +317,7 @@ if(isset($_SESSION['isDelCart'])) {
                                 }         
                                 ?>
                                 <?php 
-                                $sql1 = "SELECT *, sum(cart.qty*cart.price) as tongtien FROM `cart` WHERE $id";
+                                $sql1 = "SELECT *, sum(cart.qty*cart.price) as tongtien FROM `cart` WHERE id_user='$id'";
                                 $result = mysqli_query($conn,$sql1);
                                 if(mysqli_num_rows($result)>0){
                                     $row = mysqli_fetch_assoc($result);

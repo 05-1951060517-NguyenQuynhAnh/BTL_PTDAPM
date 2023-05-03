@@ -23,12 +23,29 @@ if (session_id() == '') {
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/styled2.css">
+    <link rel="stylesheet" href="public/stylessss.css">
     <title>GUCCI Official</title>
     <link rel="shortcut icon" href="img/web.png">
 </head>
 
 <body>
+    <?php
+    if(isset($_SESSION['isSignup'])) {
+        $message = $_SESSION['isSignup'];?>
+        <div class="toast show position-fixed " style="z-index: 111">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <?php
+                    echo $message;?>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+        <?php
+       unset($_SESSION['isSignup']);
+    }
+    ?>
     <?php include('./template/header.php');
     ?>
     <section>

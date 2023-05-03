@@ -330,7 +330,7 @@ if(isset($_SESSION['isAcceptOrder'])) {
                         </div>
                         <?php
                         }
-                        else{?>
+                        elseif($status == 2){?>
                         <div class="d-flex justify-content-center">
                             <p>Đơn hàng đã hoàn thành</p>
                         </div>

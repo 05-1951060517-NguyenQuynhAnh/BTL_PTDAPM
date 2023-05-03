@@ -33,6 +33,7 @@ $gioitinh = $_POST['gender'];
     $sql1 = "INSERT INTO user(name_user, email, phone, address, password, date_birth, gender_user) VALUES('$hovaten ', '$email', '$sđt', '$diachi', '$matkhau','$ngaysinh','$gioitinh')";
     $result1 = mysqli_query($conn,$sql1);
     if($result1 ==true){
+        $_SESSION['isSignup'] = "Tạo tài khoản thành công.";
         header("location:index.php"); 
     }else{
         $error = "Bạn nhập thông tin Email hoặc mật khẩu chưa chính xác";

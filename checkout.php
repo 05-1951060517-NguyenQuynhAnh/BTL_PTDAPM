@@ -191,7 +191,7 @@ if (session_id() == '') {
                                     </div>
                                     <?php
                                             if (isset($_GET['bug'])) { ?>
-                                    <div class="ms-4 mt-2"style="color:red">
+                                    <div class="ms-4 mt-2" style="color:red">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                             fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                                             <path
@@ -330,7 +330,7 @@ if (session_id() == '') {
                                             <div class="px-0 accordion-body">
                                                 <?php
                                                     if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])) :
-                                                        $sql1 = "SELECT *,cart.qty*product.price as thanhtien  FROM user,cart INNER JOIN product ON product.id_product = cart.id_product WHERE user.email='$id' ";
+                                                        $sql1 = "SELECT *,cart.qty*cart.price as thanhtien FROM `cart`, product WHERE cart.id_product=product.id_product and id_user='$user' ORDER BY `cart`.`date` DESC";
                                                         $result1 = mysqli_query($conn,$sql1);
                                                         if(mysqli_num_rows($result1)>0)
                                                             {
@@ -430,7 +430,7 @@ if (session_id() == '') {
                                 </div>
                                 <hr style="background:#e2d8ce" class="m-0 ">
                                 <?php 
-                                                        $sql2 = "SELECT *, sum(cart.qty*cart.price) as tongtien FROM `cart` WHERE $user";
+                                                        $sql2 = "SELECT *, sum(cart.qty*cart.price) as tongtien FROM `cart` WHERE id_user='$user'";
                                                         $result2 = mysqli_query($conn,$sql2);
                                                         if(mysqli_num_rows($result2)>0){
                                                             $row = mysqli_fetch_assoc($result2);
