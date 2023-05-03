@@ -56,30 +56,26 @@ endif;
                                         aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="me-5 ps-4" style="font-size:15px">
                                             <a class="link-dark text-decoration-none" href="product/shirt.php">
-                                                <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-3 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Áo & Sơ mi
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/dress.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Váy đầm
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/pant.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Quần
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/jacket.php">
-                                                <p class="mt-2 mb-0 " style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 " style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Áo khoác & Blazer
                                                 </p>
                                             </a>
-                                            <a class="link-dark text-decoration-none" href="product/biki.php">
-                                                <p class="mt-2 " style="font-family:courier,arial,helvetica;">
-                                                    Đồ bơi
-                                                </p>
-                                            </a>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -95,17 +91,17 @@ endif;
                                         aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                         <div class="me-5 ps-4" style="font-size:15px">
                                             <a class="link-dark text-decoration-none" href="product/sandal.php">
-                                                <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-3 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Giày & Dép
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/sneaker.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Giày thể thao
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/boots.php">
-                                                <p class="mt-2" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Bốt
                                                 </p>
                                             </a>
@@ -124,22 +120,22 @@ endif;
                                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="me-5 ps-4" style="font-size:15px">
                                             <a class="link-dark text-decoration-none" href="product/bag1.php">
-                                                <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-3 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Túi đeo vai
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/bag2.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Túi quai chéo
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/bag3.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Túi tote
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/bag4.php">
-                                                <p class="mt-2" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Túi thắt lưng & Balo
                                                 </p>
                                             </a>
@@ -158,37 +154,37 @@ endif;
                                         aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                                         <div class="me-5 ps-4" style="font-size:15px">
                                             <a class="link-dark text-decoration-none" href="product/vi.php">
-                                                <p class="mt-3 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-3 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Ví
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/trangsuc.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Trang sức
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/dongho.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Đồng hồ
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/kinhmat.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Kính mắt
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/khan.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Khăn & lụa
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/tl.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0" style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Thắt lưng
                                                 </p>
                                             </a>
                                             <a class="link-dark text-decoration-none" href="product/mu.php">
-                                                <p class="mt-2 mb-0" style="font-family:courier,arial,helvetica;">
+                                                <p class="mt-2 mb-0"style="font-size:13px;letter-spacing: 1px;word-spacing:1px;">
                                                     Mũ & Găng tay
                                                 </p>
                                             </a>

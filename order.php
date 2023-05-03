@@ -223,9 +223,7 @@ if(isset($_SESSION['isDelOrder'])) {
                                                                                     VNĐ
                                                                                 </p>
                                                                             </div>
-
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -21,7 +21,8 @@ if(isset($_SESSION['message'])) {
 }
 // Tiếp tục xử lý trang danh sách sản phẩm
 ?>
-<body>
+
+<body style="background:#f6f1eb">
     <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
@@ -59,10 +60,9 @@ if(isset($_SESSION['message'])) {
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <div class="nav_logo">
-
+                <div class="nav_logo p-0 justify-content-center"> <img src="../../img/logo.png" class="img-fluid"
+                        style="width:100px;height:66px">
                 </div>
-
                 <div class="nav_list">
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
@@ -160,20 +160,21 @@ if(isset($_SESSION['message'])) {
                     <thead>
                         <tr style="color:#888;">
                             <!-- <th scope="col"></th> -->
-                            <th style="width:10px" class="col ps-3" scope="col">ID</th>
+                            <th style="width:15px" class="col ps-3" scope="col">ID</th>
                             <!-- <th style="width:80px" scope="col">Số lượng</th> -->
-                            <th style="width:90px" scope="col">Tên khách hàng</th>
-                            <th style="width:90px" scope="col">Thời gian tạo</th>
-                            <th style="width:95px" scope="col">Địa chỉ giao hàng</th>
-                            <th style="width:10px" scope="col">Chi tiết</th>
-                            <th style="width:10px" scope="col">Xóa</th>
+                            <th style="width:150px" scope="col">Tên khách hàng</th>
+                            <th style="width:90px" scope="col">Ngày</th>
+                            <th style="width:95px" scope="col">Trạng thái</th>
+                            <th style="width:95px" scope="col">Tổng tiền</th>
+                            <th style="width:10px" class="text-center" scope="col">Chi tiết</th>
+                            <th style="width:10px" class="text-center" scope="col">Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
                         // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
-                        $sql = "SELECT * FROM `order`,user WHERE order.user_id = user.id_user";
+                        $sql = "SELECT * FROM `order`,user WHERE order.user_id = user.id_user ORDER BY `order`.`created` DESC";
                         $res = mysqli_query($conn, $sql);
                         $count = mysqli_num_rows($res);
                         if ($count > 0) {
@@ -191,30 +192,66 @@ if(isset($_SESSION['message'])) {
                                 </p>
                             </td>
                             <td class="">
-                                <p class="ms-2">
+                                <p class="">
                                     <?php echo $row['created']; ?>
                                 </p>
                             </td>
                             <td class="">
+                                <div class="mt-1 d-flex">
+                                    <?php
+                                        if ($row['status'] == '0') {?>
+                                    <div style="color:#5a965a;background:#c6e1c6;" class="px-2 py-1 rounded" <font
+                                        STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        Đang xử lý
+                                        </font>
+                                    </div>
+                                    <?php
+                                            } else if ($row['status'] == '1') {
+                                                ?>
+                                                <div style="color:#0691cf;background:#84d9ff;" class="px-2 py-1 rounded" <font
+                                                    STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                                    Giao hàng
+                                                    </font>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <div style="color:#11111;background:#4444;" class="px-2 py-1 rounded" <font
+                                                    STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                                    Hoàn thành
+                                                    </font>
+                                                </div>
+                                                <?php
+                                            }
+                                        ?>
+                                </div>
+                            </td>
+                            <td class="">
                                 <p class="">
-                                    <?php echo $row['address_order']; ?>
+                                    <?php echo number_format($row['amount']); ?> VNĐ
                                 </p>
                             </td>
                             <td class="">
-                                <a href="detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                                        class="bi bi-card-list link-dark" viewBox="0 0 16 16">
-                                        <path
-                                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                        <path
-                                            d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                    </svg>
-                                </a>
+                                <div class="text-center">
+                                    <a href="detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+                                            fill="currentColor" class="bi bi-card-list link-dark" viewBox="0 0 16 16">
+                                            <path
+                                                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                            <path
+                                                d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="">
-
-                                <a onclick="return confirm('Bạn có muốn xóa không?'); " href="delete_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>"><i
-                                        class="link-dark me-3 bi bi-trash"></i></a>
+                                <div class="text-center">
+                                    <div class="">
+                                        <a onclick="return confirm('Bạn có muốn xóa không?'); "
+                                            href="delete_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>">
+                                            <i class="link-dark  bi bi-trash"></i></a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <?php

@@ -35,7 +35,7 @@ if(isset($_SESSION['message'])) {
 // Tiếp tục xử lý trang danh sách sản phẩm
 ?>
 
-<body id="body-pd">
+<body id="body-pd" style="background:#f6f1eb">
     <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"

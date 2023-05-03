@@ -58,29 +58,18 @@ if (session_id() == '') {
                                 {
                                     
                         ?>
-                    <div class="card me-0 border-0" style="width: 18rem;">
-                        <img src="../img/<?php echo $row['img'];?>" class="img-fluid card-img-top" alt="...">
-                        <div class="overlay d-flex">
-                            <a href="../detail.php?id=<?php echo $row['id_product']?>">
-                                <div class="detail rounded-circle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                                        style="margin:18.5px" class="bi bi-card-heading" viewBox="0 0 16 16">
-                                        <path
-                                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                        <path
-                                            d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
-                                    </svg>
-                                </div>
-                            </a>
-
-                        </div>
-                        <div class="card-body px-0">
-                            <p class="card-text"><?php echo $row['name_product']; ?></p>
-                            <p class="d-inline fw-bold"><?php echo $row['Giagiam']; ?> VNĐ</p>
-
-                        </div>
+                   <div class="col-3 px-0 mx-2 px-1 ">
+                        <a href="../detail.php?id=<?php echo $row['id_product']; ?>" class="text-decoration-none">
+                            <img class="img-fluid  mb-3" width="282px" src="../img/<?php echo $row['img']; ?>" alt="">
+                            <div class="">
+                                <font class="link-dark pe-3 fw-bold" STYLE="letter-spacing: 1.5px;word-spacing:1px"
+                                    face="Candara" size="3"><?php echo $row['name_product']; ?></font><br>
+                                <p class="link-dark mt-1" style="font-size:13px; letter-spacing: 1px;word-spacing:1px">
+                                    <?php echo number_format($row['price']); ?> VNĐ
+                                </p>
+                            </div>
+                        </a>
                     </div>
-
 
                     <?php
                                 }

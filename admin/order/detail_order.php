@@ -23,7 +23,23 @@ if(isset($_SESSION['message'])) {
 }
 // Tiếp tục xử lý trang danh sách sản phẩm
 ?>
-<body>
+<?php
+if(isset($_SESSION['isAcceptOrder'])) {
+    $message = $_SESSION['isAcceptOrder'];?>
+    <div class="toast show position-fixed " style="z-index: 111">
+        <div class="d-flex">
+            <div class="toast-body">
+                <?php
+            echo $message;?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+    <?php
+   unset($_SESSION['isAcceptOrder']);
+}?>
+<body style="background:#f6f1eb">
     <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
@@ -152,63 +168,56 @@ if(isset($_SESSION['message'])) {
                 echo "<h4 class='text-center'style ='color:red'>{$_GET['error']}</h4>";
             }
             ?>
-            <div class="px-5 py-4"
-                style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
-                <h4 class="text-center text-dark">CHI TIẾT ĐƠN HÀNG</h4>
-                <div class="text-center text-dark">
-                    <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
-                </div>
-                <table class="mt-3 table table-striped">
-                    <thead>
-                        <tr style="color:#888;">
-                            <!-- <th scope="col"></th> -->
-                            <th style="width:10px" class="col ps-3" scope="col">ID</th>
-                            <!-- <th style="width:80px" scope="col">Số lượng</th> -->
-                            <th style="width:90px" scope="col">Tên khách hàng</th>
-                            <th style="width:90px" scope="col">Tên Sản Phẩm</th>
-                            <th style="width:30px" scope="col">Thời gian tạo</th>
-                            <th style="width:90px" scope="col">Địa chỉ giao hàng</th>
-                            <th style="width:20px" scope="col">Số lượng</th>
-                            <th style="width:50px" scope="col">Thành tiền</th>
-                            <th style="width:70px" scope="col">Trạng thái</th>
-                            <th style="width:10px" scope="col">Sửa</th>
-                            <th style="width:10px" scope="col">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-
-                        // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
-                        $sql = "SELECT *, detail_order.status as status_detail_order FROM `order`,detail_order,user,product WHERE order.id_order = detail_order.id_order and order.user_id = user.id_user and product.id_product=detail_order.product_id and detail_order.id_order=$id1 ";
-                        $res = mysqli_query($conn, $sql);
-                        $count = mysqli_num_rows($res);
-                        if ($count > 0) {
-                            while ($row = mysqli_fetch_assoc($res)) {
-                                ?>
+            <div class="row">
+                <div class="col-8">
+                    <div class="px-5 py-4 border" style="background:white;">
+                        <h4 class="text-center text-dark">CHI TIẾT ĐƠN HÀNG</h4>
+                        <div class="text-center text-dark">
+                            <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
+                        </div>
+                        <table class="mt-3 table table-striped">
+                            <thead>
+                                <tr style="color:#888;">
+                                    <th scope="col"></th>
+                                    <th scope="col">Mã sp</th>
+                                    <th style="width:160px" scope="col">Tên Sản Phẩm</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Thành tiền</th>
+                                    <th scope="col">Sửa</th>
+                                    <th scope="col">Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+        
+                                // $sql = "SELECT * FROM order,user WHERE order.user_id = user.id_user ORDER BY order ";
+                                $sql = "SELECT *, order.status as status_order FROM `order`,detail_order,user,product WHERE order.id_order = detail_order.id_order and order.user_id = user.id_user and product.id_product=detail_order.product_id and detail_order.id_order=$id1 ";
+                                $res = mysqli_query($conn, $sql);
+                                $count = mysqli_num_rows($res);
+                                if ($count > 0) {
+                                    while ($row = mysqli_fetch_assoc($res)) {
+                                        $name =$row['name_user'];
+                                        $address=$row['address_order'];
+                                        $phone=$row['phone'];
+                                        $pay=$row['pay'];
+                                        $ship=$row['ship'];
+                                        $amount=$row['amount'];
+                                        $id_order=$row['id_order'];
+                                        $status=$row['status_order'];
+                                        ?>
                                 <tr>
                                     <td class="">
-                                        <p class="ms-2">
-                                            <?php echo $row['id_order']; ?>
-                                        </p>
+                                        <img class="" width="100px" height="100px"
+                                            src="../../img/<?php echo $row['img']; ?>" alt="">
                                     </td>
                                     <td class="">
                                         <p class="">
-                                            <?php echo $row['name_user']; ?>
+                                            <?php echo $row['id_product']; ?>
                                         </p>
                                     </td>
                                     <td class="">
                                         <p class="">
                                             <?php echo $row['name_product']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="ms-2">
-                                            <?php echo $row['created']; ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <p class="">
-                                            <?php echo $row['address_order']; ?>
                                         </p>
                                     </td>
                                     <td class="">
@@ -218,48 +227,128 @@ if(isset($_SESSION['message'])) {
                                     </td>
                                     <td class="">
                                         <p class="ms-2">
-                                            <?php echo $row['amount']; ?>
+                                            <?php echo number_format($row['detail_amount']); ?>
                                         </p>
                                     </td>
                                     <td class="">
-                                        <p class="">
-                                            <?php
-                                            if ($row['status_detail_order'] == '2' ? 'checked' : '') {
-                                                echo 'Đã xác nhận';
-                                            } else if ($row['status_detail_order'] == '1' ? 'checked' : '') {
-                                                echo 'Chưa xác nhận';
-                                            }
-                                            ?>
-                                        </p>
-                                    </td>
-                                    <td class="">
-                                        <a href="update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order'];?>&id2=<?php echo $row['product_id']; ?>">
+                                        <a
+                                            href="update_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order'];?>&id2=<?php echo $row['product_id']; ?>">
                                             <i class="link-dark me-3 bi bi-pencil-square"></i>
                                         </a>
                                     </td>
                                     <td class="">
 
-                                        <a href="delete_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>&id2=<?php echo $row['product_id']; ?>"><i
+                                        <a
+                                            href="delete_detail_order.php?id=<?php echo $id ?>&id1=<?php echo $row['id_order']; ?>&id2=<?php echo $row['product_id']; ?>"><i
                                                 class="link-dark me-3 bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                                 <?php
-                            }
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <a class="text-decoration-none link-dark" style="font-size:13px"
+                            href="order.php?id=<?php echo $id; ?>">
+                            <div class="mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                    class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg>
+                                <p class="ms-2 d-inline">Quay lại </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 border " style="background:white">
+                    <div class="pt-2 mt-1 ps-2">
+                        <p class="mb-1"
+                            style="vertical-align: inherit;font-size:20px; letter-spacing: 1px;word-spacing:1px">
+                            Thông tin đơn hàng</p>
+                    </div>
+                    <hr class="m-0">
+                    <div class="mt-2 ps-2">
+                        <p class="mb-1">
+                            Họ tên: <?php echo $name; ?>
+                        </p>
+                        <p class="mb-1">
+                            SĐT: <?php echo $phone; ?>
+                        </p>
+                        <p class="mb-1">
+                            Địa chỉ: <?php echo $address; ?>
+                        </p>
+                        <p class="mb-1">
+                            Hình thức thanh toán: <?php echo $pay; ?>
+                        </p>
+                        <p class="mb-1">
+                            Đơn vị giao hàng: <?php echo $ship; ?>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="d-flex ps-2">
+                        <div class="col-8 ">
+                            <p>TỔNG THANH TOÁN</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end">
+                            <p class="me-2"><?php echo number_format($amount); ?> VNĐ</p>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <div class="mt-4 px-2">
+                        <?php
+                        if($status == 0){?>
+                        <div class="d-flex justify-content-center">
+                            <p>Bấm vào đây để xác nhận đơn hàng.</p>
+                        </div>
+                        <div class="mb-4 d-flex justify-content-center">
+                            <a href="process_confirm_order.php?id=<?php echo $id_order;?>&id1=<?php echo $id ?>"
+                                class="">
+                                <button style="color:white;background:#91d191"
+                                    class="px-5 pt-1 fw-bold btn btn-lg btn-block" type="submit" name="btnLogin">
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        XÁC NHẬN ĐƠN HÀNG</font>
+                                </button>
+                            </a>
+                        </div>
+                        <?php
+                        }
+                        if($status == 1){ ?>
+                        <div class="d-flex justify-content-center">
+                            <p>Bấm vào đây để hoàn thành đơn hàng</p>
+                        </div>
+                        <div class="mb-4 d-flex justify-content-center">
+                            <a href="process_confirm_order.php?id=<?php echo $id_order;?>&id1=<?php echo $id ?>"
+                                class="">
+                                <button style="color:white;background:#03a9f4"
+                                    class="px-5 pt-1 fw-bold btn btn-lg btn-block" type="submit" name="btnLogin">
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        ĐỢI GIAO HÀNG</font>
+                                </button>
+                            </a>
+                        </div>
+                        <?php
+                        }
+                        else{?>
+                        <div class="d-flex justify-content-center">
+                            <p>Đơn hàng đã hoàn thành</p>
+                        </div>
+                        <div class="mb-4 d-flex justify-content-center">
+                            <a href="process_confirm_order.php?id=<?php echo $id_order;?>&id1=<?php echo $id ?>"
+                                class="">
+                                <button style="color:white;background:#444444"
+                                    class="px-5 pt-1 fw-bold btn btn-lg btn-block" type="submit" name="btnLogin">
+                                    <font STYLE="letter-spacing: 1px;word-spacing:1px" face="Candara" size="2">
+                                        HOÀN THÀNH</font>
+                                </button>
+                            </a>
+                        </div>
+                        <?php
                         }
                         ?>
-                    </tbody>
-                </table>
-                <a class="text-decoration-none link-dark" style="font-size:13px"
-                    href="order.php?id=<?php echo $id; ?>">
-                    <div class="mt-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                            class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                        </svg>
-                        <p class="ms-2 d-inline">Quay lại </p>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
     </div>

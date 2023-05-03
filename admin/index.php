@@ -6,6 +6,13 @@ if (session_id() == '') {
 }
 ?>
 <?php
+if(!isset($_SESSION['isLoginOK'])){
+    header("location:login.php");
+
+}
+
+?>
+<?php
 if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
     $id = $_SESSION['isLoginOK'];
     $sql = "SELECT * FROM admin where admin.username='$id' ";
@@ -40,11 +47,6 @@ endif;
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
-                class="ms-3 bi bi-list mt-2" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-            </svg>
         </div>
         <h4 class="mt-1 text-center text-dark">Xin chào, <?php echo $row['name'];?></h4>
         <div class="mt-3 d-flex py-2 ">
@@ -70,10 +72,12 @@ endif;
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <div class="nav_logo" style="background: #f6f1eb;"> </div>
+                <div class="nav_logo p-0 justify-content-center"> <img src="../img/logo.png" class="img-fluid"
+                        style="width:100px;height:66px">
+                </div>
                 <div class="nav_list">
                     <div class="nav_links">
-                        <span class="nav_names" >DASHBOARD</span>
+                        <span class="nav_names">DASHBOARD</span>
                     </div>
                     <a href="" class="d-flex nav_link active" style="background: #f6f1eb;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
@@ -295,25 +299,25 @@ endif;
         </section>
     </div>
     <script>
-        const data = {
-            labels: [
-                'Tháng 1',
-                'Tháng 2',
-                'Tháng 3',
-                'Tháng 4',
-                'Tháng 5',
-                'Tháng 6',
-                'Tháng 7',
-                'Tháng 8',
-                'Tháng 9',
-                'Tháng 10',
-                'Tháng 11',
-                'Tháng 12'
-            ],
-            datasets: [{
-                type: 'bar',
-                label: 'Lợi nhuận theo tháng',
-                data: [<?php
+    const data = {
+        labels: [
+            'Tháng 1',
+            'Tháng 2',
+            'Tháng 3',
+            'Tháng 4',
+            'Tháng 5',
+            'Tháng 6',
+            'Tháng 7',
+            'Tháng 8',
+            'Tháng 9',
+            'Tháng 10',
+            'Tháng 11',
+            'Tháng 12'
+        ],
+        datasets: [{
+            type: 'bar',
+            label: 'Lợi nhuận theo tháng',
+            data: [<?php
                 $sql5 = "SELECT sum(detail_order.qty*product.price)-(sum(qty*import_price) ) as loi FROM detail_order,`order`,product WHERE detail_order.id_order=order.id_order and product.id_product=detail_order.product_id GROUP BY month(order.created)";
                 $res3 = mysqli_query($conn, $sql5);
                 $count3 = mysqli_num_rows($res3);
@@ -323,39 +327,39 @@ endif;
                     }
                 }
                 ?>],
-                backgroundColor: [
-                    'rgba(255, 159, 64, 0.4)',
-                    'rgba(75, 192, 192, 0.4)',
-                    'rgba(153, 102, 255, 0.4)',
-                    'rgba(54, 162, 235, 0.4)',
-                    'rgba(255, 205, 86, 0.4)',
-                    'rgba(255, 99, 132, 0.4)',
-                    'rgba(201, 203, 207, 0.4)',
-                    'rgba(247, 127, 0, 0.4)',
-                    'rgba(152, 75, 1, 0.4)',
-                    'rgba(48, 69, 134, 0.4)',
-                    'rgba(133, 72, 173, 0.4)',
-                    'rgba(206, 118, 13, 0.4)'
-                ],
-                borderColor: [
-                    'rgb(255, 159, 64)',
-                    'rgb(75, 192, 192)',
-                    'rgb(153, 102, 255)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                    'rgb(255, 99, 132)',
-                    'rgb(201, 203, 207)',
-                    'rgb(247, 127, 0)',
-                    'rgb(152, 75, 1)',
-                    'rgb(48, 69, 134)',
-                    'rgb(133, 72, 173)',
-                    'rgb(206, 118, 13)'
-                ],
-                borderWidth: 1
-            }, {
-                type: 'line',
-                label: 'Doanh thu theo tháng',
-                data: [<?php
+            backgroundColor: [
+                'rgba(255, 159, 64, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(201, 203, 207, 0.4)',
+                'rgba(247, 127, 0, 0.4)',
+                'rgba(152, 75, 1, 0.4)',
+                'rgba(48, 69, 134, 0.4)',
+                'rgba(133, 72, 173, 0.4)',
+                'rgba(206, 118, 13, 0.4)'
+            ],
+            borderColor: [
+                'rgb(255, 159, 64)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(255, 99, 132)',
+                'rgb(201, 203, 207)',
+                'rgb(247, 127, 0)',
+                'rgb(152, 75, 1)',
+                'rgb(48, 69, 134)',
+                'rgb(133, 72, 173)',
+                'rgb(206, 118, 13)'
+            ],
+            borderWidth: 1
+        }, {
+            type: 'line',
+            label: 'Doanh thu theo tháng',
+            data: [<?php
                 $sql4 = "SELECT sum(detail_order.qty*product.price) as don FROM detail_order,`order`,product WHERE detail_order.id_order=order.id_order and product.id_product=detail_order.product_id GROUP BY month(order.created)";
                 $res2 = mysqli_query($conn, $sql4);
                 $count2 = mysqli_num_rows($res2);
@@ -365,32 +369,32 @@ endif;
                     }
                 }
                 ?>],
-                fill: false,
-                backgroundColor: '#33cb82',
-                borderColor: '#33cb82',
-            }]
-        };
-        const config = {
-            type: 'scatter',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+            fill: false,
+            backgroundColor: '#33cb82',
+            borderColor: '#33cb82',
+        }]
+    };
+    const config = {
+        type: 'scatter',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
-        };
+        }
+    };
     </script>
     <script>
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>
