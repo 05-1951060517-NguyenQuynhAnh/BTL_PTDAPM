@@ -284,14 +284,7 @@ endif;
                                 <p class="pt-1 mb-0" style="font-size:13px">Đăng nhập</p>
                             </a>
                             <?php endif; ?>
-                            <div class="offcanvas    <?php
-                            if(isset($_GET['error'])){
-                                echo 'offcanvas-end show';
-                            }
-                                else {
-                                    echo'offcanvas-end';
-                                }  
-                             ?>" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <div class="px-5 pt-5  pb-0 offcanvas-header">
                                     <font class="offcanvas-title" id="offcanvasExampleLabel"
                                         STYLE="letter-spacing: 2.75px;word-spacing:2px" face="Candara" size="6">Xin chào

@@ -3,7 +3,8 @@
 <?php
 if (isset($_SESSION['isLoginOK']) && !empty($_SESSION['isLoginOK'])):
     $id = $_SESSION['isLoginOK'];
-    $sql = "SELECT * FROM admin,product where admin.username='$id' ";
+    $id1 = $_GET['id1'];
+    $sql = "SELECT * FROM admin,product where admin.username='$id' and id_product='$id1'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);

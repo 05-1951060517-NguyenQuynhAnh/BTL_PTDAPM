@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 03, 2023 lúc 07:31 PM
+-- Thời gian đã tạo: Th5 24, 2023 lúc 05:39 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -86,7 +86,10 @@ INSERT INTO `cart` (`id_user`, `id_product`, `amount`, `qty`, `color`, `size`, `
 (10, 2, NULL, 3, 'lightblue', 'S', 10000000, '2023-05-03 23:04:03'),
 (10, 217, NULL, 3, 'white', 'S', 4736000, '2023-05-03 23:04:17'),
 (11, 223, NULL, 2, 'white', '37', 4096000, '2023-05-03 23:21:37'),
-(11, 217, NULL, 2, 'white', 'S', 4736000, '2023-05-03 23:21:52');
+(11, 217, NULL, 2, 'white', 'S', 4736000, '2023-05-03 23:21:52'),
+(12, 216, NULL, 2, 'white', 'XS', 18544000, '2023-05-04 01:03:53'),
+(13, 217, NULL, 3, 'white', 'S', 4736000, '2023-05-04 01:18:41'),
+(13, 221, NULL, 1, 'white', 'Free Size', 9424000, '2023-05-04 01:18:50');
 
 -- --------------------------------------------------------
 
@@ -237,11 +240,11 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id_order`, `status`, `user_id`, `amount`, `created`, `id_admin`, `address_order`, `pay`, `ship`) VALUES
-(19, 2, 1, 35552000, NULL, NULL, 'Hải Dương', 'Thẻ tín dụng/ Ghi nợ', 'Giao hàng nhanh'),
+(19, 1, 1, 35552000, NULL, NULL, 'Hải Dương', 'Thẻ tín dụng/ Ghi nợ', 'Giao hàng nhanh'),
 (20, 2, 1, 17008000, NULL, NULL, 'Hải Dương', 'Thanh toán khi nhận hàng', 'Giao hàng nhanh'),
 (23, 2, 1, 76192000, NULL, NULL, 'Hải Dương', 'Thẻ tín dụng/ Ghi nợ', 'Giao hàng nhanh'),
 (25, 2, 1, 4736000, NULL, NULL, 'Hải Dương', 'Thanh toán khi nhận hàng', 'Giao hàng nhanh'),
-(34, 2, 1, 71104000, '2023-04-15', NULL, 'Hải Dương', 'Thẻ tín dụng/ Ghi nợ', 'Giao hàng nhanh'),
+(34, 0, 1, 71104000, '2023-04-15', NULL, 'Hải Dương', 'Thẻ tín dụng/ Ghi nợ', 'Giao hàng nhanh'),
 (53, 2, 7, 4096000, '2023-05-03', NULL, 'Hà Nội', 'Thanh toán khi nhận hàng', 'Giao hàng nhanh');
 
 -- --------------------------------------------------------
@@ -279,16 +282,17 @@ INSERT INTO `product` (`id_product`, `catalog_id`, `name_product`, `price`, `con
 (165, 3, 'Quần đùi', 12000000, 'Đẹp', 0, 'loai3.png', '2023-05-03', 12, 7500000, 'Đang bán', ''),
 (177, 2, 'Váy ', 12000000, 'Đẹp', 0, 'logo.png', '2023-05-03', 12, 7500000, 'Đang bán', ''),
 (212, 12, 'Women\'s GG sneaker', 19200000, 'Được sử dụng lần đầu tiên vào những năm 1970, logo GG là sự phát triển của thiết kế hình thoi nguyên bản của Gucci từ những năm 1930, và từ đó nó trở thành biểu tượng lâu đời cho di sản của Ngôi nhà. Ở đây, mẫu xác định đôi giày thể thao này có màu sắc rực rỡ. Làm sâu sắc thêm mối liên hệ với di sản của các thương hiệu, logo G lồng vào nhau được in xuất hiện ở phía sau.\r\n+ Da trắng\r\n+ Vải GG thêu nhiều màu của phụ nữ\r\n+ Logo Interlocking G được in ở mặt sau\r\n+ Đế cao su\r\n+ Đi kèm thêm cặp dây buộc đóng cửa ren\r\ngót giữa\r\n+ Chiều cao 2,2\"\r\n+ Sản xuất tại Ý\r\n', 0, 'g1.avif\r\n', '2023-04-09', 45, 4200000, 'Đang bán', '0'),
-(216, 4, 'Áo khoác len crepe', 18544000, 'Tiếp tục khám phá trang phục trang trọng bằng cách tiếp cận độc đáo, bộ sưu tập Xuân Hè 2023 xem xét khái niệm may đo theo một lăng kính mới. Ngôi nhà diễn giải lại những hình bóng cổ điển, kết hợp những chiếc áo khoác tối giản với những dấu hiệu từ những năm 1990 để tạo nên một bản cập nhật sáng tạo cho tủ quần áo. Chiếc áo khoác len crêpe này có khóa G hình chữ nhật đậm.\r\n+Len crepe màu ngà\r\n+Nút GG có tông vàng\r\n+Cổ áo có thể tháo rời\r\n+Thắt lưng tự buộc có thể tháo rời với khóa G hình chữ nhật đậm\r\n+Hai túi phía trước\r\n+Chiều dài: 71cm, dựa trên cỡ 40 (CNTT)\r\n+Sản xuất tại Ý\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT)\r\n+Dây da rời: Da bò.\r\n+Vải: 100% Len.\r\n+Lớp lót: 100% Viscose.', 0, 'summer1.avif', '2023-04-13', -19, 8000000, 'Đang bán', 'summer2023'),
-(217, 1, 'Áo sơ mi vải bông', 4736000, 'Thể hiện phong cách ready-to-wear cổ điển. Chiếc áo sơ mi bằng cotton poplin màu đen này có cổ áo nhọn và chi tiết cầu vai. Một nút đóng hoàn thành thiết kế.<br>\r\n\r\n+Poplin bông màu đen <br>\r\n+Cổ áo điểm <br>\r\n+Đóng nút <br>\r\n+Chiều dài: 35cm dựa trên cỡ 40 (CNTT)<br>\r\n+Sản xuất tại Ý <br>\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT) <br>\r\n+Vải: 100% Cotton. <br>\r\n+Các chi tiết có thể tháo rời: 100% Silk.', 0, 'summer2.avif', '2023-04-13', 0, 3315200, 'Đang bán', 'summer2023'),
+(216, 4, 'Áo khoác len crepe', 18544000, 'Tiếp tục khám phá trang phục trang trọng bằng cách tiếp cận độc đáo, bộ sưu tập Xuân Hè 2023 xem xét khái niệm may đo theo một lăng kính mới. Ngôi nhà diễn giải lại những hình bóng cổ điển, kết hợp những chiếc áo khoác tối giản với những dấu hiệu từ những năm 1990 để tạo nên một bản cập nhật sáng tạo cho tủ quần áo. Chiếc áo khoác len crêpe này có khóa G hình chữ nhật đậm.\r\n+Len crepe màu ngà\r\n+Nút GG có tông vàng\r\n+Cổ áo có thể tháo rời\r\n+Thắt lưng tự buộc có thể tháo rời với khóa G hình chữ nhật đậm\r\n+Hai túi phía trước\r\n+Chiều dài: 71cm, dựa trên cỡ 40 (CNTT)\r\n+Sản xuất tại Ý\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT)\r\n+Dây da rời: Da bò.\r\n+Vải: 100% Len.\r\n+Lớp lót: 100% Viscose.', 0, 'summer1.avif', '2023-04-13', -21, 8000000, 'Đang bán', 'summer2023'),
+(217, 1, 'Áo sơ mi vải bông', 4736000, 'Thể hiện phong cách ready-to-wear cổ điển. Chiếc áo sơ mi bằng cotton poplin màu đen này có cổ áo nhọn và chi tiết cầu vai. Một nút đóng hoàn thành thiết kế.<br>\r\n\r\n+Poplin bông màu đen <br>\r\n+Cổ áo điểm <br>\r\n+Đóng nút <br>\r\n+Chiều dài: 35cm dựa trên cỡ 40 (CNTT)<br>\r\n+Sản xuất tại Ý <br>\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 40 (CNTT) <br>\r\n+Vải: 100% Cotton. <br>\r\n+Các chi tiết có thể tháo rời: 100% Silk.', 0, 'summer2.avif', '2023-04-13', -3, 3315200, 'Đang bán', 'summer2023'),
 (218, 4, 'Áo khoác len lụa mềm mại', 19728000, 'Tiếp tục khám phá trang phục trang trọng bằng cách tiếp cận độc đáo, bộ sưu tập Xuân Hè 2023 xem xét khái niệm may đo theo một lăng kính mới. The House diễn giải lại những hình bóng cổ điển, kết hợp những chiếc áo khoác tối giản với những dấu hiệu từ những năm 1990, bao gồm cả những cảm hứng về nội y, để tạo ra một bản cập nhật sáng tạo cho tủ quần áo. Chiếc áo khoác lụa có cấu trúc này được trình bày bằng vải lụa len mềm mại, đặc trưng bởi thắt lưng da có thể tháo rời với khóa kim loại tương phản.\r\n+Len lụa mềm màu đen\r\n+cổ tròn\r\n+Tay áo ngắn với còng bật lên\r\n+Bốn túi phía trước\r\n+Thắt lưng da có thể tháo rời với khóa kim loại\r\n+Lỗ thông hơi phía sau\r\n+Chiều dài: 72cm, dựa trên cỡ 38 (CNTT)\r\n+Sản xuất tại Ý\r\n+Sản phẩm hiển thị trong hình ảnh này có kích thước 38 (CNTT)\r\n+Dây da rời: Da bò.\r\n+Chất liệu vải: 75% Len, 25% Lụa.\r\n+Lớp lót: 100% Lụa.\r\n+Lớp lót túi: 100% Viscose.', 0, 'summer3.avif', '2023-04-13', 7, 10809600, 'Đang bán', 'summer2023'),
 (219, 21, 'Túi đeo vai nhỏ Gucci Deco', 17008000, 'Bị cuốn hút bởi quá khứ, Gucci tiếp tục mở rộng tầm nhìn của mình bằng cách xem lại những kiểu dáng cổ điển và chất liệu tinh tế. Với thiết kế chần bông, những chiếc túi mới làm nổi bật các biểu tượng tiêu biểu từ kho lưu trữ để tạo cảm giác cổ điển, chẳng hạn như phần cứng G lồng vào nhau trên nắp đóng, viền da lấy cảm hứng từ thập niên 70 và dây đeo vai dạng chuỗi, giống như chiếc túi đeo vai này.\r\n\r\n+Da chần bông màu trắng\r\n+Phần cứng tông vàng\r\n+Lót da\r\n+Chi tiết G lồng vào nhau\r\n+Nội thất: 1 túi khóa kéo\r\n+Dây đeo xích trượt có thể được đeo như một dây đeo vai với độ rơi 47,5 cm hoặc có thể đeo như một tay cầm trên cùng với độ rơi 26 cm\r\n+Trọng lượng: xấp xỉ .9kg\r\n+Kích thước trung bình: W25cm x H19.5cm x D8cm\r\n+Sản xuất tại Ý', 0, 'summer5.avif', '2023-04-13', 0, 11809600, 'Đang bán', 'summer2023'),
 (220, 35, 'Khăn lụa in hình GG Flora', 2704000, 'Các thiết kế lưu trữ tiếp tục là nguồn cảm hứng cho các bộ sưu tập mới. Các họa tiết thực vật phức tạp đã được tái sử dụng qua lăng kính hiện đại, nở rộ trên nền chữ lồng GG.\r\n+GG Flora in hoa hồng và lụa ngà\r\n+W90cm x H90cm\r\n+Sản xuất tại Ý\r\n+100% lụa', 0, 'flora.avif', '2023-04-13', 130, 1304000, 'Đang bán', 'flora2023'),
-(221, 23, 'Túi tote lớn Ophidia GG Flora', 9424000, 'Được thiết kế lần đầu vào những năm 1960 bởi nghệ sĩ Vittorio Accornero, họa tiết Flora lịch sử tiếp tục phát triển cho đến ngày nay. Họa tiết hoa giờ đây làm phong phú thêm các loại hành lý này với tính chất lãng mạn, xuất hiện dưới dạng một bản in nhiều màu trên họa tiết GG. Một sọc Web màu xanh lá cây và đỏ hoàn thành phong cách.\r\n\r\n+Nhiều màu GG Supreme Flora in canvas\r\n+Sọc xanh và đỏ\r\n+Bên trong: 1 túi zip\r\n+Xử lý với độ rơi 8,3\"\r\n+Trọng lượng: 760gr. khoảng\r\n+15,7\"W x 13\"H x 7,5\"D\r\n+Sản xuất tại Ý', 0, 'flora4.avif', '2023-04-13', 23, 3315200, NULL, 'flora2023'),
+(221, 23, 'Túi tote lớn Ophidia GG Flora', 9424000, 'Được thiết kế lần đầu vào những năm 1960 bởi nghệ sĩ Vittorio Accornero, họa tiết Flora lịch sử tiếp tục phát triển cho đến ngày nay. Họa tiết hoa giờ đây làm phong phú thêm các loại hành lý này với tính chất lãng mạn, xuất hiện dưới dạng một bản in nhiều màu trên họa tiết GG. Một sọc Web màu xanh lá cây và đỏ hoàn thành phong cách.\r\n\r\n+Nhiều màu GG Supreme Flora in canvas\r\n+Sọc xanh và đỏ\r\n+Bên trong: 1 túi zip\r\n+Xử lý với độ rơi 8,3\"\r\n+Trọng lượng: 760gr. khoảng\r\n+15,7\"W x 13\"H x 7,5\"D\r\n+Sản xuất tại Ý', 0, 'flora4.avif', '2023-04-13', 22, 3315200, NULL, 'flora2023'),
 (222, 31, 'Ví đựng thẻ Ophidia GG Flora', 2400000, 'Ban đầu được tạo ra vào những năm 1960 bởi nghệ sĩ Vittorio Accornero, họa tiết Flora lịch sử đã tiếp tục phát triển qua nhiều thập kỷ. Tại đây, nó làm phong phú thêm loạt sản phẩm da nhỏ mới nhất của Gucci với tính chất lãng mạn, xuất hiện dưới dạng một bản in nhiều màu trên họa tiết GG.\r\n\r\n+Nhiều màu GG Supreme Flora in canvas\r\n+Phần cứng tông vàng\r\n+Sọc xanh và đỏ\r\n+Năm khe cắm thẻ\r\n+Một ngăn hóa đơn\r\n+Túi dây kéo bên trong\r\n+Đóng nút chụp\r\n+Mở: W11cm x H17,5cm\r\n+Đã đóng: W11cm x H8.5cm x D3cm\r\n+Sản xuất tại Ý', 0, 'flora1.avif', '2023-04-13', 34, 600000, 'Đang bán', 'flora2023'),
 (223, 11, 'Giày lười Gucci Jordaan Flora', 4096000, 'Họa tiết Flora lịch sử từ những năm 1960 được thiết kế bởi nghệ sĩ Vittorio Accornero. Họa tiết hoa làm phong phú thêm vẻ lãng mạn cho đôi giày lười này, xuất hiện dưới dạng một bản in nhiều màu trên họa tiết GG.\r\n+Phần cứng tông vàng\r\n+Viền da màu xanh đậm\r\n+Da duy nhất\r\n+Phẳng\r\n+Chiều cao gót 10 mm\r\n+Sản xuất tại Ý', 0, 'flora5.avif', '2023-04-13', 21, 1796000, 'Đang bán', 'flora2023'),
 (421, 1, 'Áo', 122, 'sâsas', 0, 'a1.avif', '2023-04-15', 12, 12, 'Đang bán', ''),
-(12345, 3, 'Quần ngắn', 12000000, 'Đẹp', 0, 'iconbuon.jpg', '2023-05-03', 12, 7600000, 'Đang bán', '');
+(12345, 3, 'Quần ngắn', 12000000, 'Đẹp', 0, 'iconbuon.jpg', '2023-05-03', 12, 7600000, 'Đang bán', ''),
+(23456, 12, 'Sneaker', 23000000, 'Đẹp', 0, 'a2.avif', '2023-05-03', 21, 15000000, 'Đang bán', '');
 
 -- --------------------------------------------------------
 
@@ -323,7 +327,9 @@ INSERT INTO `user` (`id_user`, `name_user`, `email`, `phone`, `address`, `passwo
 (8, 'Nguyễn Quỳnh Anh ', 'quynhanh@gmail.com', '9374627473', 'Hà Nội', '123456', '0000-00-00', '2023-05-03', 2),
 (9, 'Nguyễn Quỳnh Anh ', 'quynhanh123@gmail.com', '9374627473', 'Hà Nội', '123456', '0000-00-00', '2023-05-03', 2),
 (10, 'Nguyễn Quỳnh Anh ', 'qanh123456@gmail.com', '9374627473', 'Hà Nội', '123456', '0000-00-00', '2023-05-03', 2),
-(11, 'Nguyễn Quỳnh Anh ', 'qa4321@gmail.com', '9374627473', 'Hà Nội', '123456', '0000-00-00', '2023-05-03', 2);
+(11, 'Nguyễn Quỳnh Anh ', 'qa4321@gmail.com', '9374627473', 'Hà Nội', '123456', '0000-00-00', '2023-05-03', 2),
+(12, 'Nguyễn Quỳnh Anh ', 'qa987@gmail.com', '9374627473', 'Hà Nội', '123456', '0000-00-00', '2023-05-11', 1),
+(13, 'Nguyễn Quỳnh Anh ', 'qanh456@gmail.com', '0854765578', 'Hà Nội', '12345678', '0000-00-00', '2023-05-04', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -397,13 +403,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2235;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12457;
 
 --
 -- AUTO_INCREMENT cho bảng `catalog`
 --
 ALTER TABLE `catalog`
-  MODIFY `id_catalog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_catalog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `detail_catalog`
@@ -415,19 +421,19 @@ ALTER TABLE `detail_catalog`
 -- AUTO_INCREMENT cho bảng `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_order` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_order` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12346;
+  MODIFY `id_product` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34685;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

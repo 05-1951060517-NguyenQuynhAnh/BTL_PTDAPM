@@ -19,7 +19,7 @@ $id1 = $_GET['id1'];
     //    }else{
     //        header("location: error.php"); 
     //    }
-    $sql = "UPDATE product SET name_product='$TenSP', price='$Giaban',import_price='$Gianhap',quantity='$Soluong',status='$Trangthai',content='$Mota',image_list='$file3' WHERE id_product='$id1'";
+    $sql = "UPDATE product SET name_product='$TenSP', price='$Giaban',import_price='$Gianhap',quantity='$Soluong',status='$Trangthai',content='$Mota',img='$file3' WHERE id_product='$id1'";
     $number = mysqli_query($conn,$sql);
 
     if($number > 0){
